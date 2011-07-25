@@ -10,16 +10,19 @@
 <body>
 
 <div id='header'>
-  <a href='/' class='title'>U.S. Census <span>2010</span></a>
-  <div class='map-type'>Population Change Map</div>
-  <div class='form-item' id='edit-search-block-form-1-wrapper'>
-    <input type='text' maxlength='128' size='15' value='Enter zip code here' class='search'>
-    <input type='submit' value='Jump to County'>
-   </div>
+  <div class='limiter'>
+    <a href='/' class='title'><h1>U.S. Census <span>2010</span></h1></a>
+    <div class='map-type'>Population Change Map</div>
+    <div class='location-search'>
+      <input type='text' value='Enter zip code here' class='search'>
+      <a href='#' class='button'>Jump to County</a>
+    </div>
+  </div>
 </div>
 
 <div id='map'></div>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type='text/javascript' src='scripts/modestmaps.min.js'></script>
 <script type='text/javascript' src='scripts/wax.mm.min.js'></script>
 <script type='text/javascript' src='scripts/script.js'></script>
