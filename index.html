@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>US Census Map</title>
+    <link rel='shortcut icon' href='images/favicon.ico' type='image/x-icon' />
+    <link rel='stylesheet' href='css/reset.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/style.css' type='text/css' media='screen, projection' />
+  </head>
+<body>
+
+<div id='header'>
+  <a href='/' class='title'>U.S. Census <span>2010</span></a>
+  <div class='map-type'>Population Change Map</div>
+  <div class='form-item' id='edit-search-block-form-1-wrapper'>
+    <input type='text' maxlength='128' size='15' value='Enter zip code here' class='search'>
+    <input type='submit' value='Jump to County'>
+   </div>
+</div>
+
+<div id='map'></div>
+
+<script type='text/javascript' src='scripts/modestmaps.min.js'></script>
+<script type='text/javascript' src='scripts/wax.mm.min.js'></script>
+<script type='text/javascript' src='scripts/script.js'></script>
+</body>
+</html>
