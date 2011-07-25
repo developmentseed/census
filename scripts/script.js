@@ -12,25 +12,30 @@ var m = new mm.Map('map', new wax.mm.connector(tilejson));
 wax.mm.interaction(m, tilejson);
 m.setCenterZoom(new mm.Location(39, -98), 5);
 
-$(function(){
-    var zipValid = true;
-
+function zipcodeYDN(zip) {
     $.ajax({
-        url: 'http://where.yahooapis.com/geocode?q=1600+Pennsylvania+Avenue,+Washington,+DC&appid=tvFrqN30',
-        success: function(data) {
-            console.log(data);
+        url: 'http://api.geonames.org/postalCodeLookupJSON?postalcode=' + zip + '&country=US&username=tristen',
+        type: 'json',
+            success: function (resp) {
+                console.log(resp);
         }
     });
+}
+
+domReady(function () {
+
+    var zipValid = true;
+
     // Remove val on focus
     var input = $('.location-search input'),
-        formTitle = 'Enter zip code here';
+        inputTitle = 'Enter zip code here';
 
     input.blur(function() {
         if (input.val() === '') {
-            input.val(formTitle);
+            input.val(inputTitle);
         }
     }).focus(function() {
-        if (input.val() === formTitle) {
+        if (input.val() === inputTitle) {
             input.val('');
         }
     });
@@ -38,10 +43,13 @@ $(function(){
     $('.location-search a.button').click(function (e){
         e.preventDefault();
         if (zipValid) {
-            console.log(input.val());
+            var code = input.val();
+            zipcodeYDN(code);
         }
         else {
-            alert('Must be a valid code');
+            alert('Must be a valid zip code');
         }
     });
+
+    // max-zoom: 14
 });
