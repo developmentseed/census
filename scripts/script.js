@@ -13,6 +13,8 @@ wax.mm.interaction(m, tilejson);
 m.setCenterZoom(new mm.Location(39, -98), 5);
 
 $(function(){
+    var zipValid = true;
+
     $.ajax({
         url: 'http://where.yahooapis.com/geocode?q=1600+Pennsylvania+Avenue,+Washington,+DC&appid=tvFrqN30',
         success: function(data) {
@@ -21,13 +23,25 @@ $(function(){
     });
     // Remove val on focus
     var input = $('.location-search input'),
-        formTitle = input.attr('title');
+        formTitle = 'Enter zip code here';
 
     input.blur(function() {
-        input.val(formTitle);
+        if (input.val() === '') {
+            input.val(formTitle);
+        }
     }).focus(function() {
         if (input.val() === formTitle) {
             input.val('');
         }
-    }).blur();
+    });
+
+    $('.location-search a.button').click(function (e){
+        e.preventDefault();
+        if (zipValid) {
+            console.log(input.val());
+        }
+        else {
+            alert('Must be a valid code');
+        }
+    });
 });
