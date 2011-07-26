@@ -189,7 +189,6 @@ a.zoomdisabled {
   position: absolute;
   right: 10px;
   bottom: 10px;
-  z-index: 99999;
   }
 /*Tooltip*/
 .wax-tooltip {
@@ -201,7 +200,7 @@ a.zoomdisabled {
   -webkit-transition:opacity .5s;
   -moz-transition:opacity .5s;
   }
-.wax-legend,
+.wax-legends,
 .wax-tooltip {
   width: 310px;
   max-height: 400px;
@@ -233,6 +232,22 @@ a.zoomdisabled {
   width: 225px;
   right: 80px;
   height: 40px;
+  }
+
+/*CSS Animations*/
+.wax-tooltip,
+.map-tile-loaded {
+  -webkit-animation-name: 'fade-in';
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-duration: .1s;
+  }
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+    }
+  to {
+    opacity: 1;
+    }
   }
 
 /*-----------------------------------

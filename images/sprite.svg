@@ -294,19 +294,10 @@
          d="m 855.00001,-101.63783 c -3.30186,0 -6,2.69814 -6,6 0,3.30186 2.69814,6 6,6 0.92865,0 1.80721,-0.21349 2.59375,-0.59375 l 6,6 2.8125,-2.84375 -6,-6 c 0.37236,-0.77987 0.59375,-1.64417 0.59375,-2.5625 0,-3.30186 -2.69814,-6 -6,-6 z m 0,2 c 2.22098,0 4,1.77902 4,4 0,2.22098 -1.77902,4 -4,4 -2.22098,0 -4,-1.77902 -4,-4 0,-2.22098 1.77902,-4 4,-4 z"
          style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
     </g>
-    <rect
-       style="color:#000000;fill:#ff4a4b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       id="rect71341"
-       width="225"
-       height="50"
-       x="0"
-       y="1002.3622" />
     <path
-       style="fill:#ff4a4b;fill-opacity:1;stroke:none"
-       d="m 10,200 10,-10 10,10 -20,0 0,0"
-       id="path71343"
-       inkscape:connector-curvature="0"
+       style="color:#000000;fill:#ff4a4b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 20 190 L 10 200 L 0 200 L 0 250 L 225 250 L 225 200 L 30 200 L 20 190 z "
        transform="translate(0,802.36218)"
-       sodipodi:nodetypes="ccccc" />
+       id="rect71341" />
   </g>
 </svg>
