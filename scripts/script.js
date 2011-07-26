@@ -1,4 +1,5 @@
-var layers = 'usa1-census-state-z2-5,';
+var layers = 'mapbox.natural-earth-1,';
+    layers += 'usa1-census-state-z2-5,';
     layers += 'usa2-census-counties-z6-9,';
     layers += 'usa3-census-tracts-contusa-z10-13,';
     layers += 'usa4-census-tracts-AK-z10-13,';
