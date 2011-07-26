@@ -75,7 +75,7 @@ domReady(function () {
     $('form.location-search').submit(function (e){
         e.preventDefault();
         var inputValue = input.val(),
-            zipValid = /^\d{5}(-\d{4})?$/.exec(inputValue);
+            zipValid = /^\d{5}$/.exec(inputValue);
 
         if (zipValid) {
             var code = input.val();
@@ -83,7 +83,7 @@ domReady(function () {
             $('.error p').remove();
         }
         else {
-            $('.error').append("<p>Must be a valid zip code <br /><small>like <em>94105-0011</em> or <em>94105</em></small></p>");
+            $('.error').append("<p>Must be a valid 5 digit zip code <br /><small>e.g <em>94105</em></small></p>");
             setTimeout(removeError, 2000);
 
             function removeError() {

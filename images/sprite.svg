@@ -205,6 +205,14 @@
          stdDeviation="0.625"
          id="feGaussianBlur68770" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter71379">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.2"
+         id="feGaussianBlur71381" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -213,15 +221,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="23.195154"
-     inkscape:cy="60.803063"
+     inkscape:zoom="1.979899"
+     inkscape:cx="75.117051"
+     inkscape:cy="55.752301"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1146"
      inkscape:window-height="728"
-     inkscape:window-x="117"
+     inkscape:window-x="52"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      showguides="true"
@@ -294,10 +302,18 @@
          d="m 855.00001,-101.63783 c -3.30186,0 -6,2.69814 -6,6 0,3.30186 2.69814,6 6,6 0.92865,0 1.80721,-0.21349 2.59375,-0.59375 l 6,6 2.8125,-2.84375 -6,-6 c 0.37236,-0.77987 0.59375,-1.64417 0.59375,-2.5625 0,-3.30186 -2.69814,-6 -6,-6 z m 0,2 c 2.22098,0 4,1.77902 4,4 0,2.22098 -1.77902,4 -4,4 -2.22098,0 -4,-1.77902 -4,-4 0,-2.22098 1.77902,-4 4,-4 z"
          style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
     </g>
-    <path
+    <rect
        style="color:#000000;fill:#ff4a4b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="M 20 190 L 10 200 L 0 200 L 0 250 L 225 250 L 225 200 L 30 200 L 20 190 z "
-       transform="translate(0,802.36218)"
-       id="rect71341" />
+       id="rect71341"
+       width="250"
+       height="50"
+       x="0"
+       y="1002.3622" />
+    <path
+       style="fill:#ff4a4b;fill-opacity:1;stroke:none"
+       d="m 11,1002.3622 10,-10.00002 10,10.00002 -20,0 0,0"
+       id="path71343"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
   </g>
 </svg>
