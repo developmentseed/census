@@ -6,7 +6,8 @@ var layers = 'mapbox.natural-earth-1,';
     layers += 'usa5-census-tracts-HI-z10-13,';
     layers += 'usa6-census-tracts-contusa-z14,';
     layers += 'usa7-census-tracts-AK-z14,';
-    layers += 'usa8-census-tracts-HI-z14';
+    layers += 'usa8-census-tracts-HI-z14,';
+    layers += 'mapbox.world-borders-dark';
 
 function getTiles() {
     return [
