@@ -159,6 +159,10 @@ a.zoomer {
   font-weight: bold;
   top: 60px;
   left: 10px;
+  -moz-transition: opacity 0.1s ease-out;
+  -o-transition: opacity 0.1s ease-out;
+  -webkit-transition: opacity 0.1s ease-out;
+  transition: opacity 0.1s ease-out;
   }
 a.zoomout {
   top: 85px;
@@ -185,7 +189,6 @@ a.zoomdisabled {
   opacity: 0.35;
   -moz-opacity: 0.35;
   filter:alpha(opacity=35);
-  border: none;
   cursor: default;
   }
 
@@ -222,12 +225,6 @@ a.zoomdisabled {
 
 /*Error box*/
 .error {
-  position: absolute;
-  top: 32px;
-  z-index: 100;
-  right: 0;
-  }
-.error p {
   background: transparent url(../images/sprite.png) no-repeat 0 -190px;
   padding: 20px 12px 0;
   color: white;
@@ -237,6 +234,17 @@ a.zoomdisabled {
   width: 200px;
   right: 103px;
   height: 40px;
+  top: 32px;
+  }
+a.close {
+  background: transparent url(../images/sprite.png) no-repeat -236px -31px;
+  width: 7px;
+  height: 7px;
+  display: block;
+  text-indent: -999em;
+  position: absolute;
+  top: 15px;
+  right: 5px;
   }
 
 /*CSS Animations*/

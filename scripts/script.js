@@ -26,7 +26,6 @@ function getGrids() {
         "http://d.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.grid.json"
         ];
 };
-
 var tilejson = {
     tilejson: '1.0.0',
     scheme: 'tms',
@@ -37,8 +36,8 @@ var tilejson = {
 };
 var mm = com.modestmaps;
 var m = new mm.Map('map', new wax.mm.connector(tilejson));
-wax.mm.interaction(m, tilejson);
 m.setCenterZoom(new mm.Location(39, -98), 5);
+wax.mm.interaction(m, tilejson);
 wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
 
@@ -60,7 +59,11 @@ function geocode(location) {
 }
 
 function errorBox(reason) {
-    $('.error').append(reason);
+    $('form.location-search').append('<div class="error">' + reason + '<a href="#" class="close">x</a><div>');
+    $('a.close').click(function(e) {
+        e.preventDefault();
+        $('.error').remove();
+    });
 }
 
 function locationHash() {
@@ -93,7 +96,7 @@ domReady(function () {
             zipValid = /^\d{5}$/.exec(inputValue);
 
         if (zipValid) {
-            $('.error p').remove();
+            $('.error').remove();
             var code = input.val();
             geocode(code);
         }

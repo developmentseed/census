@@ -221,9 +221,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="75.117051"
-     inkscape:cy="55.752301"
+     inkscape:zoom="16.288"
+     inkscape:cx="236.55797"
+     inkscape:cy="209.61651"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -290,8 +290,8 @@
        id="rect70831"
        width="20"
        height="20"
-       x="270"
-       y="802.36218" />
+       x="255"
+       y="827.36218" />
     <g
        id="g7002-8"
        transform="translate(-617.70313,905.29689)"
@@ -315,5 +315,19 @@
        id="path71343"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
+    <g
+       id="g71399"
+       transform="matrix(1.2934794,0,0,1.2934794,-68.171467,-248.01214)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path71383"
+         d="m 236.04412,836.9063 4.41176,4.41176"
+         style="fill:#800080;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path71385"
+         d="m 240.45588,836.9063 -4.41176,4.41176"
+         style="fill:#800080;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
   </g>
 </svg>
