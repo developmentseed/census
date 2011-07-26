@@ -54,7 +54,7 @@ function zipcodeYDN(zip) {
                 });
             }
             else {
-                errorBox('<p>This code did not return any results.</p>');
+                errorBox('<p>The code you tried did not return a result.</p>');
             }
         }
     });
@@ -91,7 +91,7 @@ domReady(function () {
             zipcodeYDN(code);
         }
         else {
-            errorBox("<p>Must be a valid 5 digit zip code <br /><small>e.g <em>94105</em></small></p>");
+            errorBox("<p>Must be a valid 5 digit zip code. <br /><small>e.g <em>20010</em></small></p>");
         }
     });
 });
