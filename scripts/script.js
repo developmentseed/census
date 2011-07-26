@@ -62,8 +62,6 @@ function zipcodeYDN(zip) {
 
 domReady(function () {
 
-    var zipValid = true;
-
     // Remove val on focus
     var input = $('.location-search input'),
         inputTitle = 'Enter zip code here';
@@ -80,6 +78,9 @@ domReady(function () {
 
     $('.location-search a.button').click(function (e){
         e.preventDefault();
+        var inputValue = input.val(),
+            zipValid = /^\d{5}(-\d{4})?$/.exec(inputValue);
+
         if (zipValid) {
             var code = input.val();
             zipcodeYDN(code);

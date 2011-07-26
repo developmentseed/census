@@ -140,9 +140,9 @@ a.zoomer {
   position: absolute;
   text-align: center;
   background: #282828;
-  opacity: 0.9;
-  -moz-opacity: 0.9;
-  filter:alpha(opacity=9);
+  opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter:alpha(opacity=75);
   color: white;
   font-size: 14px;
   z-index: 1;
