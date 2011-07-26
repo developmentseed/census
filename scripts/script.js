@@ -41,18 +41,19 @@ wax.mm.interaction(m, tilejson);
 wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
 
-function geocode(location) {
+function geocode(query) {
     $.ajax({
-        url: 'http://api.geonames.org/postalCodeLookupJSON?postalcode=' + location + '&country=US&username=tristen',
+        url: 'http://api.geonames.org/searchJSON?q=' + query + '&maxRows=1&country=US&username=tristen',
         type: 'json',
         success: function (resp) {
-            if (resp.postalcodes[0]) {
-                $.each(resp.postalcodes, function(value) {
+            console.log(resp);
+            if (resp.geonames[0]) {
+                $.each(resp.geonames, function(value) {
                     m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
                 });
             }
             else {
-                errorBox('<p>The code you tried did not return a result.</p>');
+                errorBox('<p>The search you tried did not return a result.</p>');
             }
         }
     });
@@ -78,7 +79,7 @@ domReady(function () {
 
     // Remove val on focus
     var input = $('.location-search input[type=text]'),
-        inputTitle = 'Enter zip code here';
+        inputTitle = 'Enter a city or zip code';
 
     input.blur(function() {
         if (input.val() === '') {
