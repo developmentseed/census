@@ -97,8 +97,7 @@ domReady(function () {
 
         if (zipValid) {
             $('.error').remove();
-            var code = input.val();
-            geocode(code);
+            geocode(inputValue);
         }
         else {
             errorBox("<p>Must be a valid 5 digit zip code. <br /><small>e.g <em>20010</em></small></p>");
