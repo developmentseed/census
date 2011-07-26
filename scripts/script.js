@@ -39,13 +39,12 @@ var mm = com.modestmaps;
 var m = new mm.Map('map', new wax.mm.connector(tilejson));
 wax.mm.interaction(m, tilejson);
 m.setCenterZoom(new mm.Location(39, -98), 5);
-wax.mm.interaction(m, tilejson);
 wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
 
-function zipcodeYDN(zip) {
+function geocode(location) {
     $.ajax({
-        url: 'http://api.geonames.org/postalCodeLookupJSON?postalcode=' + zip + '&country=US&username=tristen',
+        url: 'http://api.geonames.org/postalCodeLookupJSON?postalcode=' + location + '&country=US&username=tristen',
         type: 'json',
         success: function (resp) {
             if (resp.postalcodes[0]) {
@@ -64,7 +63,15 @@ function errorBox(reason) {
     $('.error').append(reason);
 }
 
+function locationHash() {
+    if(location.hash) {
+        var value = location.hash.split('#');
+        geocode(value[1]);
+    }
+}
+
 domReady(function () {
+    locationHash();
 
     // Remove val on focus
     var input = $('.location-search input[type=text]'),
@@ -88,7 +95,7 @@ domReady(function () {
         if (zipValid) {
             $('.error p').remove();
             var code = input.val();
-            zipcodeYDN(code);
+            geocode(code);
         }
         else {
             errorBox("<p>Must be a valid 5 digit zip code. <br /><small>e.g <em>20010</em></small></p>");

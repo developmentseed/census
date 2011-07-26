@@ -161,19 +161,24 @@ a.zoomer {
   left: 10px;
   }
 a.zoomout {
-  left: 40px;
-  -moz-border-radius: 0px 2px 2px 0px;
-  -webkit-border-radius: 0px 2px 2px 0px;
-  border-radius: 0px 2px 2px 0px;
-  border-left: 1px solid #111;
+  top: 85px;
+  -moz-border-radius: 0px 0px 2px 2px;
+  -webkit-border-radius: 0px 0px 2px 2px;
+  border-radius: 0px 0px 2px 2px;
+  border-top: 1px solid #111;
   }
 a.zoomin {
-  -moz-border-radius: 2px 0px 0px 2px;
-  -webkit-border-radius: 2px 0px 0px 2px;
-  border-radius: 2px 0px 0px 2px;
+  -moz-border-radius: 2px 2px 0px 0px;
+  -webkit-border-radius: 2px 2px 0px 0px;
+  border-radius: 2px 2px 0px 0px;
   }
 a.zoomer:active {
-  background-color: #000;
+  opacity: 1;
+  -moz-opacity: 1;
+  filter:alpha(opacity=1);
+  -moz-box-shadow:inset 0px 0px 5px #000;
+  -webkit-box-shadow:inset 0px 0px 5px #000;
+  box-shadow:inset 0px 0px 5px #000;
   }
 a.zoomdisabled:active,
 a.zoomdisabled {
