@@ -80,9 +80,15 @@ domReady(function () {
         if (zipValid) {
             var code = input.val();
             zipcodeYDN(code);
+            $('.error p').remove();
         }
         else {
-            alert('Must be a valid zip code');
+            $('.error').append("<p>Must be a valid zip code <br /><small>like <em>94105-0011</em> or <em>94105</em></small></p>");
+            setTimeout(removeError, 2000);
+
+            function removeError() {
+                $('.error p').remove();
+            }
         }
     });
 });
