@@ -48,14 +48,20 @@ function zipcodeYDN(zip) {
         url: 'http://api.geonames.org/postalCodeLookupJSON?postalcode=' + zip + '&country=US&username=tristen',
         type: 'json',
         success: function (resp) {
-            console.log('got here too');
-            $.each(resp.postalcodes, function(value) {
-                var lat = value.lat,
-                    lng = value.lng;
-                m.setCenterZoom(new mm.Location(lat, lng), 12);
-            });
+            if (resp.postalcodes[0]) {
+                $.each(resp.postalcodes, function(value) {
+                    m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
+                });
+            }
+            else {
+                errorBox('<p>This code did not return any results.</p>');
+            }
         }
     });
+}
+
+function errorBox(reason) {
+    $('.error').append(reason);
 }
 
 domReady(function () {
@@ -80,17 +86,12 @@ domReady(function () {
             zipValid = /^\d{5}$/.exec(inputValue);
 
         if (zipValid) {
+            $('.error p').remove();
             var code = input.val();
             zipcodeYDN(code);
-            $('.error p').remove();
         }
         else {
-            $('.error').append("<p>Must be a valid 5 digit zip code <br /><small>e.g <em>94105</em></small></p>");
-            setTimeout(removeError, 2000);
-
-            function removeError() {
-                $('.error p').remove();
-            }
+            errorBox("<p>Must be a valid 5 digit zip code <br /><small>e.g <em>94105</em></small></p>");
         }
     });
 });
