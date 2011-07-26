@@ -138,24 +138,45 @@ input[type='text'] {
 a.zoomer {
   text-decoration: none;
   position: absolute;
-  background-color: #444;
-  color: #fff;
-  line-height: 25px;
-  font-size: 20px;
-  z-index: 99999;
   text-align: center;
-  width: 25px;
+  background: #282828;
+  opacity: 0.9;
+  -moz-opacity: 0.9;
+  filter:alpha(opacity=9);
+  color: white;
+  font-size: 14px;
+  z-index: 1;
+  width: 30px;
   height: 25px;
-  }
-a.zoomin {
-  left: 5px;
+  line-height: 25px;
+  font-weight: bold;
+  top: 60px;
+  left: 10px;
   }
 a.zoomout {
-  left: 35px;
+  left: 40px;
+  -moz-border-radius: 0px 3px 3px 0px;
+  -webkit-border-radius: 0px 3px 3px 0px;
+  border-radius: 0px 3px 3px 0px;
+  border-left: 1px solid #111;
   }
+a.zoomin {
+  -moz-border-radius: 3px 0px 0px 3px;
+  -webkit-border-radius: 3px 0px 0px 3px;
+  border-radius: 3px 0px 0px 3px;
+  }
+a.zoomer:active {
+  background-color: #000;
+  }
+a.zoomdisabled:active,
 a.zoomdisabled {
-  background-color: #333;
+  opacity: 0.35;
+  -moz-opacity: 0.35;
+  filter:alpha(opacity=35);
+  border: none;
+  cursor: default;
   }
+
 /*Legend*/
 .wax-legends {
   position: absolute;
