@@ -262,6 +262,26 @@ a.close {
     opacity: 1;
     }
   }
+/*Loading DIV*/
+.loading {
+  background: #1A1A1A;
+  background: rgba(0, 0, 0, 0.80);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  top: 240px;
+  width: 100px;
+  height: 50px;
+  padding: 25px 0 0;
+  margin: 0px 0px 0px -50px;
+  z-index: 99999;
+  }
+.loading img {
+  display: block;
+  margin: 0 auto;
+  }
 
 /*-----------------------------------
   Markup free clearing

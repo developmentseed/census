@@ -42,14 +42,15 @@ wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
 
 function geocode(query) {
+    loading();
     $.ajax({
         url: 'http://api.geonames.org/searchJSON?q=' + query + '&maxRows=1&country=US&username=tristen',
         type: 'json',
         success: function (resp) {
-            console.log(resp);
+            $('.loading').remove();
             if (resp.geonames[0]) {
                 $.each(resp.geonames, function(value) {
-                    m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
+                    m.setCenterZoom(new mm.Location(value.lat, value.lng), 11);
                 });
             }
             else {
@@ -74,12 +75,16 @@ function locationHash() {
     }
 }
 
+function loading() {
+    $('body').append('<div class="loading"><img src="images/loader.gif" alt="loading" /></div>');
+}
+
 domReady(function () {
     locationHash();
 
     // Remove val on focus
     var input = $('.location-search input[type=text]'),
-        inputTitle = 'Enter a city or zip code';
+        inputTitle = 'Enter a place or zip code';
 
     input.blur(function() {
         if (input.val() === '') {
