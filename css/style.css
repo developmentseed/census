@@ -34,9 +34,10 @@ a {
   text-decoration: none;
   }
 
-a.button {
+input[type='submit'] {
   background: #1A1A1A;
   display: block;
+  border: none;
   color: white;
   font-size: 10px;
   width: 80px;
@@ -49,7 +50,9 @@ a.button {
   text-transform: uppercase;
   line-height: 13px;
   text-align: center;
-  padding: 2px;
+  padding: 0 15px;
+  height: 30px;
+  word-wrap: break-word;
   }
 input {
   font: 14px/20px Arial, Helvetica, sans-serif;
