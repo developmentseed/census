@@ -94,15 +94,7 @@ domReady(function () {
     $('form.location-search').submit(function (e){
         e.preventDefault();
         var inputValue = input.val(),
-            zipValid = /^\d{5}$/.exec(inputValue);
-
-        if (zipValid) {
-            $('.error').remove();
-            var code = input.val();
-            geocode(code);
-        }
-        else {
-            errorBox("<p>Must be a valid 5 digit zip code. <br /><small>e.g <em>20010</em></small></p>");
-        }
+            encodedInput = encodeURIComponent(inputValue);
+            geocode(encodedInput);
     });
 });
