@@ -1,4 +1,3 @@
-var legend;
 var layers = 'usa1-census-state-z2-5,';
     layers += 'usa2-census-counties-z6-9,';
     layers += 'usa3-census-tracts-contusa-z10-13,';
@@ -38,20 +37,21 @@ var mm = com.modestmaps;
 var m = new mm.Map('map', new wax.mm.connector(tilejson));
 wax.mm.interaction(m, tilejson);
 m.setCenterZoom(new mm.Location(39, -98), 5);
-legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.interaction(m, tilejson);
+wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
 
 function zipcodeYDN(zip) {
     $.ajax({
         url: 'http://api.geonames.org/postalCodeLookupJSON?postalcode=' + zip + '&country=US&username=tristen',
         type: 'json',
-            success: function (resp) {
-                $.each(resp.postalcodes, function(value) {
-                    var lat = value.lat,
-                        lng = value.lng;
-                    m.setCenterZoom(new mm.Location(lat, lng), 12);
-                });
+        success: function (resp) {
+            console.log('got here too');
+            $.each(resp.postalcodes, function(value) {
+                var lat = value.lat,
+                    lng = value.lng;
+                m.setCenterZoom(new mm.Location(lat, lng), 12);
+            });
         }
     });
 }
@@ -72,7 +72,8 @@ domReady(function () {
         }
     });
 
-    $('form.location-search').submit(function (){
+    $('form.location-search').submit(function (e){
+        e.preventDefault();
         var inputValue = input.val(),
             zipValid = /^\d{5}(-\d{4})?$/.exec(inputValue);
 
