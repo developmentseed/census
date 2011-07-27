@@ -66,6 +66,7 @@ function geocode(query) {
           m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
         });
         $('.error').remove();
+        $('input[type=text]').blur();
       }
       else {
         errorBox('<p>The search you tried did not return a result.</p>');
@@ -89,10 +90,10 @@ function loading() {
 domReady(function () {
   // Remove val on focus
   var input = $('.location-search input[type=text]'),
-    inputTitle = 'Enter a place or zip code';
+      inputTitle = 'Enter a place or zip code';
 
   input.blur(function() {
-    if (input.val() === '') {
+    if (input.val() === '' || input.val() != inputTitle) {
       input.val(inputTitle);
     }
   }).focus(function() {
