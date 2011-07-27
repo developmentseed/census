@@ -270,11 +270,16 @@ a.zoomdisabled {
   bottom: 10px;
   left: 10px;
   font-size: 11px;
+  line-height: 26px;
   color: #fff;
   }
 .wax-attribution a {
   color: white;
   text-decoration: underline;
+  }
+.wax-attribution img {
+  float: left;
+  margin-right: 10px;
   }
 /*data styling*/
 .wax-tooltip img {
