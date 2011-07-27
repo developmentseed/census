@@ -45,6 +45,12 @@ wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
 wax.mm.attribution(m, tilejson).appendTo(m.parent);
 
+wax.mm.hash(m, tilejson, {
+  defaultCenter: new mm.Location(39, -98),
+  defaultZoom: 4,
+  manager: wax.mm.locationHash
+});
+
 function geocode(query) {
     loading();
     $.ajax({
@@ -73,19 +79,11 @@ function errorBox(reason) {
     });
 }
 
-function locationHash() {
-    if(location.hash) {
-        var value = location.hash.split('#');
-        geocode(value[1]);
-    }
-}
-
 function loading() {
     $('body').append('<div class="loading"><img src="images/loader.gif" alt="loading" /></div>');
 }
 
 domReady(function () {
-    locationHash();
 
     // Remove val on focus
     var input = $('.location-search input[type=text]'),
