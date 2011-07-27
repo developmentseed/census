@@ -130,6 +130,9 @@ small {
   margin-left: 10px;
   margin-top: 10px;
   }
+.location-search a.button:active {
+  color: #333;
+  }
 
 /*-----------------------------------
   Map

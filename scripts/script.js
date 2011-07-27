@@ -9,6 +9,9 @@ var layers = 'mapbox.natural-earth-1,';
     layers += 'usa8-census-tracts-HI-z14,';
     layers += 'mapbox.world-borders-dark';
 
+// Merge the branch in
+// Violence against jouranlists
+
 function getTiles() {
     return [
         "http://a.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.png",
@@ -32,7 +35,7 @@ var tilejson = {
     tiles: getTiles(),
     grids: getGrids(),
     minzoom: 4,
-    maxzoom: 12
+    maxzoom: 14
 };
 var mm = com.modestmaps;
 var m = new mm.Map('map', new wax.mm.connector(tilejson));
@@ -50,7 +53,7 @@ function geocode(query) {
             $('.loading').remove();
             if (resp.geonames[0]) {
                 $.each(resp.geonames, function(value) {
-                    m.setCenterZoom(new mm.Location(value.lat, value.lng), 11);
+                    m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
                 });
             }
             else {
