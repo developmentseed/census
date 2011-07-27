@@ -185,6 +185,7 @@ a.zoomer:active {
   opacity: 1;
   -moz-opacity: 1;
   filter:alpha(opacity=1);
+  background: #000;
   -moz-box-shadow:inset 0px 0px 5px #000;
   -webkit-box-shadow:inset 0px 0px 5px #000;
   box-shadow:inset 0px 0px 5px #000;
