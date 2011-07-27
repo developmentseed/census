@@ -4,7 +4,7 @@ var layers = [
     'usa2-census-counties-z6-9',
     'usa3-census-tracts-contusa-z10-13',
     'usa4-census-tracts-AK-z10-13',
-    'usa5-census-tracts-HI-z10-14',
+    'usa5-census-HI-z10-14',
     'usa6-census-tracts-contusa-z14',
     'usa7-census-tracts-AK-z14',
     'mapbox.world-borders-dark'
