@@ -55,8 +55,9 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
 function geocode(query) {
   loading();
   $.ajax({
-    url: 'http://api.geonames.org/searchJSON?q=' + query + '&maxRows=1&country=US&username=tristen',
-    type: 'json',
+    url: 'http://api.geonames.org/searchJSON?q=' + query + '&maxRows=1&country=US&username=tristen&callback=callback',
+    type: 'jsonp',
+    jsonpCallback: 'callback',
     success: function (resp) {
       $('.loading').remove();
       if (resp.geonames[0]) {
