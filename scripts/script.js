@@ -44,9 +44,13 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   wax.mm.legend(m, tilejson).appendTo(m.parent);
   wax.mm.zoomer(m, tilejson).appendTo(m.parent);
   wax.mm.attribution(m, tilejson).appendTo(m.parent);
+  wax.mm.hash(m, tilejson, {
+    defaultCenter: new mm.Location(39, -98),
+    defaultZoom: 5,
+    manager: wax.mm.locationHash
+  });
 });
 
- 
 function geocode(query) {
   loading();
   $.ajax({
@@ -67,13 +71,6 @@ function geocode(query) {
   });
 }
 
-function locationHash() {
-  if(location.hash) {
-    var value = location.hash.split('#');
-    geocode(value[1]);
-  }
-}
-
 function errorBox(reason) {
   $('form.location-search').append('<div class="error">' + reason + '<a href="#" class="close">x</a><div>');
   $('a.close').click(function(e) {
@@ -87,8 +84,6 @@ function loading() {
 }
 
 domReady(function () {
-  locationHash();
-
   // Remove val on focus
   var input = $('.location-search input[type=text]'),
     inputTitle = 'Enter a place or zip code';
