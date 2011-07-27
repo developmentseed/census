@@ -47,7 +47,7 @@ wax.mm.attribution(m, tilejson).appendTo(m.parent);
 
 wax.mm.hash(m, tilejson, {
   defaultCenter: new mm.Location(39, -98),
-  defaultZoom: 4,
+  defaultZoom: 5,
   manager: wax.mm.locationHash
 });
 
