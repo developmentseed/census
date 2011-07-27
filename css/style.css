@@ -75,6 +75,7 @@ small {
 /*-----------------------------------
   Layout
 -------------------------------------*/
+html, body { height:100%; }
 .limiter {
   width: 960px;
   margin: 0 auto;
@@ -220,6 +221,9 @@ a.zoomdisabled {
   border: 1px solid #b3b3b3;
   background: #fff;
   }
+.wax-legend .source {
+  clear: both;
+  }
 .wax-tooltip.hide { opacity:0; }
 
 /*Map attribution*/
@@ -234,8 +238,7 @@ a.zoomdisabled {
 .wax-attribution a {
   color: white;
   text-decoration: underline;
-}
-
+  }
 /*data styling*/
 .wax-tooltip img {
   margin: 10px 0;
