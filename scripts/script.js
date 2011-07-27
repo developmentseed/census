@@ -8,7 +8,7 @@ var layers = [
     'usa5-census-HI-z10-14',
     'usa6-census-tracts-contusa-z14',
     'usa7-census-tracts-AK-z14',
-    'mapbox.world-borders-dark'
+    'mapbox.world-borders-dark-0-8'
     ];
 
 function getTiles() {
