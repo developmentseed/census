@@ -8,7 +8,7 @@ var layers = [
       'usa5-census-HI-z10-14',
       'usa6-census-tracts-contusa-z14',
       'usa7-census-tracts-AK-z14',
-      'world-borders-dark-0-8'
+      'world-borders-dark-0-6'
     ].join(','),
     urlBase = _(['a','b','c','d']).map(function(sub) {
       return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
@@ -41,12 +41,13 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
 
   m.setCenterZoom(new mm.Location(39, -98), 5);
   wax.mm.interaction(m, tilejson);
+  wax.mm.zoombox(m, tilejson);
   wax.mm.legend(m, tilejson).appendTo(m.parent);
   wax.mm.zoomer(m, tilejson).appendTo(m.parent);
   wax.mm.attribution(m, tilejson).appendTo(m.parent);
   wax.mm.hash(m, tilejson, {
-    defaultCenter: new mm.Location(39, -98),
-    defaultZoom: 5,
+    defaultCenter: new mm.Location(39, -84),
+    defaultZoom: 4,
     manager: wax.mm.locationHash
   });
 });
