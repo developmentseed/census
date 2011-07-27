@@ -33,7 +33,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   tilejson.grids = getGrids();
   tilejson.minzoom = 4;
   tilejson.maxzoom = 14;
-  tilejson.attribution = '<img src="images/ds.png" />Location search by <a href="http://geonames.org">GeoNames</a>. '
+  tilejson.attribution = '<a href="developmentseed.org"><img src="images/ds.png" /></a>Location search by <a href="http://geonames.org">GeoNames</a>. '
                          + 'Street level map © <a href="http://www.mapquest.com">MapQuest</a>. '
                          + 'Map data © <a href="http://www.openstreetmap.org/">OpenStreetMap</a> and contributors, CC-BY-SA.';
   
