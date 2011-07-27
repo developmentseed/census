@@ -1,50 +1,54 @@
 var layers = [
-    'externals.streetlevel',
-    'mapbox.natural-earth-1',
-    'usa1-census-state-z2-5',
-    'usa2-census-counties-z6-9',
-    'usa3-census-tracts-contusa-z10-13',
-    'usa4-census-tracts-AK-z10-13',
-    'usa5-census-HI-z10-14',
-    'usa6-census-tracts-contusa-z14',
-    'usa7-census-tracts-AK-z14',
-    'mapbox.world-borders-dark'
-    ];
+      'externals.streetlevel',
+      'mapbox.natural-earth-1',
+      'usa1-census-state-z2-5',
+      'usa2-census-counties-z6-9',
+      'usa3-census-tracts-contusa-z10-13',
+      'usa4-census-tracts-AK-z10-13',
+      'usa5-census-HI-z10-14',
+      'usa6-census-tracts-contusa-z14',
+      'usa7-census-tracts-AK-z14',
+      'mapbox.world-borders-dark'
+    ].join(','),
+    urlBase = _(['a','b','c','d']).map(function(sub) {
+      return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
+    }),
+    tj;
 
 function getTiles() {
-    return [
-        "http://a.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.png",
-        "http://b.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.png",
-        "http://c.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.png",
-        "http://d.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.png"
-        ];
+  return _(urlBase).map(function(base) {
+    return base + '{z}/{x}/{y}.png';
+  });
 };
 
 function getGrids() {
-    return [
-        "http://a.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.grid.json",
-        "http://b.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.grid.json",
-        "http://c.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.grid.json",
-        "http://d.tiles.mapbox.com/devseed/1.0.0/"+layers+"/{z}/{x}/{y}.grid.json"
-        ];
+  return _(urlBase).map(function(base) {
+    return base + '{z}/{x}/{y}.grid.json';
+  });
 };
-var tilejson = {
-    tilejson: '1.0.0',
-    scheme: 'tms',
-    tiles: getTiles(),
-    grids: getGrids(),
-    attribution: '© MapBox',
-    minzoom: 4,
-    maxzoom: 14
-};
-var mm = com.modestmaps;
-var m = new mm.Map('map', new wax.mm.connector(tilejson));
-m.setCenterZoom(new mm.Location(39, -98), 5);
-wax.mm.interaction(m, tilejson);
-wax.mm.legend(m, tilejson).appendTo(m.parent);
-wax.mm.zoomer(m, tilejson).appendTo(m.parent);
-wax.mm.attribution(m, tilejson).appendTo(m.parent);
 
+wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
+
+  var mm = com.modestmaps;
+  
+  tilejson.tiles = getTiles();
+  tilejson.grids = getGrids();
+  tilejson.minzoom = 4;
+  tilejson.maxzoom = 14;
+  tilejson.attribution = 'Location search by <a href="http://geonames.org">GeoNames</a>. '
+                         + 'Street level map © <a href="http://www.mapquest.com">MapQuest</a>. '
+                         + 'Map data © <a href="http://www.openstreetmap.org/">OpenStreetMap</a> and contributors, CC-BY-SA.';
+  
+  var m = new mm.Map('map', new wax.mm.connector(tilejson));
+
+  m.setCenterZoom(new mm.Location(39, -98), 5);
+  wax.mm.interaction(m, tilejson);
+  wax.mm.legend(m, tilejson).appendTo(m.parent);
+  wax.mm.zoomer(m, tilejson).appendTo(m.parent);
+  wax.mm.attribution(m, tilejson).appendTo(m.parent);
+});
+
+ 
 function geocode(query) {
     loading();
     $.ajax({

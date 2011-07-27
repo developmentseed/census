@@ -143,6 +143,7 @@ small {
   height: 100%;
   top: 0;
   right: 0;
+  background: white url(../images/bg.png);
   }
 /*ZoomControls*/
 a.zoomer {
@@ -230,6 +231,10 @@ a.zoomdisabled {
   font-size: 11px;
   color: #fff;
   }
+.wax-attribution a {
+  color: white;
+  text-decoration: underline;
+}
 
 /*data styling*/
 .wax-tooltip img {
@@ -261,7 +266,6 @@ a.close {
   }
 
 /*CSS Animations*/
-.wax-tooltip,
 .map-tile-loaded {
   -webkit-animation-name: 'fade-in';
   -webkit-animation-timing-function: ease-in;
