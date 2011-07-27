@@ -55,6 +55,7 @@ function geocode(query) {
                 $.each(resp.geonames, function(value) {
                     m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
                 });
+                $('.error').remove();
             }
             else {
                 errorBox('<p>The search you tried did not return a result.</p>');
