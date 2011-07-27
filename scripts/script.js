@@ -1,16 +1,15 @@
-var layers = 'mapbox.natural-earth-1,';
-    layers += 'usa1-census-state-z2-5,';
-    layers += 'usa2-census-counties-z6-9,';
-    layers += 'usa3-census-tracts-contusa-z10-13,';
-    layers += 'usa4-census-tracts-AK-z10-13,';
-    layers += 'usa5-census-tracts-HI-z10-13,';
-    layers += 'usa6-census-tracts-contusa-z14,';
-    layers += 'usa7-census-tracts-AK-z14,';
-    layers += 'usa8-census-tracts-HI-z14,';
-    layers += 'mapbox.world-borders-dark';
-
-// Merge the branch in
-// Violence against jouranlists
+var layers = [
+    'mapbox.natural-earth-1',
+    'usa1-census-state-z2-5',
+    'usa2-census-counties-z6-9',
+    'usa3-census-tracts-contusa-z10-13',
+    'usa4-census-tracts-AK-z10-13',
+    'usa5-census-tracts-HI-z10-13',
+    'usa6-census-tracts-contusa-z14',
+    'usa7-census-tracts-AK-z14',
+    'usa8-census-tracts-HI-z14',
+    'mapbox.world-borders-dark'
+    ];
 
 function getTiles() {
     return [
