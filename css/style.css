@@ -221,6 +221,16 @@ a.zoomdisabled {
   }
 .wax-tooltip.hide { opacity:0; }
 
+/*Map attribution*/
+.wax-attribution {
+  position: absolute;
+  z-index: 4;
+  bottom: 10px;
+  left: 10px;
+  font-size: 11px;
+  color: #fff;
+  }
+
 /*data styling*/
 .wax-tooltip img {
   margin: 10px 0;

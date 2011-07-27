@@ -33,6 +33,7 @@ var tilejson = {
     scheme: 'tms',
     tiles: getTiles(),
     grids: getGrids(),
+    attribution: '© MapBox',
     minzoom: 4,
     maxzoom: 14
 };
@@ -42,6 +43,7 @@ m.setCenterZoom(new mm.Location(39, -98), 5);
 wax.mm.interaction(m, tilejson);
 wax.mm.legend(m, tilejson).appendTo(m.parent);
 wax.mm.zoomer(m, tilejson).appendTo(m.parent);
+wax.mm.attribution(m, tilejson).appendTo(m.parent);
 
 function geocode(query) {
     loading();
