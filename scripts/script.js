@@ -14,7 +14,7 @@ var layers = [
       return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
     }),
     mm = com.modestmaps,
-    m;
+    m, test;
 
 function getTiles() {
   return _(urlBase).map(function(base) {
@@ -33,9 +33,9 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   tilejson.grids = getGrids();
   tilejson.minzoom = 4;
   tilejson.maxzoom = 14;
-  tilejson.attribution = '<a href="http://developmentseed.org"><img src="images/ds.png" /></a>Location search by <a href="http://geonames.org">GeoNames</a>. '
-                         + 'Street level map © <a href="http://www.mapquest.com">MapQuest</a>. '
-                         + 'Map data © <a href="http://www.openstreetmap.org/">OpenStreetMap</a> and contributors, CC-BY-SA.';
+  tilejson.attribution = '<a href="http://developmentseed.org" target="_blank"><img src="images/ds.png" /></a> '
+                       + 'Nominatim search and street level tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. '
+                       + 'Map data © <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.';
   
   m = new mm.Map('map',
     new wax.mm.connector(tilejson),
@@ -79,19 +79,18 @@ function geocode(query) {
   loading();
 
   $.ajax({
-    url: 'http://api.geonames.org/searchJSON?q=' + query + '&maxRows=1&country=US&username=tristen&callback=callback',
+    url: 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=callback&countrycodes=us&limit=1&q=' + query,
     type: 'jsonp',
     jsonpCallback: 'callback',
-    success: function (resp) {
+    success: function (value) {
+      value = value[0];
       $('.loading').remove();
-      if (resp.geonames[0]) {
-        $.each(resp.geonames, function(value) {
-          if (value.fcode == 'PPLA2' || value.fcode == 'RGNE' || value.fcode == 'ADM1') {
-            m.setCenterZoom(new mm.Location(value.lat, value.lng), 7);          
-          } else {
-            m.setCenterZoom(new mm.Location(value.lat, value.lng), 13);
-          }
-        });
+      if (value.lat && value.lon) {
+        if (value.type == 'administrative' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
+          m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);          
+        } else {
+          m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
+        }
         $('.error').remove();
         $('input[type=text]').blur();
       }
