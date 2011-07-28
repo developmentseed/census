@@ -91,6 +91,7 @@ domReady(function () {
   // Remove val on focus
   var input = $('.location-search input[type=text]'),
       inputTitle = 'Enter a place or zip code';
+      input.val(inputTitle);
 
   input.blur(function() {
     if (input.val() === '' || input.val() != inputTitle) {
