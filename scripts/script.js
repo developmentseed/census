@@ -60,16 +60,11 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     }
     m.removeCallback(lqDetect);
   });
-  $('#bwtoggle').toggle(
-    function() {
-      $(this).toggleClass('lq');
+  $('a#bwtoggle').click(function (e) {
+      e.preventDefault();
+      $(this).hasClass('lq') ? $(this).removeClass('lq') : $(this).addClass('lq');
       detector.bw(!detector.bw());
-    },
-    function() {
-      $(this).toggleClass('lq');
-      detector.bw(!detector.bw());
-    }
-  );
+  });
 });
 
 function geocode(query) {
