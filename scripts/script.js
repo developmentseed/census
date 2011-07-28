@@ -128,7 +128,8 @@ domReady(function () {
     }
   });
 
-  $('form.location-search').submit(function (){
+  $('form.location-search').submit(function (e){
+    e.preventDefault();
     var inputValue = input.val(),
         encodedInput = encodeURIComponent(inputValue);
     geocode(encodedInput);
