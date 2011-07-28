@@ -85,17 +85,16 @@ function geocode(query) {
     success: function (value) {
       value = value[0];
       $('.loading').remove();
-      if (value.lat && value.lon) {
-        if (value.type == 'administrative' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
-          m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);          
-        } else {
-          m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
-        }
-        $('.error').remove();
-        $('input[type=text]').blur();
+      if (value === undefined) {
+        errorBox('<p>The search you tried did not return a result.</p>');
       }
       else {
-        errorBox('<p>The search you tried did not return a result.</p>');
+        if (value.type == 'administrative' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
+            m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
+        } else {
+            m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
+        }
+        $('.error').remove();
       }
     }
   });
@@ -129,10 +128,9 @@ domReady(function () {
     }
   });
 
-  $('form.location-search').submit(function (e){
-    e.preventDefault();
+  $('form.location-search').submit(function (){
     var inputValue = input.val(),
-    encodedInput = encodeURIComponent(inputValue);
+        encodedInput = encodeURIComponent(inputValue);
     geocode(encodedInput);
   });
 });
