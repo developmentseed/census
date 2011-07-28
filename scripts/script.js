@@ -37,8 +37,16 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
                          + 'Street level map © <a href="http://www.mapquest.com">MapQuest</a>. '
                          + 'Map data © <a href="http://www.openstreetmap.org/">OpenStreetMap</a> and contributors, CC-BY-SA.';
   
-  m = new mm.Map('map', new wax.mm.connector(tilejson));
-
+  m = new mm.Map('map',
+    new wax.mm.connector(tilejson),
+    null,
+    [
+      new mm.MouseHandler(),
+      new mm.DragHandler(),
+      new mm.DoubleClickHandler(),
+      new mm.TouchHandler()
+    ]
+  );
   m.setCenterZoom(new mm.Location(39, -98), 5);
   wax.mm.interaction(m, tilejson);
   wax.mm.zoombox(m, tilejson);
