@@ -286,6 +286,30 @@ a.zoomdisabled {
   margin: 10px 0;
   }
 
+/*-------------
+ * Bandwidth detector
+ * ------------ */
+#bwtoggle {
+  font-size: 13px;
+  font-weight:bold;
+  width: 19px;
+  height: 19px;
+  padding:2px 5px;
+  color:#fff;
+  position:absolute;
+  top: 120px;
+  background:#63AECE;
+  left:10px;
+  z-index:4;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #999;}
+ 
+a.lq {
+  background:#989898 !important;
+  color: #ccc !important;}
+
 /*Error box*/
 .error {
   background: transparent url(../images/sprite.png) no-repeat 0 -190px;

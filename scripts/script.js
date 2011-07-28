@@ -18,7 +18,7 @@ var layers = [
 
 function getTiles() {
   return _(urlBase).map(function(base) {
-    return base + '{z}/{x}/{y}.png';
+    return base + '{z}/{x}/{y}.png256';
   });
 };
 
@@ -50,6 +50,26 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     defaultZoom: 4,
     manager: wax.mm.locationHash
   });
+  var detector = wax.mm.bwdetect(m, {
+    auto: true,
+    png: '.png64?'
+  });
+  m.addCallback('drawn', function lqDetect(modestmap, e) {
+    if (!detector.bw()) {
+      $('#bwtoggle').addClass('lq');
+    }
+    m.removeCallback(lqDetect);
+  });
+  $('#bwtoggle').toggle(
+    function() {
+      $(this).toggleClass('lq');
+      detector.bw(!detector.bw());
+    },
+    function() {
+      $(this).toggleClass('lq');
+      detector.bw(!detector.bw());
+    }
+  );
 });
 
 function geocode(query) {
@@ -63,7 +83,11 @@ function geocode(query) {
       $('.loading').remove();
       if (resp.geonames[0]) {
         $.each(resp.geonames, function(value) {
-          m.setCenterZoom(new mm.Location(value.lat, value.lng), 12);
+          if (value.fcode == 'PPLA2' || value.fcode == 'RGNE' || value.fcode == 'ADM1') {
+            m.setCenterZoom(new mm.Location(value.lat, value.lng), 7);          
+          } else {
+            m.setCenterZoom(new mm.Location(value.lat, value.lng), 13);
+          }
         });
         $('.error').remove();
         $('input[type=text]').blur();
