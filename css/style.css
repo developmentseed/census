@@ -231,14 +231,15 @@ a.zoomdisabled {
   position: absolute;
   right: 10px;
   bottom: 10px;
+  z-index: 5;
   }
 .wax-legends div.source {
   clear: both;
-}  
+  }
 .wax-legends div.source a {
-  color: black;
+  color: #282828;
   text-decoration: underline;
-}  
+  }
 
 /*Tooltip*/
 .wax-tooltip {
@@ -272,6 +273,12 @@ a.zoomdisabled {
   font-size: 11px;
   line-height: 26px;
   color: #fff;
+  }
+@media screen and (max-device-width: 480px) {
+  .wax-attribution {
+    font-size: 6px;
+    line-height: 17px;
+    }
   }
 .wax-attribution a {
   color: white;
