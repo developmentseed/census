@@ -191,7 +191,7 @@ domReady(function () {
   // Refresh share links
   $('#share a').click(function (e){
     e.preventDefault();
-    var tweetUrl = 'http://twitter.com/share?via=mapbox&text=US%20Census%20Map&url='
+    var tweetUrl = 'http://twitter.com/share?via=developmentseed&text=US%20Census%20Map&url='
             + encodeURIComponent(window.location),
         faceUrl = 'http://facebook.com/sharer.php?t=US%20Census%20Map&u='
             + encodeURIComponent(window.location);
