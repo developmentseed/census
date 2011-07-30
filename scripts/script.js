@@ -85,31 +85,45 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   });
 });
 
+// Send address to MapQuest's Nominatim search
 function geocode(query) {
+
+  // Show loading image
   loading();
 
+  // Get API response
   $.ajax({
-    url: 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=callback&countrycodes=us&limit=1&q=' + query,
+    url: 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=callback&countrycodes=us&limit=1&q=' 
+      + query,
     type: 'jsonp',
     jsonpCallback: 'callback',
+    
+    // If successful respone
     success: function (value) {
+      // Use first response
       value = value[0];
+      // Remove loading image
       $('.loading').remove();
+      // If no response
       if (value === undefined) {
         errorBox('<p>The search you tried did not return a result.</p>');
       }
+      // If valid response
       else {
+        // adjust zoom level based on geography
         if (value.type == 'state' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
             m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
         } else {
             m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
         }
+        // if successful, remove error message
         $('.error').remove();
       }
     }
   });
 }
 
+// Show error message
 function errorBox(reason) {
   $('form.location-search').append('<div class="error">' + reason + '<a href="#" class="close">x</a><div>');
   $('a.close').click(function(e) {
@@ -118,12 +132,13 @@ function errorBox(reason) {
   });
 }
 
+// Show loading image
 function loading() {
   $('body').append('<div class="loading"><img src="images/loader.gif" alt="loading" /></div>');
 }
 
 domReady(function () {
-  // Handle form submissions
+  // Handle geocoder form submission
   var input = $('.location-search input[type=text]'),
       inputTitle = 'Enter a place or zip code';
       input.val(inputTitle);
