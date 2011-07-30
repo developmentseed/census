@@ -281,7 +281,7 @@ a.zoomdisabled {
     }
   }
 .wax-attribution a {
-  color: white;
+  color: white!important;
   text-decoration: underline;
   }
 .wax-attribution img {
