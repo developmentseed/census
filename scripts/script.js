@@ -1,3 +1,4 @@
+// Define the layers and other map variables
 var layers = [
       'externals.streetlevel',
       'mapbox.natural-earth-1',
@@ -10,33 +11,40 @@ var layers = [
       'usa7-census-tracts-AK-z14',
       'world-borders-dark-0-6'
     ].join(','),
-    urlBase = _(['a','b','c','d']).map(function(sub) {
+    urlBase = $.map(['a','b','c','d'],function(sub) {
       return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
     }),
     mm = com.modestmaps,
-    m, test;
+    m;
 
+// Update tiles array
 function getTiles() {
-  return _(urlBase).map(function(base) {
+  return $.map(urlBase, function(base) {
     return base + '{z}/{x}/{y}.png256';
   });
 };
 
+// Update grid array
 function getGrids() {
-  return _(urlBase).map(function(base) {
+  return $.map(urlBase, function(base) {
     return base + '{z}/{x}/{y}.grid.json';
   });
 };
 
+// Set up tilejson object of map settings
 wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   tilejson.tiles = getTiles();
   tilejson.grids = getGrids();
   tilejson.minzoom = 4;
   tilejson.maxzoom = 14;
-  tilejson.attribution = '<a href="http://developmentseed.org" target="_blank"><img src="images/ds.png" /></a> '
-                       + 'Nominatim search and street level tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. '
-                       + 'Map data © <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.';
+  tilejson.attribution = '<a href="http://developmentseed.org" target="_blank">'
+    + '<img src="images/ds.png" /></a> '
+    + 'Nominatim search and street level tiles courtesy of '
+    + '<a href="http://www.mapquest.com/" target="_blank">'
+    + 'MapQuest</a>. Map data © <a href="http://www.openstreetmap.org/"'
+    +' target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.';
   
+  // Build the map
   m = new mm.Map('map',
     new wax.mm.connector(tilejson),
     null,
@@ -50,14 +58,16 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   m.setCenterZoom(new mm.Location(39, -98), 5);
   wax.mm.interaction(m, tilejson);
   wax.mm.zoombox(m, tilejson);
-  wax.mm.legend(m, tilejson).appendTo(m.parent);
-  wax.mm.zoomer(m, tilejson).appendTo(m.parent);
-  wax.mm.attribution(m, tilejson).appendTo(m.parent);
+  wax.mm.legend(m, tilejson).appendTo($('#controls')[0]);
+  wax.mm.zoomer(m, tilejson).appendTo($('#controls')[0]);
+  wax.mm.attribution(m, tilejson).appendTo($('#controls')[0]);
   wax.mm.hash(m, tilejson, {
     defaultCenter: new mm.Location(39, -84),
     defaultZoom: 4,
     manager: wax.mm.locationHash
   });
+  
+  // Bandwidth detection control and switch element
   var detector = wax.mm.bwdetect(m, {
     auto: true,
     png: '.png64?'
@@ -70,7 +80,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   });
   $('a#bwtoggle').click(function (e) {
       e.preventDefault();
-      $(this).hasClass('lq') ? $(this).removeClass('lq') : $(this).addClass('lq');
+      $(this).hasClass('active') ? $(this).removeClass('active') : $(this).addClass('active');
       detector.bw(!detector.bw());
   });
 });
@@ -89,7 +99,7 @@ function geocode(query) {
         errorBox('<p>The search you tried did not return a result.</p>');
       }
       else {
-        if (value.type == 'administrative' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
+        if (value.type == 'state' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
             m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
         } else {
             m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
@@ -113,10 +123,17 @@ function loading() {
 }
 
 domReady(function () {
-
+  // Handle form submissions
   var input = $('.location-search input[type=text]'),
       inputTitle = 'Enter a place or zip code';
       input.val(inputTitle);
+
+  $('form.location-search').submit(function (e){
+    e.preventDefault();
+    var inputValue = input.val(),
+        encodedInput = encodeURIComponent(inputValue);
+    geocode(encodedInput);
+  });
 
   // Remove default val on blur
   input.blur(function() {
@@ -128,11 +145,46 @@ domReady(function () {
       input.val('');
     }
   });
-
-  $('form.location-search').submit(function (e){
+   
+  // Update and show embed script
+  $('a.embed').click(function (e) {
     e.preventDefault();
-    var inputValue = input.val(),
-        encodedInput = encodeURIComponent(inputValue);
-    geocode(encodedInput);
+
+    var splitLayers = layers.split(','),
+        embedlayers = '',
+        center = m.pointLocation(new mm.Point(m.dimensions.x/2,m.dimensions.y/2));
+
+    $.each(splitLayers, function(num, key) {
+        embedlayers += '&amp;layers%5B%5D=' + num;
+    });
+
+    var embedId = 'ts-embed-' + (+new Date());
+    var url = '&amp;size=700'
+            + '&amp;size%5B%5D=550'
+            + '&amp;center%5B%5D=' + center.lon
+            + '&amp;center%5B%5D=' + center.lat
+            + '&amp;center%5B%5D=' + m.coordinate.zoom
+            + embedlayers
+            + '&amp;options%5B%5D=zoomwheel'
+            + '&amp;options%5B%5D=legend'
+            + '&amp;options%5B%5D=tooltips'
+            + '&amp;options%5B%5D=zoombox'
+            + '&amp;options%5B%5D=attribution'
+            + '&amp;el=' + embedId;
+
+    $('.tip input').attr('value', "<div id='" 
+      + embedId 
+      + "-script'><script src='http://tiles.mapbox.com/devseed/api/v1/embed.js?api=mm" 
+      + url 
+      + "'></script></div>");
+      
+    if ($('#embed').hasClass('active')) {
+      $('#embed').removeClass('active');
+    } else {
+      $('#embed').addClass('active');
+      $('#embed-code')[0].tabindex = 0;
+      $('#embed-code')[0].focus();
+      $('#embed-code')[0].select();
+    } 
   });
 });

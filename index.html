@@ -13,19 +13,44 @@
   <div class='limiter'>
     <a href='/' class='title'><h1>U.S. Census <span>2010</span></h1></a>
     <div class='map-type'>Population Change 2000 to 2010</div>
+    <div id="share">
+      <span  class='st_twitter_hcount' displayText='Tweet'></span>
+      <span  class='st_facebook_hcount' displayText='Facebook'></span>
+      <span  class='st_plusone_hcount'></span>
+    </div>
     <form class='location-search'>
       <input type='text' class='search'>
       <input type='submit' value='Search'>
     </form>
   </div>
 </div>
-<div id='map'>
-  <a href='#' id='bwtoggle' class='hq'>HQ</a> 
+<div id='map'></div>
+<div id='controls'>
+  <div id='embed'>
+    <a href='#' class='embed control'></a>
+    <div class='tip'>
+      <div class='inner'>
+        <input type='textfield' length='20' class='embed' id='embed-code' value='' readonly>
+        <p>Copy this code above into any blog or web page to embed this view of the map.</p>
+      </div>
+      <span class='point'></span>
+    </div>
+  </div>
+  <a href='#' id='bwtoggle' class='hq control active'>HQ</a> 
 </div>
+<!-- Libraries -->
 <script type='text/javascript' src='scripts/ender.min.js'></script>
-<script type='text/javascript' src='scripts/underscore.min.js'></script>
 <script type='text/javascript' src='scripts/modestmaps.min.js'></script>
 <script type='text/javascript' src='scripts/wax.mm.min.js'></script>
+<!-- Application code -->
 <script type='text/javascript' src='scripts/script.js'></script>
+<!-- ShareThis -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">
+  stLight.options({publisher:'197eb204-dc4e-4d7e-a8d4-411660cc3ac8',
+  onhover: false
+  });
+</script>
 </body>
 </html>

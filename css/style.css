@@ -299,23 +299,95 @@ a.zoomdisabled {
 #bwtoggle {
   font-size: 13px;
   font-weight: bold;
-  width: 19px;
+  width: 20px;
   height: 19px;
-  padding: 2px 5px;
+  padding: 3px 5px;
   color: #fff;
   position: absolute;
   top: 120px;
-  background: #63AECE;
   left: 10px;
   z-index: 4;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  border: 1px solid #999;}
- 
-a.lq {
-  background:#989898 !important;
-  color: #ccc !important;}
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #282828;
+  opacity: 0.35;
+  -moz-opacity: 0.35;
+  filter: alpha(opacity=35);
+  }
+#bwtoggle.active {
+  opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+
+/*-------------
+ * Embed code
+ * ------------ */
+#embed {
+  position: absolute;
+  width: 105px;
+  height: 100px;
+  z-index: 4;
+  top: 150px;
+  left: 70px;
+  }
+a.embed {
+  background: #282828 url(../images/sprite.png) no-repeat -2px -3px;
+  position: absolute;
+  left: -60px;
+  z-index: 1;
+  width: 30px;
+  height: 25px;
+  display: block;
+  z-index: 4;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  opacity: 0.35;
+  -moz-opacity: 0.35;
+  filter: alpha(opacity=35);
+  }
+#embed.active a.embed {
+  opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+.tip {
+  display: none;
+  position: absolute;
+  width: 140px;
+  left: 50%;
+  margin-left: -70px;
+  z-index: 4;
+  bottom: 10px;
+  }
+.tip .inner {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  word-wrap: break-word;
+  -moz-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.10);
+  -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.10);
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.10);
+  }
+.tip span.point {
+  display: block;
+  width: 10px;
+  height: 45px;
+  background: transparent url(../images/sprite.png) no-repeat 0 -60px;
+  z-index: 1;
+  position: absolute;
+  top: 56px;
+  left: -9px;
+  }
+.tip input {
+  width: 110px;
+  margin-bottom: 5px;
+  }
+.active .tip {
+  display: block;
+  }
 
 /*Error box*/
 .error {
@@ -390,3 +462,12 @@ a.close {
 
 * html .clearfix { height: 1%; } /* IE6 */
 *:first-child + html .clearfix { min-height: 1%; } /* IE7 */
+
+/*-----
+  ShareThis styles
+-----*/
+#share {
+  position: fixed;
+  top: 13px;
+  right: 375px;
+  }
