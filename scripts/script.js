@@ -15,7 +15,7 @@ var layers = [
       return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
     }),
     mm = com.modestmaps,
-    m;
+    m, test;
 
 // Update tiles array
 function getTiles() {
@@ -186,5 +186,17 @@ domReady(function () {
       $('#embed-code')[0].focus();
       $('#embed-code')[0].select();
     } 
+  });
+  
+  // Refresh share links
+  $('#share a').click(function (e){
+    e.preventDefault();
+    var tweetUrl = 'http://twitter.com/share?via=mapbox&text=US%20Census%20Map&url='
+            + encodeURIComponent(window.location),
+        faceUrl = 'http://facebook.com/sharer.php?t=US%20Census%20Map&u='
+            + encodeURIComponent(window.location);
+    $('#share .twitter').attr('href', tweetUrl);
+    $('#share .facebook').attr('href', faceUrl);
+    window.open($(this).attr('href'), 'share');
   });
 });

@@ -464,10 +464,41 @@ a.close {
 *:first-child + html .clearfix { min-height: 1%; } /* IE7 */
 
 /*-----
-  ShareThis styles
+  Share links
 -----*/
 #share {
   position: fixed;
   top: 13px;
   right: 375px;
   }
+#share li {
+  float: left;
+  margin-right: 10px;
+}
+#share a.twitter {
+  display: block;
+  background: url(http://platform.twitter.com/widgets/images/tweet.dfbf1dd98bad9f5b5addd80494650dca.png) no-repeat;
+  height: 20px;
+  width: 55px;
+}
+#share a.twitter:hover {background-position: 0 -21px;}
+#share a.twitter:active {background-position: 0 -42px;}
+#share a.facebook {
+  display: block;
+  padding: 3px 6px 3px 20px;
+  background: #ECEEF5 url(http://static.ak.fbcdn.net/rsrc.php/v1/y7/r/ql9vukDCc4R.png) no-repeat 2px -45px;
+  border: #CAD4E7 1px solid;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-size: 11px;
+  color: #3B5998;
+  text-decoration: none;
+  line-height: 11px; height: 12px;
+  height: 12px;
+  width: 21px;
+}
+#share a.facebook:hover {
+  background-color: #ebedf4;
+  border-color: #9dacce;
+}
