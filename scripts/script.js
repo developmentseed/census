@@ -74,7 +74,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   });
   m.addCallback('drawn', function lqDetect(modestmap, e) {
     if (!detector.bw()) {
-      $('#bwtoggle').addClass('lq');
+      $('#bwtoggle').removeClass('active');
     }
     m.removeCallback(lqDetect);
   });
