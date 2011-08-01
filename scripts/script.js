@@ -174,7 +174,7 @@ domReady(function () {
     });
 
     var embedId = 'ts-embed-' + (+new Date());
-    var url = '&amp;size=700'
+    var url = '&amp;size=550'
             + '&amp;size%5B%5D=550'
             + '&amp;center%5B%5D=' + center.lon
             + '&amp;center%5B%5D=' + center.lat
