@@ -184,6 +184,7 @@ domReady(function () {
             + '&amp;options%5B%5D=legend'
             + '&amp;options%5B%5D=tooltips'
             + '&amp;options%5B%5D=zoombox'
+            + '&amp;options%5B%5D=zoompan'
             + '&amp;options%5B%5D=attribution'
             + '&amp;el=' + embedId;
 
