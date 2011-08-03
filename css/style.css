@@ -71,6 +71,11 @@ small {
   font-size: 11px;
   color: #ffb7b7;
   }
+/*Disables highlight selection on the map*/
+#map img::-moz-selection,
+#map img::selection {
+  background: transparent;
+  }
 
 /*-----------------------------------
   Layout
