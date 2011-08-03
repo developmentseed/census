@@ -15,7 +15,7 @@ var layers = [
       return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
     }),
     mm = com.modestmaps,
-    m;
+    m, test;
 
 // Update tiles array
 function getTiles() {
@@ -74,7 +74,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   });
   m.addCallback('drawn', function lqDetect(modestmap, e) {
     if (!detector.bw()) {
-      $('#bwtoggle').addClass('lq');
+      $('#bwtoggle').removeClass('active');
     }
     m.removeCallback(lqDetect);
   });
@@ -85,31 +85,45 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   });
 });
 
+// Send address to MapQuest's Nominatim search
 function geocode(query) {
+
+  // Show loading image
   loading();
 
+  // Get API response
   $.ajax({
-    url: 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=callback&countrycodes=us&limit=1&q=' + query,
+    url: 'http://open.mapquestapi.com/nominatim/v1/search?format=json&json_callback=callback&countrycodes=us&limit=1&q=' 
+      + query,
     type: 'jsonp',
     jsonpCallback: 'callback',
+    
+    // If successful respone
     success: function (value) {
+      // Use first response
       value = value[0];
+      // Remove loading image
       $('.loading').remove();
+      // If no response
       if (value === undefined) {
         errorBox('<p>The search you tried did not return a result.</p>');
       }
+      // If valid response
       else {
+        // adjust zoom level based on geography
         if (value.type == 'state' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
             m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
         } else {
             m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
         }
+        // if successful, remove error message
         $('.error').remove();
       }
     }
   });
 }
 
+// Show error message
 function errorBox(reason) {
   $('form.location-search').append('<div class="error">' + reason + '<a href="#" class="close">x</a><div>');
   $('a.close').click(function(e) {
@@ -118,12 +132,13 @@ function errorBox(reason) {
   });
 }
 
+// Show loading image
 function loading() {
   $('body').append('<div class="loading"><img src="images/loader.gif" alt="loading" /></div>');
 }
 
 domReady(function () {
-  // Handle form submissions
+  // Handle geocoder form submission
   var input = $('.location-search input[type=text]'),
       inputTitle = 'Enter a place or zip code';
       input.val(inputTitle);
@@ -159,7 +174,7 @@ domReady(function () {
     });
 
     var embedId = 'ts-embed-' + (+new Date());
-    var url = '&amp;size=700'
+    var url = '&amp;size=550'
             + '&amp;size%5B%5D=550'
             + '&amp;center%5B%5D=' + center.lon
             + '&amp;center%5B%5D=' + center.lat
@@ -169,6 +184,7 @@ domReady(function () {
             + '&amp;options%5B%5D=legend'
             + '&amp;options%5B%5D=tooltips'
             + '&amp;options%5B%5D=zoombox'
+            + '&amp;options%5B%5D=zoompan'
             + '&amp;options%5B%5D=attribution'
             + '&amp;el=' + embedId;
 
@@ -186,5 +202,17 @@ domReady(function () {
       $('#embed-code')[0].focus();
       $('#embed-code')[0].select();
     } 
+  });
+  
+  // Refresh share links
+  $('#share a').click(function (e){
+    e.preventDefault();
+    var tweetUrl = 'http://twitter.com/share?via=developmentseed&text=US%20Census%20Map&url='
+            + encodeURIComponent(window.location),
+        faceUrl = 'http://facebook.com/sharer.php?t=US%20Census%20Map&u='
+            + encodeURIComponent(window.location);
+    $('#share .twitter').attr('href', tweetUrl);
+    $('#share .facebook').attr('href', faceUrl);
+    window.open($(this).attr('href'), 'share');
   });
 });
