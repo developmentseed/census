@@ -50,8 +50,6 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     null,
     [
       new mm.MouseHandler(),
-      new mm.DragHandler(),
-      new mm.DoubleClickHandler(),
       new mm.TouchHandler()
     ]
   );
