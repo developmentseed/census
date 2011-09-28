@@ -158,8 +158,8 @@ html, body { height:100%; }
 /*Layer Switch Controls*/
 #layerswitch {
   position: absolute;
-  right: 10px;
-  top: 60px;
+  left: 10px;
+  top: 200px;
   width: 150px;
   z-index: 1;
   }
@@ -170,17 +170,17 @@ ul.layers li a{
   display: block;
   list-style:none;
   height: 20px;
-  width:140px;
-  padding-left:10px;
+  width:120px;
+  padding-left:6px;
   opacity: 0.50;
   -moz-opacity: 0.50;
   filter:alpha(opacity=50);
   color: black;
-  font-size: 14px;
+  font-size: 12px;
   z-index: 1;
 }
 ul.layers li a:active, ul.layers li a.active {
-  width:137px;
+  width:117px;
   background: #282828;
   opacity: 0.75 !important;
   -moz-opacity: 0.75 !important;
@@ -295,7 +295,7 @@ a.zoomdisabled {
   z-index: 4;
   position: absolute;
   right: 10px;
-  top: 110px;
+  top: 60px;
   opacity: 1;
   -webkit-transition:opacity .5s;
   -moz-transition:opacity .5s;
