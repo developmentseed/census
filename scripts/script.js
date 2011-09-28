@@ -41,10 +41,10 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     + '<img class="npr-white" src="images/npr.png" /></a> '
     + '<a href="http://developmentseed.org" target="_blank">'
     + '<img src="images/ds.png" /></a> '
-    + 'Nominatim search and street level tiles courtesy of '
+    + '<div class="attr-note">Nominatim search and street level tiles courtesy of '
     + '<a href="http://www.mapquest.com/" target="_blank">'
     + 'MapQuest</a>. Map data © <a href="http://www.openstreetmap.org/"'
-    +' target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.';
+    +' target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.</div>';
   
   // Build the map
   m = new mm.Map('map',
@@ -138,6 +138,43 @@ function loading() {
 }
 
 domReady(function () {
+  //contextual layer switching
+	    $('.layers li a').click(function() {
+	    	if (this.id == "total-pop"){
+	    		activeLayers = [
+	    			'usa1-census-state-z2-5',
+      				'usa2-census-counties-z6-9',
+      				'usa3-census-tracts-contusa-z10-13',
+      				'usa4-census-tracts-AK-z10-13',
+      				'usa5-census-HI-z10-14',
+      				'usa6-census-tracts-contusa-z14',
+      				'usa7-census-tracts-AK-z14',
+	    		].join(',');
+	    	}
+	    	if (this.id == "hispanic-pop"){
+	    		activeLayers = [
+	    			'usa1-census-state-z2-5',
+      				'usa2-census-counties-z6-9',
+      				'usa3-census-tracts-contusa-z10-13',
+      				'usa4-census-tracts-AK-z10-13',
+      				'usa5-census-HI-z10-14',
+      				'usa6-census-tracts-contusa-z14',
+      				'usa7-census-tracts-AK-z14',
+	    		].join(',');
+	    	}
+
+	    	$('.layers li a').removeClass('active');
+      		$(this).addClass('active');
+	    	layers = [
+            	'externals.streetlevel',
+      			'mapbox.natural-earth-1',
+		        activeLayers,
+		        'world-borders-dark-0-6'
+            ].join(',');
+            
+            refreshMap();
+        });
+
   // Handle geocoder form submission
   var input = $('.location-search input[type=text]'),
       inputTitle = 'Enter a place or zip code';
@@ -160,52 +197,7 @@ domReady(function () {
       input.val('');
     }
   });
-   
-  // Update and show embed script
-  /*
-  $('a.embed').click(function (e) {
-    e.preventDefault();
-
-    var splitLayers = layers.split(','),
-        embedlayers = '',
-        center = m.pointLocation(new mm.Point(m.dimensions.x/2,m.dimensions.y/2));
-
-    $.each(splitLayers, function(num, key) {
-        embedlayers += '&amp;layers%5B%5D=' + num;
-    });
-
-    var embedId = 'ts-embed-' + (+new Date());
-    var url = '&amp;size=550'
-            + '&amp;size%5B%5D=550'
-            + '&amp;center%5B%5D=' + center.lon
-            + '&amp;center%5B%5D=' + center.lat
-            + '&amp;center%5B%5D=' + m.coordinate.zoom
-            + embedlayers
-            + '&amp;options%5B%5D=zoomwheel'
-            + '&amp;options%5B%5D=legend'
-            + '&amp;options%5B%5D=tooltips'
-            + '&amp;options%5B%5D=zoombox'
-            + '&amp;options%5B%5D=zoompan'
-            + '&amp;options%5B%5D=attribution'
-            + '&amp;el=' + embedId;
-
-    $('.tip input').attr('value', "<div id='" 
-      + embedId 
-      + "-script'><script src='http://tiles.mapbox.com/devseed/api/v1/embed.js?api=mm" 
-      + url 
-      + "'></script></div>");
-      
-    if ($('#embed').hasClass('active')) {
-      $('#embed').removeClass('active');
-    } else {
-      $('#embed').addClass('active');
-      $('#embed-code')[0].tabindex = 0;
-      $('#embed-code')[0].focus();
-      $('#embed-code')[0].select();
-    } 
-  });
-  */
-  
+     
   // Open embed modal
   $('a.embed').click(function(e) {
     e.preventDefault();       
@@ -239,3 +231,21 @@ domReady(function () {
 function openModal(element) {
   $('#overlay, ' + element).css('display', 'block');
 }
+
+// Refresh Map
+function refreshMap() {
+		urlBase = $.map(['a','b','c','d'],function(sub) {
+      	  return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
+    	}),
+  		wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
+  			tilejson.minzoom = 4;
+	      	tilejson.maxzoom = 14;
+	      	tilejson.tiles = getTiles();
+	      	tilejson.grids = getGrids();
+	      	m.setProvider(new wax.mm.connector(tilejson));
+		    $('.wax-legends').remove(); 
+		    legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
+		    interaction.remove();
+		    interaction = wax.mm.interaction(m, tilejson);
+		});
+	}

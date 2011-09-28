@@ -154,6 +154,44 @@ html, body { height:100%; }
   right: 0;
   background: white url(../images/bg.png);
   }
+  
+/*Layer Switch Controls*/
+#layerswitch {
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  width: 150px;
+  z-index: 1;
+  }
+ul.layers {
+  width: 150px;
+  }
+ul.layers li a{
+  display: block;
+  list-style:none;
+  height: 20px;
+  width:140px;
+  padding-left:10px;
+  opacity: 0.50;
+  -moz-opacity: 0.50;
+  filter:alpha(opacity=50);
+  color: black;
+  font-size: 14px;
+  z-index: 1;
+}
+ul.layers li a:active, ul.layers li a.active {
+  width:137px;
+  background: #282828;
+  opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter:alpha(opacity=75);
+  color: white;
+  border-left: 3px solid #2456d0;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  border-radius: 2px 2px 2px 2px;
+  }
+
 /*ZoomControls*/
 a.zoomer {
   text-decoration: none;
@@ -251,7 +289,7 @@ a.zoomdisabled {
   z-index: 4;
   position: absolute;
   right: 10px;
-  top: 60px;
+  top: 110px;
   opacity: 1;
   -webkit-transition:opacity .5s;
   -moz-transition:opacity .5s;
@@ -335,8 +373,6 @@ a.zoomdisabled {
  * ------------ */
 #embed {
   position: absolute;
-  width: 105px;
-  height: 100px;
   z-index: 4;
   top: 150px;
   left: 70px;
@@ -362,41 +398,6 @@ a.embed {
   -moz-opacity: 0.75;
   filter: alpha(opacity=75);
 }
-.tip {
-  display: none;
-  position: absolute;
-  width: 140px;
-  left: 50%;
-  margin-left: -70px;
-  z-index: 4;
-  bottom: 10px;
-  }
-.tip .inner {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  word-wrap: break-word;
-  -moz-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.10);
-  -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.10);
-  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.10);
-  }
-.tip span.point {
-  display: block;
-  width: 10px;
-  height: 45px;
-  background: transparent url(../images/sprite.png) no-repeat 0 -60px;
-  z-index: 1;
-  position: absolute;
-  top: 56px;
-  left: -9px;
-  }
-.tip input {
-  width: 110px;
-  margin-bottom: 5px;
-  }
-.active .tip {
-  display: block;
-  }
 
 /*Error box*/
 .error {
