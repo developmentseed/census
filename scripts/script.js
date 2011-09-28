@@ -41,10 +41,10 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     + '<img class="npr-white" src="images/npr.png" /></a> '
     + '<a href="http://developmentseed.org" target="_blank">'
     + '<img src="images/ds.png" /></a> '
-    + '<div class="attr-note">Nominatim search and street level tiles courtesy of '
+    + 'Nominatim search and street level tiles courtesy of '
     + '<a href="http://www.mapquest.com/" target="_blank">'
     + 'MapQuest</a>. Map data © <a href="http://www.openstreetmap.org/"'
-    +' target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.</div>';
+    +' target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.';
   
   // Build the map
   m = new mm.Map('map',
