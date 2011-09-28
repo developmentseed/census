@@ -172,10 +172,11 @@ ul.layers li a{
   height: 20px;
   width:120px;
   padding-left:6px;
-  opacity: 0.50;
-  -moz-opacity: 0.50;
-  filter:alpha(opacity=50);
-  color: black;
+  background: #282828;
+  opacity: 0.35;
+  -moz-opacity: 0.35;
+  filter:alpha(opacity=35);
+  color: white;
   font-size: 12px;
   z-index: 1;
 }
@@ -187,15 +188,22 @@ ul.layers li a:active, ul.layers li a.active {
   filter:alpha(opacity=75) !important;
   color: white;
   border-left: 3px solid #2456d0;
-  -moz-border-radius: 2px 2px 2px 2px;
-  -webkit-border-radius: 2px 2px 2px 2px;
-  border-radius: 2px 2px 2px 2px;
   }
   
 ul.layers li a:hover {
-  opacity: 0.9;
-  -moz-opacity: 0.9;
-  filter:alpha(opacity=90);
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  filter:alpha(opacity=50);
+  }
+li.layer1 a{
+  -moz-border-radius: 2px 2px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
+  }
+li.layer2 a{
+  -moz-border-radius: 0 0 2px 2px;
+  -webkit-border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px;
   }
 
 /*ZoomControls*/

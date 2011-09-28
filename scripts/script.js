@@ -16,6 +16,11 @@ var layers = [
     }),
     mm = com.modestmaps,
     m, test;
+    
+    totalLegend = 'this is the total legend';
+    hispanicLegend = 'this is the hispanic legend';
+    
+    activeLegend = totalLegend;
 
 // Update tiles array
 function getTiles() {
@@ -150,6 +155,7 @@ domReady(function () {
       				'usa6-census-tracts-contusa-z14',
       				'usa7-census-tracts-AK-z14',
 	    		].join(',');
+	    		activeLegend = totalLegend;
 	    	}
 	    	if (this.id == "hispanic-pop"){
 	    		activeLayers = [
@@ -161,6 +167,7 @@ domReady(function () {
       				'usa6-census-tracts-contusa-z14',
       				'usa7-census-tracts-AK-z14',
 	    		].join(',');
+	    		activeLegend = hispanicLegend;
 	    	}
 
 	    	$('.layers li a').removeClass('active');
@@ -171,6 +178,7 @@ domReady(function () {
 		        activeLayers,
 		        'world-borders-dark-0-6'
             ].join(',');
+            
             
             refreshMap();
         });
@@ -243,7 +251,7 @@ function refreshMap() {
 	      	tilejson.tiles = getTiles();
 	      	tilejson.grids = getGrids();
 	      	m.setProvider(new wax.mm.connector(tilejson));
-		    $('.wax-legends').remove(); 
+		    $('.wax-legends').remove();
 		    legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
 		    interaction.remove();
 		    interaction = wax.mm.interaction(m, tilejson);
