@@ -162,6 +162,7 @@ domReady(function () {
   });
    
   // Update and show embed script
+  /*
   $('a.embed').click(function (e) {
     e.preventDefault();
 
@@ -203,6 +204,23 @@ domReady(function () {
       $('#embed-code')[0].select();
     } 
   });
+  */
+  
+  // Open embed modal
+  $('a.embed').click(function(e) {
+    e.preventDefault();       
+    openModal('#modal-embed');
+    $('#embed-code')[0].tabindex = 0;
+    $('#embed-code')[0].focus();
+    $('#embed-code')[0].select();
+  });
+  
+  // Close modals
+  $('.modal a.close').click(function (e){
+    e.preventDefault();
+    $('#overlay').hide();
+    $(this).closest('.modal').hide();
+  });
   
   // Refresh share links
   $('#share a').click(function (e){
@@ -216,3 +234,8 @@ domReady(function () {
     window.open($(this).attr('href'), 'share');
   });
 });
+
+// Open a modal window
+function openModal(element) {
+  $('#overlay, ' + element).css('display', 'block');
+}

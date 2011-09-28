@@ -353,9 +353,9 @@ a.embed {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  opacity: 0.35;
-  -moz-opacity: 0.35;
-  filter: alpha(opacity=35);
+  opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter: alpha(opacity=75);
   }
 #embed.active a.embed {
   opacity: 0.75;
@@ -511,3 +511,114 @@ a.close {
   background-color: #ebedf4;
   border-color: #9dacce;
 }
+
+/* Modal overlays */
+
+#overlay {
+  display:none;
+  position:fixed;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  width: 100%;
+  height: 100%;
+  background: rgb(60,60,60) url(../images/modal-bg.png);
+  background: rgba(60,60,60,.95) url(../images/modal-bg.png);
+  z-index:98;
+}
+
+.modal { display:none; }
+
+.modal .popup {
+  background: #222;
+  position: relative;
+  top: 70px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+  padding:40px;
+  height: 280px;
+  z-index:99;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width: 350px; 
+  clear: both; 
+  margin: auto;
+  
+}
+
+.modal .popup p {
+  margin-bottom: 1em;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #ccc;
+
+  }
+
+.modal .popup h2 {
+  color: white;
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  }
+
+.modal a.close {
+  background: transparent url(../images/controls-white.png) no-repeat 0 0;
+  width: 30px;
+  height: 30px;
+  display: block;
+  text-indent: -999em;
+  position: absolute;
+  top:5px;
+  right:5px;
+}
+
+#embed-ex-image img { 
+  width: 200px; 
+  }
+.modal input[type="text"] {
+  background: #c0c0c0;
+  color: #222;
+  border: white 1px solid;
+  padding: 2px;
+  font-size: 90%;
+  width: 90%;
+  margin-bottom: 1em;
+  }
+.modal input[type="text"].search {
+  width: 180px;
+  }
+.modal input[type="submit"] {
+  background: #c0c0c0;
+  color: #222;
+  border: white 1px solid;
+  padding: 2px;
+  font-size: 90%;
+  font-weight: 700;
+  margin-bottom: 1em;
+  position: relative;
+  left: 5px;
+  }
+.modal input[type="submit"]:active,
+.modal input[type="submit"]:focus {
+  top: 1px;
+  background: #ccc;
+  color: #444;
+  }
+.modal input[type="submit"]:hover {
+  color: #444;
+  text-shadow: #eee 0 0 6px;
+  }
+.col {
+  float: left;
+  width: 50%;
+  }
+#geo-error {
+  font-weight: 700;
+  color: red;
+  }
