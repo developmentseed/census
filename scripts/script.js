@@ -37,7 +37,9 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   tilejson.grids = getGrids();
   tilejson.minzoom = 4;
   tilejson.maxzoom = 14;
-  tilejson.attribution = '<a href="http://developmentseed.org" target="_blank">'
+  tilejson.attribution = '<a href="http://npr.org" target="_blank">'
+    + '<img class="npr-white" src="images/npr.png" /></a> '
+    + '<a href="http://developmentseed.org" target="_blank">'
     + '<img src="images/ds.png" /></a> '
     + 'Nominatim search and street level tiles courtesy of '
     + '<a href="http://www.mapquest.com/" target="_blank">'
