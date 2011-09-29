@@ -17,10 +17,34 @@ var layers = [
     mm = com.modestmaps,
     m, test;
     
-    totalLegend = 'this is the total legend';
-    hispanicLegend = 'this is the hispanic legend';
-    
-    activeLegend = totalLegend;
+    sharedLegend = '</div>'
+				+ '<div class="census-scale">'
+  				+ '<ul class="census-labels">'
+    			+ '<li><span style="background:#935E9C;"></span>-30%</li>'
+    			+ '<li><span style="background:#B9A1C7;"></span>-20%</li>'
+    			+ '<li><span style="background:#E2D4E2;"></span>-10%</li>'
+    			+ '<li><span style="background:#ECECEC;"></span>+10%</li>'
+        		+ '<li><span style="background:#D7E7D3;"></span>+20%</li>'
+    			+ '<li><span style="background:#98C595;"></span>+30%</li>'
+    			+ '<li><span style="background:#519265;"></span>>+30%</li>'
+  				+ '</ul>'
+				+ '</div>'
+				+ '<div class="census-source">Data Source: <a href="http://www.census.gov">'
+				+ 'U.S. Census Bureau</a>, '
+				+ '<a href="http://www.ire.org/census/">IRE</a></div>'
+				+ '</div>';
+				
+	totalLegend = '<div class="census-legend">'
+				+ '<div class="census-title">'
+				+ 'Percent Total Population Change (2000-2010)'
+				+ sharedLegend;
+				
+	hispanicLegend = '<div class="census-legend">'
+				+ '<div class="census-title">'
+				+ 'Percent Hispanic Population Change (2000-2010)'
+				+ sharedLegend;
+				
+	activeLegend = totalLegend;
 
 // Update tiles array
 function getTiles() {
@@ -42,6 +66,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   tilejson.grids = getGrids();
   tilejson.minzoom = 4;
   tilejson.maxzoom = 14;
+  tilejson.legend = activeLegend;
   tilejson.attribution = '<a href="http://npr.org" target="_blank">'
     + '<img class="npr-white" src="images/npr.png" /></a> '
     + '<a href="http://developmentseed.org" target="_blank">'
@@ -88,6 +113,38 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
       $(this).hasClass('active') ? $(this).removeClass('active') : $(this).addClass('active');
       detector.bw(!detector.bw());
   });
+  
+  // Map Embed
+  $('a.embed').click(function(e){
+    console.log('HEY');
+    var splitLayers = layers.split(',');
+    var embedlayers = '';
+    var center = m.pointLocation(new mm.Point(m.dimensions.x/2,m.dimensions.y/2));
+    embedShown = true;
+
+    _.each(splitLayers, function(num, key) {
+        embedlayers += '&amp;layers%5B%5D=' + num;
+    });
+
+    var embedId = 'ts-embed-' + (+new Date());
+    var url = '&amp;size=550';
+    url += '&amp;size%5B%5D=500';
+    url += '&amp;center%5B%5D=' + center.lon;
+    url += '&amp;center%5B%5D=' + center.lat;
+    url += '&amp;center%5B%5D=' + m.coordinate.zoom;
+    url += embedlayers;
+    url += '&amp;options%5B%5D=zoomwheel';
+    url += '&amp;options%5B%5D=legend';
+    url += '&amp;options%5B%5D=tooltips';
+    url += '&amp;options%5B%5D=zoombox';
+    url += '&amp;options%5B%5D=attribution';
+    url += '&amp;el=' + embedId;
+
+    $('#embed-code-field input').attr('value', "<div id='" + embedId + "-script'><script src='http://tiles.mapbox.com/devseed/api/v1/embed.js?api=mm" + url + "'></script></div>");
+    $('#embed-code')[0].focus();
+    $('#embed-code')[0].select();
+  });
+  
 });
 
 // Send address to MapQuest's Nominatim search
@@ -252,6 +309,7 @@ function refreshMap() {
 	      	tilejson.grids = getGrids();
 	      	m.setProvider(new wax.mm.connector(tilejson));
 		    $('.wax-legends').remove();
+		    tilejson.legend = activeLegend;
 		    legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
 		    interaction.remove();
 		    interaction = wax.mm.interaction(m, tilejson);
