@@ -210,19 +210,15 @@ domReady(function () {
       				'usa4-census-tracts-AK-z10-13',
       				'usa5-census-HI-z10-14',
       				'usa6-census-tracts-contusa-z14',
-      				'usa7-census-tracts-AK-z14',
+      				'usa7-census-tracts-AK-z14'
 	    		].join(',');
 	    		activeLegend = totalLegend;
 	    	}
 	    	if (this.id == "hispanic-pop"){
 	    		activeLayers = [
-	    			'usa1-census-state-z2-5',
-      				'usa2-census-counties-z6-9',
-      				'usa3-census-tracts-contusa-z10-13',
-      				'usa4-census-tracts-AK-z10-13',
-      				'usa5-census-HI-z10-14',
-      				'usa6-census-tracts-contusa-z14',
-      				'usa7-census-tracts-AK-z14',
+	    			'npr.usa-census2010-hispanic-conusa',
+      				'npr.usa-census2010-hispanic-ak',
+      				'npr.usa-census2010-hispanic-hi'
 	    		].join(',');
 	    		activeLegend = hispanicLegend;
 	    	}
