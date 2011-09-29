@@ -135,6 +135,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     url += embedlayers;
     url += '&amp;options%5B%5D=zoomwheel';
     url += '&amp;options%5B%5D=legend';
+    url += '&amp;options%5B%5D=streetlevel';
     url += '&amp;options%5B%5D=tooltips';
     url += '&amp;options%5B%5D=zoombox';
     url += '&amp;options%5B%5D=attribution';
