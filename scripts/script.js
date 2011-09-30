@@ -16,29 +16,9 @@ var layers = [
     mm = com.modestmaps,
     m, test;
     
-   	totalLegend = '<div class="census-legend">'
+   	activeLegend = '<div class="census-legend">'
 				+ '<div class="census-title">'
-				+ 'Percent Total Population Change (2000-2010)'
-				+ '</div>'
-				+ '<div class="census-scale">'
-  				+ '<ul class="census-labels">'
-    			+ '<li><span style="background:#935E9C;"></span>-30%</li>'
-    			+ '<li><span style="background:#B9A1C7;"></span>-20%</li>'
-    			+ '<li><span style="background:#E2D4E2;"></span>-10%</li>'
-    			+ '<li><span style="background:#ECECEC;"></span>+10%</li>'
-        		+ '<li><span style="background:#D7E7D3;"></span>+20%</li>'
-    			+ '<li><span style="background:#98C595;"></span>+30%</li>'
-    			+ '<li><span style="background:#519265;"></span>>+30%</li>'
-  				+ '</ul>'
-				+ '</div>'
-				+ '<div class="census-source">Data Source: <a href="http://www.census.gov">'
-				+ 'U.S. Census Bureau</a>, '
-				+ '<a href="http://www.ire.org/census/">IRE</a></div>'
-				+ '</div>';
-				
-	hispanicLegend = '<div class="census-legend">'
-				+ '<div class="census-title">'
-				+ 'Percent Hispanic Population Change (2000-2010)'
+				+ 'Percent Population Change (2000-2010)'
 				+ '</div>'
 				+ '<div class="census-scale">'
   				+ '<ul class="census-labels">'
@@ -55,8 +35,6 @@ var layers = [
 				+ 'U.S. Census Bureau</a>, '
 				+ '<a href="http://www.ire.org/census/">IRE</a></div>'
 				+ '</div>';
-				
-	activeLegend = totalLegend;
 
 // Update tiles array
 function getTiles() {
@@ -225,7 +203,6 @@ domReady(function () {
       				'usa6-census-tracts-contusa-z14',
       				'usa7-census-tracts-AK-z14'
 	    		].join(',');
-	    		activeLegend = totalLegend;
 	    	}
 	    	if (this.id == "hispanic-pop"){
 	    		activeLayers = [
@@ -233,7 +210,6 @@ domReady(function () {
       				'npr.usa-census2010-hispanic-ak',
       				'npr.usa-census2010-hispanic-hi'
 	    		].join(',');
-	    		activeLegend = hispanicLegend;
 	    	}
 
 	    	$('.layers li a').removeClass('active');
