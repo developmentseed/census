@@ -73,7 +73,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
       new mm.TouchHandler()
     ]
   );
-  m.setCenterZoom(new mm.Location(39, -98), 5);
+  m.setCenterZoom(new mm.Location(39, -84), 4);
   wax.mm.interaction(m, tilejson);
   wax.mm.zoombox(m, tilejson);
   legend = wax.mm.legend(m, tilejson).appendTo($('#controls')[0]);
@@ -165,9 +165,9 @@ function geocode(query) {
       else {
         // adjust zoom level based on geography
         if (value.type == 'state' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
-            m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
+          m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
         } else {
-            m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
+          m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
         }
         // if successful, remove error message
         $('.error').remove();
