@@ -14,7 +14,7 @@ var layers = [
       return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/externals.streetlevel,'+layers+'/';
     }),
     mm = com.modestmaps,
-    m, test;
+    m, test, legend, interaction;
     
    	activeLegend = '<div class="census-legend">'
 				+ '<div class="census-title">'
@@ -78,7 +78,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   m.setCenterZoom(new mm.Location(39, -98), 5);
   wax.mm.interaction(m, tilejson);
   wax.mm.zoombox(m, tilejson);
-  wax.mm.legend(m, tilejson).appendTo($('#controls')[0]);
+  legend = wax.mm.legend(m, tilejson).appendTo($('#controls')[0]);
   wax.mm.zoomer(m, tilejson).appendTo($('#controls')[0]);
   wax.mm.attribution(m, tilejson).appendTo($('#controls')[0]);
   wax.mm.hash(m, tilejson, {
@@ -106,7 +106,6 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   
   // Map Embed
   $('a.embed').click(function(e){
-    console.log('HEY');
     var splitLayers = layers.split(',');
     var embedlayers = '';
     var center = m.pointLocation(new mm.Point(m.dimensions.x/2,m.dimensions.y/2));
@@ -295,7 +294,7 @@ function refreshMap() {
 		    $('.wax-legends').remove();
 		    tilejson.legend = activeLegend;
 		    legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
-		    interaction.remove();
-		    interaction = wax.mm.interaction(m, tilejson);
+		    //interaction.remove();
+		    wax.mm.interaction(m, tilejson);
 		});
 	}
