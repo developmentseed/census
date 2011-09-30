@@ -1,6 +1,5 @@
 // Define the layers and other map variables
 var layers = [
-      'externals.streetlevel',
       'mapbox.natural-earth-1',
       'usa1-census-state-z2-5',
       'usa2-census-counties-z6-9',
@@ -12,12 +11,15 @@ var layers = [
       'world-borders-dark-0-6'
     ].join(','),
     urlBase = $.map(['a','b','c','d'],function(sub) {
-      return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
+      return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/externals.streetlevel,'+layers+'/';
     }),
     mm = com.modestmaps,
     m, test;
     
-    sharedLegend = '</div>'
+   	totalLegend = '<div class="census-legend">'
+				+ '<div class="census-title">'
+				+ 'Percent Total Population Change (2000-2010)'
+				+ '</div>'
 				+ '<div class="census-scale">'
   				+ '<ul class="census-labels">'
     			+ '<li><span style="background:#935E9C;"></span>-30%</li>'
@@ -34,15 +36,25 @@ var layers = [
 				+ '<a href="http://www.ire.org/census/">IRE</a></div>'
 				+ '</div>';
 				
-	totalLegend = '<div class="census-legend">'
-				+ '<div class="census-title">'
-				+ 'Percent Total Population Change (2000-2010)'
-				+ sharedLegend;
-				
 	hispanicLegend = '<div class="census-legend">'
 				+ '<div class="census-title">'
 				+ 'Percent Hispanic Population Change (2000-2010)'
-				+ sharedLegend;
+				+ '</div>'
+				+ '<div class="census-scale">'
+  				+ '<ul class="census-labels">'
+    			+ '<li><span style="background:#935E9C;"></span><-20%</li>'
+    			+ '<li><span style="background:#B9A1C7;"></span>-20%</li>'
+    			+ '<li><span style="background:#E2D4E2;"></span>-10%</li>'
+    			+ '<li><span style="background:#ECECEC;"></span>+10%</li>'
+        		+ '<li><span style="background:#D7E7D3;"></span>+20%</li>'
+    			+ '<li><span style="background:#98C595;"></span>+30%</li>'
+    			+ '<li><span style="background:#519265;"></span>>+30%</li>'
+  				+ '</ul>'
+				+ '</div>'
+				+ '<div class="census-source">Data Source: <a href="http://www.census.gov">'
+				+ 'U.S. Census Bureau</a>, '
+				+ '<a href="http://www.ire.org/census/">IRE</a></div>'
+				+ '</div>';
 				
 	activeLegend = totalLegend;
 
@@ -127,13 +139,13 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     });
 
     var embedId = 'ts-embed-' + (+new Date());
-    var url = '&amp;size=550';
+    var url = '&amp;size=650';
     url += '&amp;size%5B%5D=500';
     url += '&amp;center%5B%5D=' + center.lon;
     url += '&amp;center%5B%5D=' + center.lat;
     url += '&amp;center%5B%5D=' + m.coordinate.zoom;
     url += embedlayers;
-    url += '&amp;options%5B%5D=zoomwheel';
+    url += '&amp;options%5B%5D=zoompan';
     url += '&amp;options%5B%5D=legend';
     url += '&amp;options%5B%5D=streetlevel';
     url += '&amp;options%5B%5D=tooltips';
@@ -227,7 +239,6 @@ domReady(function () {
 	    	$('.layers li a').removeClass('active');
       		$(this).addClass('active');
 	    	layers = [
-            	'externals.streetlevel',
       			'mapbox.natural-earth-1',
 		        activeLayers,
 		        'world-borders-dark-0-6'
@@ -297,7 +308,7 @@ function openModal(element) {
 // Refresh Map
 function refreshMap() {
 		urlBase = $.map(['a','b','c','d'],function(sub) {
-      	  return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/'+layers+'/';
+      	  return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/externals.streetlevel,'+layers+'/';
     	}),
   		wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   			tilejson.minzoom = 4;
