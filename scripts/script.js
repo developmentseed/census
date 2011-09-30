@@ -106,6 +106,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   
   // Map Embed
   $('a.embed').click(function(e){
+    e.preventDefault();
     var splitLayers = layers.split(',');
     var embedlayers = '';
     var center = m.pointLocation(new mm.Point(m.dimensions.x/2,m.dimensions.y/2));
@@ -131,6 +132,8 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     url += '&amp;el=' + embedId;
 
     $('#embed-code-field input').attr('value', "<div id='" + embedId + "-script'><script src='http://tiles.mapbox.com/devseed/api/v1/embed.js?api=mm" + url + "'></script></div>");
+    openModal('#modal-embed');
+    $('#embed-code')[0].tabindex = 0;
     $('#embed-code')[0].focus();
     $('#embed-code')[0].select();
   });
@@ -244,15 +247,6 @@ domReady(function () {
     if (input.val() === inputTitle) {
       input.val('');
     }
-  });
-     
-  // Open embed modal
-  $('a.embed').click(function(e) {
-    e.preventDefault();       
-    openModal('#modal-embed');
-    $('#embed-code')[0].tabindex = 0;
-    $('#embed-code')[0].focus();
-    $('#embed-code')[0].select();
   });
   
   // Close modals
