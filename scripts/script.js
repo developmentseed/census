@@ -6,7 +6,7 @@ var layers = [
       'usa-census-totpop-tracts-conusa-10-14',
       'usa-census-totpop-tracts-ak-10-14',
       'usa-census-totpop-tracts-hi-10-14',
-      'world-borders-dark-0-6'
+      'npr.world-borders-dark-0-6'
     ].join(','),
     urlBase = $.map(['a','b','c','d'],function(sub) {
       return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
@@ -73,7 +73,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
       new mm.TouchHandler()
     ]
   );
-  m.setCenterZoom(new mm.Location(39, -98), 5);
+  m.setCenterZoom(new mm.Location(39, -84), 4);
   wax.mm.interaction(m, tilejson);
   wax.mm.zoombox(m, tilejson);
   legend = wax.mm.legend(m, tilejson).appendTo($('#controls')[0]);
@@ -165,9 +165,9 @@ function geocode(query) {
       else {
         // adjust zoom level based on geography
         if (value.type == 'state' || value.type == 'county' || value.type == 'maritime'  || value.type == 'country') {
-            m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
+          m.setCenterZoom(new mm.Location(value.lat, value.lon), 7);
         } else {
-            m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
+          m.setCenterZoom(new mm.Location(value.lat, value.lon), 13);
         }
         // if successful, remove error message
         $('.error').remove();
@@ -216,7 +216,7 @@ domReady(function () {
 	    	layers = [
       			'mapbox.natural-earth-1',
 		        activeLayers,
-		        'world-borders-dark-0-6'
+		        'npr.world-borders-dark-0-6'
             ].join(',');
             
             
