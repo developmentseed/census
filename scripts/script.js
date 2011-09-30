@@ -1,17 +1,15 @@
 // Define the layers and other map variables
 var layers = [
       'mapbox.natural-earth-1',
-      'usa1-census-state-z2-5',
-      'usa2-census-counties-z6-9',
-      'usa3-census-tracts-contusa-z10-13',
-      'usa4-census-tracts-AK-z10-13',
-      'usa5-census-HI-z10-14',
-      'usa6-census-tracts-contusa-z14',
-      'usa7-census-tracts-AK-z14',
+      'usa-census-totpop-state-2-5',
+      'usa-census-totpop-county-6-9',
+      'usa-census-totpop-tracts-conusa-10-14',
+      'usa-census-totpop-tracts-ak-10-14',
+      'usa-census-totpop-tracts-hi-10-14',
       'world-borders-dark-0-6'
     ].join(','),
     urlBase = $.map(['a','b','c','d'],function(sub) {
-      return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/externals.streetlevel,'+layers+'/';
+      return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
     }),
     mm = com.modestmaps,
     m, test, legend, interaction;
@@ -131,7 +129,7 @@ wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
     url += '&amp;options%5B%5D=attribution';
     url += '&amp;el=' + embedId;
 
-    $('#embed-code-field input').attr('value', "<div id='" + embedId + "-script'><script src='http://tiles.mapbox.com/devseed/api/v1/embed.js?api=mm" + url + "'></script></div>");
+    $('#embed-code-field input').attr('value', "<div id='" + embedId + "-script'><script src='http://tiles.mapbox.com/npr/api/v1/embed.js?api=mm" + url + "'></script></div>");
     openModal('#modal-embed');
     $('#embed-code')[0].tabindex = 0;
     $('#embed-code')[0].focus();
@@ -197,20 +195,19 @@ domReady(function () {
 	    $('.layers li a').click(function() {
 	    	if (this.id == "total-pop"){
 	    		activeLayers = [
-	    			'usa1-census-state-z2-5',
-      				'usa2-census-counties-z6-9',
-      				'usa3-census-tracts-contusa-z10-13',
-      				'usa4-census-tracts-AK-z10-13',
-      				'usa5-census-HI-z10-14',
-      				'usa6-census-tracts-contusa-z14',
-      				'usa7-census-tracts-AK-z14'
+	    			'usa-census-totpop-state-2-5',
+      				'usa-census-totpop-county-6-9',
+      				'usa-census-totpop-tracts-conusa-10-14',
+      				'usa-census-totpop-tracts-ak-10-14',
+      				'usa-census-totpop-tracts-hi-10-14'
 	    		].join(',');
 	    	}
 	    	if (this.id == "hispanic-pop"){
 	    		activeLayers = [
-	    			'npr.usa-census2010-hispanic-conusa',
-      				'npr.usa-census2010-hispanic-ak',
-      				'npr.usa-census2010-hispanic-hi'
+	    			'usa-census-hispanic-2-5',
+      				'usa-census-hispanic-conusa-6-14',
+      				'usa-census-hispanic-ak-6-14',
+      				'usa-census-hispanic-hi-6-14'
 	    		].join(',');
 	    	}
 
@@ -249,6 +246,13 @@ domReady(function () {
     }
   });
   
+  // Open about modal
+  $('a.about.control').click(function(e) {
+    e.preventDefault();
+    openModal('#modal-about');
+    $('#popup-about').tinyscrollbar_update();
+  });
+  
   // Close modals
   $('.modal a.close').click(function (e){
     e.preventDefault();
@@ -277,7 +281,7 @@ function openModal(element) {
 // Refresh Map
 function refreshMap() {
 		urlBase = $.map(['a','b','c','d'],function(sub) {
-      	  return 'http://' + sub + '.tiles.mapbox.com/devseed/1.0.0/externals.streetlevel,'+layers+'/';
+      	  return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
     	}),
   		wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
   			tilejson.minzoom = 4;
