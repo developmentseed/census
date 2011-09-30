@@ -6,7 +6,7 @@ var layers = [
       'usa-census-totpop-tracts-conusa-10-14',
       'usa-census-totpop-tracts-ak-10-14',
       'usa-census-totpop-tracts-hi-10-14',
-      'world-borders-dark-0-6'
+      'npr.world-borders-dark-0-6'
     ].join(','),
     urlBase = $.map(['a','b','c','d'],function(sub) {
       return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
@@ -216,7 +216,7 @@ domReady(function () {
 	    	layers = [
       			'mapbox.natural-earth-1',
 		        activeLayers,
-		        'world-borders-dark-0-6'
+		        'npr.world-borders-dark-0-6'
             ].join(',');
             
             
