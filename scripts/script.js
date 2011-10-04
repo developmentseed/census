@@ -1,12 +1,12 @@
 // Define the layers and other map variables
 var layers = [
-      'mapbox.natural-earth-1',
+      'world-blank-bright-0-10',
       'usa-census-totpop-state-2-5',
       'usa-census-totpop-county-6-9',
       'usa-census-totpop-tracts-conusa-10-14',
       'usa-census-totpop-tracts-ak-10-14',
       'usa-census-totpop-tracts-hi-10-14',
-      'npr.world-borders-dark-0-6'
+      'mapbox.world-borders-dark'
     ].join(','),
     urlBase = $.map(['a','b','c','d'],function(sub) {
       return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
@@ -214,9 +214,9 @@ domReady(function () {
 	    	$('.layers li a').removeClass('active');
       		$(this).addClass('active');
 	    	layers = [
-      			'mapbox.natural-earth-1',
+      			'world-blank-bright-0-10',
 		        activeLayers,
-		        'npr.world-borders-dark-0-6'
+		        'mapbox.world-borders-dark'
             ].join(',');
             
             
