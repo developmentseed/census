@@ -114,13 +114,13 @@ $.domReady(function () {
                         easey.slow(m, {
                             location: new mm.Location(value.lat, value.lon),
                             zoom: 7,
-                            time: 4000
+                            time: 2000
                         });
                     } else {
                         easey.slow(m, {
                             location: new mm.Location(value.lat, value.lon),
                             zoom: 13,
-                            time: 4000
+                            time: 2000
                         });
                     }
                     $('.error').remove();
@@ -322,64 +322,99 @@ $.domReady(function () {
             $('#share div').css('display', 'block');
         }
     });
-    
+
     // City level Toggling of Hispanic Layers
     $('ul.cities a').click(function (e) {
-        $('ul.cities a').removeClass('active');
-        if(!$('#hispanic-pop').hasClass('active')) {
-            $('#total-pop').removeClass('active');
-            $('#hispanic-pop').addClass('active');
-        }
-        $(this).addClass('active'); 
-        if(this.id === 'los-angeles') {
-            easey.slow(m, {
-                location: new mm.Location(34.0502836, -118.2420861),
-                zoom: 10,
-                time: 3000,
-                callback: function() {
-                    mapChange();
-                }
-            });
-        }
-        if(this.id === 'new-york') {
-            easey.slow(m, {
-                location: new mm.Location(40.6639794658547, -73.9382651457157),
-                zoom: 11,
-                time: 3000,
-                callback: function() {
-                    mapChange();
-                }
-            });
-        }
-        if(this.id === 'chicago') {
-            easey.slow(m, {
-                location: new mm.Location(41.8756208, -87.6243706),
-                zoom: 10,
-                time: 3000,
-                callback: function() {
-                    mapChange();
-                }
-            });
-        }
-        if(this.id === 'san-francisco') {
-            easey.slow(m, {
-                location: new mm.Location(37.7789601, -122.419199),
-                zoom: 13,
-                time: 3000,
-                callback: function() {
-                    mapChange();
-                }
-            });
-        }
-        if(this.id === 'washington-dc') {
-            easey.slow(m, {
-                location: new mm.Location(38.8951148, -77.0363716),
-                zoom: 12,
-                time: 3000,
-                callback: function() {
-                    mapChange();
-                }
-            });
+
+        if ($(this).hasClass('active')) {
+           // Do nothing.
+        } else {
+            $('ul.cities a').removeClass('active');
+            if(!$('#hispanic-pop').hasClass('active')) {
+                $('#total-pop').removeClass('active');
+                $('#hispanic-pop').addClass('active');
+            }
+            $(this).addClass('active');
+            if(this.id === 'los-angeles') {
+                easey.slow(m, {
+                    zoom: 7,
+                    time: 2000,
+                    callback: function() {
+                        easey.slow(m, {
+                            location: new mm.Location(34.0502836, -118.2420861),
+                            zoom: 10,
+                            time: 2000,
+                            callback: function() {
+                                mapChange();
+                            }
+                        });
+                    }
+                });
+            }
+            if(this.id === 'new-york') {
+                easey.slow(m, {
+                    zoom: 7,
+                    time: 2000,
+                    callback: function() {
+                        easey.slow(m, {
+                            location: new mm.Location(40.6639794658547, -73.9382651457157),
+                            zoom: 11,
+                            time: 2000,
+                            callback: function() {
+                                mapChange();
+                            }
+                        });
+                    }
+                });
+            }
+            if(this.id === 'chicago') {
+                easey.slow(m, {
+                    zoom: 7,
+                    time: 2000,
+                    callback: function() {
+                        easey.slow(m, {
+                            location: new mm.Location(41.8756208, -87.6243706),
+                            zoom: 10,
+                            time: 2000,
+                            callback: function() {
+                                mapChange();
+                            }
+                        });
+                    }
+                });
+            }
+            if(this.id === 'san-francisco') {
+                easey.slow(m, {
+                    zoom: 7,
+                    time: 2000,
+                    callback: function() {
+                        easey.slow(m, {
+                            location: new mm.Location(37.7789601, -122.419199),
+                            zoom: 13,
+                            time: 2000,
+                            callback: function() {
+                                mapChange();
+                            }
+                        });
+                    }
+                });
+            }
+            if(this.id === 'washington-dc') {
+                easey.slow(m, {
+                    zoom: 7,
+                    time: 2000,
+                    callback: function() {
+                        easey.slow(m, {
+                            location: new mm.Location(38.8951148, -77.0363716),
+                            zoom: 12,
+                            time: 2000,
+                            callback: function() {
+                                mapChange();
+                            }
+                        });
+                    }
+                });
+            }
         }
     });
 });
