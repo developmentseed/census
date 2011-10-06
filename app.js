@@ -416,7 +416,7 @@ $.domReady(function () {
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            zoom: 11,
+                            zoom: 10,
                             time: 2000,
                             callback: function() {
                                 mapChange();
