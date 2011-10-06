@@ -513,7 +513,6 @@ a.embed {
   -moz-opacity: 0.75;
   filter: alpha(opacity=75);
 }
-
 /*Error box*/
 .error {
   background: transparent url(../images/sprite.png) no-repeat 0 -190px;
@@ -523,7 +522,7 @@ a.embed {
   line-height: 15px;
   position: absolute;
   width: 200px;
-  right: 103px;
+  right: 46px;
   height: 40px;
   top: 32px;
   }
@@ -927,4 +926,25 @@ a.close {
       width: 135px;
       padding: 5px 5px 0;
       }
+  .error {
+    background: transparent;
+    padding: 0;
+    color: #ff4a4b;
+    line-height: 15px;
+    position: absolute;
+    width: 100px;
+    right: 5px;
+    height: auto;
+    top: 32px;
+    }
+  a.close {
+    background: transparent url(../images/sprite.png) no-repeat -236px -31px;
+    width: 7px;
+    height: 7px;
+    display: block;
+    text-indent: -999em;
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    }
   }
