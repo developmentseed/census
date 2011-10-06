@@ -165,14 +165,14 @@ ul.macro {
     ul.macro li a {
       color: white;
       font-weight: bold;
-      padding: 6px 12px;
-      background: #fff;
+      padding: 6px 5px;
+      background: white;
       color: #B3B3B3;
       -moz-transition: background-color 0.3s linear;
       -o-transition: background-color 0.3s linear;
       -webkit-transition: background-color 0.3s linear;
       transition: background-color 0.3s linear;
-      width: 124px;
+      width: 140px;
       display: block;
       }
       ul.macro li a.active {
