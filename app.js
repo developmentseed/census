@@ -35,7 +35,7 @@ $.domReady(function () {
           return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
         }),
         mm = com.modestmaps,
-        m, test, interaction, cleanLayers, activeLegend, activeFormatter, hispanicFormatter, totalFormatter;
+        m, test, cleanLayers;
 
        	activeLegend = '<div class="census-legend">'
                     + '<div class="census-title">'
@@ -56,10 +56,6 @@ $.domReady(function () {
                     + 'U.S. Census Bureau</a>, '
                     + '<a href="http://www.ire.org/census/">IRE</a></div>'
                     + '</div>';
-
-                    totalFormatter = "function(options, data) { if (data.name10) {var total_fm = '<div class=\"census-int\"><div class=\"int-title\">' + data.name10 + '</div><div class=\"pop-int\">Population:' + data.pop2010 + '</div><div class=\"chg-int\">Change from 2000-2010: <span class=\"poppct-int\">' + data.usat36_pct + '%</span></div><div class=\"regavg-int\">Regional Average: <span class=\"regnum-int\">' + data.usat36_avgreg + '%</span></div><div class=\"natavg-int\">National Average: <span class=\"natnum-int\">' + data.usat36_avgnat + '%</span></div><div class=\"chart-int\"><img src=\"http://chart.apis.google.com/chart?chf=bg,s,FFFFFF00&chxl=0:|Non-Hispanic|Hispanic|+|2+or+More|White|Other|Hawaii/Oth+Pacific|Black|Asian|Am+Indian/Alaskan|1:|0|20|40|60|80|100|||2:|||||||Change|&chbh=6,0,8&chxr=1,0,140&chxs=0,252525,10,1,l,252525|1,3A3A3A,10,0,l,3A3A3A|2,3A3A3A,10,0,l,3A3A3A&chxt=y,x,t&chs=280x250&cht=bhg&chco=969696,3A3A3A&chds=0,1.4,0,1.4&chlp=b&chd=t:' + data.usat17 + ',' + data.usat19 + ',' + data.usat15 + ',' + data.usat21 + ',' + data.usat23 + ',' + data.usat13 + ',' + data.usat25 + ',_,' + data.usat27 + ',' + data.usat29 + '|' + data.usat16 + ',' + data.usat18 + ',' + data.usat14 + ',' + data.usat20 + ',' + data.usat22 + ',' + data.usat12 + ',' + data.usat24 + ',_,' + data.usat26 + ',' + data.usat28 + '&chdl=2000|2010&chdls=3A3A3A,10&chdlp=b&chg=14.2857,5,1,1&chls=1|1&chma=0,15,0,0&chm=h,dddddd95,0,0.8571,51|t' + data.nonh_chg_c + '%,252525,1,8.9,11,,:999|t' + data.hisp_chg_c + '%,252525,0,8.22,11,,:999|t' + data.twoorm_chg_c + '%,252525,1,5.9,11,,:999|t' + data.white_chg_c + '%,252525,1,4.9,11,,:999|t' + data.oth_chg_c + '%,252525,1,3.9,11,,:999|t' + data.hwi_chg_c + '%,252525,1,2.9,11,,:999|t' + data.black_chg_c + '%,252525,1,1.9,11,,:999|t' + data.asian_chg_c + '%,252525,1,0.9,11,,:999|t' + data.amind_chg_c + '%,252525,0,0.22,11,,:999\" width=\"280\" height=\"250\" alt=\"Loading...\" /></div></div><style type=\"text/css\">.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px; line-height:15px; }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int { font-size:85%; }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int { padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img { margin:0 !important; padding:0 !important; }.wax-tooltip .chart-int { margin:2px 0 2px 0; }</style>';} if (data.sctyid) { if (!data.usat36_pct) {var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.stusab + '</div><div class=\"pop-int\">No Data Available</div></div>';} else {var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.stusab + '</div><div class=\"pop-int\">Population:' + data.pop2010 + '</div><div class=\"chg-int\">Change from 2000-2010: <span class=\"poppct-int\">' + data.usat36_pct + '%</span></div><div class=\"regavg-int\">State Average: <span class=\"regnum-int\">' + data.usat36_avgst + '%</span></div><div class=\"regavg-int\">Regional Average: <span class=\"regnum-int\">' + data.usat36_avgreg + '%</span></div><div class=\"natavg-int\">National Average: <span class=\"natnum-int\">' + data.usat36_avgnat + '%</span></div><div class=\"chart-int\"><img src=\"http://chart.apis.google.com/chart?chf=bg,s,FFFFFF00&chxl=0:|Non-Hispanic|Hispanic|+|2+or+More|White|Other|Hawaii/Oth+Pacific|Black|Asian|Am+Indian/Alaskan|1:|0|20|40|60|80|100|||2:|||||||Change|&chbh=6,0,8&chxr=1,0,140&chxs=0,252525,10,1,l,252525|1,3A3A3A,10,0,l,3A3A3A|2,3A3A3A,10,0,l,3A3A3A&chxt=y,x,t&chs=280x250&cht=bhg&chco=969696,3A3A3A&chds=0,1.4,0,1.4&chlp=b&chd=t:' + data.usat17 + ',' + data.usat19 + ',' + data.usat15 + ',' + data.usat21 + ',' + data.usat23 + ',' + data.usat13 + ',' + data.usat25 + ',_,' + data.usat27 + ',' + data.usat29 + '|' + data.usat16 + ',' + data.usat18 + ',' + data.usat14 + ',' + data.usat20 + ',' + data.usat22 + ',' + data.usat12 + ',' + data.usat24 + ',_,' + data.usat26 + ',' + data.usat28 + '&chdl=2000|2010&chdls=3A3A3A,10&chdlp=b&chg=14.2857,5,1,1&chls=1|1&chma=0,15,0,0&chm=h,dddddd95,0,0.8571,51|t' + data.nonh_chg_c + '%,252525,1,8.9,11,,:999|t' + data.hisp_chg_c + '%,252525,0,8.22,11,,:999|t' + data.twoorm_chg_c + '%,252525,1,5.9,11,,:999|t' + data.white_chg_c + '%,252525,1,4.9,11,,:999|t' + data.oth_chg_c + '%,252525,1,3.9,11,,:999|t' + data.hwi_chg_c + '%,252525,1,2.9,11,,:999|t' + data.black_chg_c + '%,252525,1,1.9,11,,:999|t' + data.asian_chg_c + '%,252525,1,0.9,11,,:999|t' + data.amind_chg_c + '%,252525,0,0.22,11,,:999\" width=\"280\" height=\"250\" alt=\"Loading...\" /></div></div>';} var total_fm = censusint + '<style type=\"text/css\">.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px; line-height:15px; }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int { font-size:85%; }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int { padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img { margin:0 !important; padding:0 !important; }.wax-tooltip .chart-int { margin:2px 0 2px 0; }</style>';} if (data.tractnewid) { if (!data.usat36_pct){var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.countyname + '</div><div class=\"pop-int\">No Data Available</div></div>';} else {var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.countyname + '</div><div class=\"pop-int\">Population:' + data.pop2010 + '</div><div class=\"chg-int\">Change from 2000-2010: <span class=\"poppct-int\">' + data.usat36_pct + '%</span></div><div class=\"regavg-int\">State Average: <span class=\"regnum-int\">' + data.usat36_avgst + '%</span></div><div class=\"regavg-int\">Regional Average: <span class=\"regnum-int\">' + data.usat36_avgreg + '%</span></div><div class=\"natavg-int\">National Average: <span class=\"natnum-int\">' + data.usat36_avgnat + '%</span></div><div class=\"chart-int\"><img src=\"http://chart.apis.google.com/chart?chf=bg,s,FFFFFF00&chxl=0:|Non-Hispanic|Hispanic|+|2+or+More|White|Other|Hawaii/Oth+Pacific|Black|Asian|Am+Indian/Alaskan|1:|0|20|40|60|80|100|||2:|||||||Change|&chbh=6,0,8&chxr=1,0,140&chxs=0,252525,10,1,l,252525|1,3A3A3A,10,0,l,3A3A3A|2,3A3A3A,10,0,l,3A3A3A&chxt=y,x,t&chs=280x250&cht=bhg&chco=969696,3A3A3A&chds=0,1.4,0,1.4&chlp=b&chd=t:' + data.usat17 + ',' + data.usat19 + ',' + data.usat15 + ',' + data.usat21 + ',' + data.usat23 + ',' + data.usat13 + ',' + data.usat25 + ',_,' + data.usat27 + ',' + data.usat29 + '|' + data.usat16 + ',' + data.usat18 + ',' + data.usat14 + ',' + data.usat20 + ',' + data.usat22 + ',' + data.usat12 + ',' + data.usat24 + ',_,' + data.usat26 + ',' + data.usat28 + '&chdl=2000|2010&chdls=3A3A3A,10&chdlp=b&chg=14.2857,5,1,1&chls=1|1&chma=0,15,0,0&chm=h,dddddd95,0,0.8571,51|t' + data.nonh_chg_c + '%,252525,1,8.9,11,,:999|t' + data.hisp_chg_c + '%,252525,0,8.22,11,,:999|t' + data.twoorm_chg_c + '%,252525,1,5.9,11,,:999|t' + data.white_chg_c + '%,252525,1,4.9,11,,:999|t' + data.oth_chg_c + '%,252525,1,3.9,11,,:999|t' + data.hwi_chg_c + '%,252525,1,2.9,11,,:999|t' + data.black_chg_c + '%,252525,1,1.9,11,,:999|t' + data.asian_chg_c + '%,252525,1,0.9,11,,:999|t' + data.amind_chg_c + '%,252525,0,0.22,11,,:999\" width=\"280\" height=\"250\" alt=\"Loading...\" /></div></div>';} var total_fm = censusint + '<style type=\"text/css\">.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px; line-height:15px; }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int { font-size:85%; }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int { padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img { margin:0 !important; padding:0 !important; }.wax-tooltip .chart-int { margin:2px 0 2px 0; }</style>';} switch (options.format) { case 'full': return ''; break; case 'location': return ''; break; case 'teaser': default: return total_fm; break; }}";
-                    hispanicFormatter = "function(options, data) { if (data.name10) {var hisp_fm = '<div class=\"census-int\"><div class=\"int-title\">' + data.name10 + '</div><div class=\"pop-int\">Population:' + data.pop2010 + '</div><div class=\"chg-int\">Change from 2000-2010: <span class=\"poppct-int\">' + data.usat36_pct + '%</span></div><div class=\"regavg-int\">Regional Average: <span class=\"regnum-int\">' + data.usat36_avgreg + '%</span></div><div class=\"natavg-int\">National Average: <span class=\"natnum-int\">' + data.usat36_avgnat + '%</span></div><div class=\"chart-int\"><img src=\"http://chart.apis.google.com/chart?chf=bg,s,FFFFFF00&chxl=0:|Non-Hispanic|Hispanic|+|2+or+More|White|Other|Hawaii/Oth+Pacific|Black|Asian|Am+Indian/Alaskan|1:|0|20|40|60|80|100|||2:|||||||Change|&chbh=6,0,8&chxr=1,0,140&chxs=0,252525,10,1,l,252525|1,3A3A3A,10,0,l,3A3A3A|2,3A3A3A,10,0,l,3A3A3A&chxt=y,x,t&chs=280x250&cht=bhg&chco=969696,3A3A3A&chds=0,1.4,0,1.4&chlp=b&chd=t:' + data.usat17 + ',' + data.usat19 + ',' + data.usat15 + ',' + data.usat21 + ',' + data.usat23 + ',' + data.usat13 + ',' + data.usat25 + ',_,' + data.usat27 + ',' + data.usat29 + '|' + data.usat16 + ',' + data.usat18 + ',' + data.usat14 + ',' + data.usat20 + ',' + data.usat22 + ',' + data.usat12 + ',' + data.usat24 + ',_,' + data.usat26 + ',' + data.usat28 + '&chdl=2000|2010&chdls=3A3A3A,10&chdlp=b&chg=14.2857,5,1,1&chls=1|1&chma=0,15,0,0&chm=h,dddddd95,0,0.8571,51|t' + data.nonh_chg_c + '%,252525,1,8.9,11,,:999|t' + data.hisp_chg_c + '%,252525,0,8.22,11,,:999|t' + data.twoorm_chg_c + '%,252525,1,5.9,11,,:999|t' + data.white_chg_c + '%,252525,1,4.9,11,,:999|t' + data.oth_chg_c + '%,252525,1,3.9,11,,:999|t' + data.hwi_chg_c + '%,252525,1,2.9,11,,:999|t' + data.black_chg_c + '%,252525,1,1.9,11,,:999|t' + data.asian_chg_c + '%,252525,1,0.9,11,,:999|t' + data.amind_chg_c + '%,252525,0,0.22,11,,:999\" width=\"280\" height=\"250\" alt=\"Loading...\" /></div><div class=\"int-highlight\"></div></div><style type=\"text/css\">.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px; line-height:15px; }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int { font-size:85%; }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int { padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img { margin:0 !important; padding:0 !important; }.wax-tooltip .chart-int { margin:2px 0 2px 0; } .wax-tooltip .int-highlight { position:relative; bottom:80px; left:0px; right:20px; height:19px; border:2px solid #ff0000; z-index:9999; opacity: 0.5; -moz-opacity: 0.5; filter:alpha(opacity=50); }</style>';} if (data.sctyid) { if (!data.usat36_pct) {var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.stusab + '</div><div class=\"pop-int\">No Data Available</div></div>';} else {var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.stusab + '</div><div class=\"pop-int\">Population:' + data.pop2010 + '</div><div class=\"chg-int\">Change from 2000-2010: <span class=\"poppct-int\">' + data.usat36_pct + '%</span></div><div class=\"regavg-int\">State Average: <span class=\"regnum-int\">' + data.usat36_avgst + '%</span></div><div class=\"regavg-int\">Regional Average: <span class=\"regnum-int\">' + data.usat36_avgreg + '%</span></div><div class=\"natavg-int\">National Average: <span class=\"natnum-int\">' + data.usat36_avgnat + '%</span></div><div class=\"chart-int\"><img src=\"http://chart.apis.google.com/chart?chf=bg,s,FFFFFF00&chxl=0:|Non-Hispanic|Hispanic|+|2+or+More|White|Other|Hawaii/Oth+Pacific|Black|Asian|Am+Indian/Alaskan|1:|0|20|40|60|80|100|||2:|||||||Change|&chbh=6,0,8&chxr=1,0,140&chxs=0,252525,10,1,l,252525|1,3A3A3A,10,0,l,3A3A3A|2,3A3A3A,10,0,l,3A3A3A&chxt=y,x,t&chs=280x250&cht=bhg&chco=969696,3A3A3A&chds=0,1.4,0,1.4&chlp=b&chd=t:' + data.usat17 + ',' + data.usat19 + ',' + data.usat15 + ',' + data.usat21 + ',' + data.usat23 + ',' + data.usat13 + ',' + data.usat25 + ',_,' + data.usat27 + ',' + data.usat29 + '|' + data.usat16 + ',' + data.usat18 + ',' + data.usat14 + ',' + data.usat20 + ',' + data.usat22 + ',' + data.usat12 + ',' + data.usat24 + ',_,' + data.usat26 + ',' + data.usat28 + '&chdl=2000|2010&chdls=3A3A3A,10&chdlp=b&chg=14.2857,5,1,1&chls=1|1&chma=0,15,0,0&chm=h,dddddd95,0,0.8571,51|t' + data.nonh_chg_c + '%,252525,1,8.9,11,,:999|t' + data.hisp_chg_c + '%,252525,0,8.22,11,,:999|t' + data.twoorm_chg_c + '%,252525,1,5.9,11,,:999|t' + data.white_chg_c + '%,252525,1,4.9,11,,:999|t' + data.oth_chg_c + '%,252525,1,3.9,11,,:999|t' + data.hwi_chg_c + '%,252525,1,2.9,11,,:999|t' + data.black_chg_c + '%,252525,1,1.9,11,,:999|t' + data.asian_chg_c + '%,252525,1,0.9,11,,:999|t' + data.amind_chg_c + '%,252525,0,0.22,11,,:999\" width=\"280\" height=\"250\" alt=\"Loading...\" /></div><div class=\"int-highlight\"></div>';} var hisp_fm = censusint + '<style type=\"text/css\">.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px; line-height:15px; }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int { font-size:85%; }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int { padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img { margin:0 !important; padding:0 !important; }.wax-tooltip .chart-int { margin:2px 0 2px 0; } .wax-tooltip .int-highlight { position:relative; bottom:80px; left:0px; right:20px; height:19px; border:2px solid #ff0000; z-index:9999; opacity: 0.5; -moz-opacity: 0.5; filter:alpha(opacity=50); }</style>';} if (data.tractnewid) { if (!data.usat36_pct){var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.countyname + '</div><div class=\"pop-int\">No Data Available</div></div>';} else {var censusint = '<div class=\"census-int\"><div class=\"int-title\">' + data.namelsad10 + ', ' + data.countyname + '</div><div class=\"pop-int\">Population:' + data.pop2010 + '</div><div class=\"chg-int\">Change from 2000-2010: <span class=\"poppct-int\">' + data.usat36_pct + '%</span></div><div class=\"regavg-int\">State Average: <span class=\"regnum-int\">' + data.usat36_avgst + '%</span></div><div class=\"regavg-int\">Regional Average: <span class=\"regnum-int\">' + data.usat36_avgreg + '%</span></div><div class=\"natavg-int\">National Average: <span class=\"natnum-int\">' + data.usat36_avgnat + '%</span></div><div class=\"chart-int\"><img src=\"http://chart.apis.google.com/chart?chf=bg,s,FFFFFF00&chxl=0:|Non-Hispanic|Hispanic|+|2+or+More|White|Other|Hawaii/Oth+Pacific|Black|Asian|Am+Indian/Alaskan|1:|0|20|40|60|80|100|||2:|||||||Change|&chbh=6,0,8&chxr=1,0,140&chxs=0,252525,10,1,l,252525|1,3A3A3A,10,0,l,3A3A3A|2,3A3A3A,10,0,l,3A3A3A&chxt=y,x,t&chs=280x250&cht=bhg&chco=969696,3A3A3A&chds=0,1.4,0,1.4&chlp=b&chd=t:' + data.usat17 + ',' + data.usat19 + ',' + data.usat15 + ',' + data.usat21 + ',' + data.usat23 + ',' + data.usat13 + ',' + data.usat25 + ',_,' + data.usat27 + ',' + data.usat29 + '|' + data.usat16 + ',' + data.usat18 + ',' + data.usat14 + ',' + data.usat20 + ',' + data.usat22 + ',' + data.usat12 + ',' + data.usat24 + ',_,' + data.usat26 + ',' + data.usat28 + '&chdl=2000|2010&chdls=3A3A3A,10&chdlp=b&chg=14.2857,5,1,1&chls=1|1&chma=0,15,0,0&chm=h,dddddd95,0,0.8571,51|t' + data.nonh_chg_c + '%,252525,1,8.9,11,,:999|t' + data.hisp_chg_c + '%,252525,0,8.22,11,,:999|t' + data.twoorm_chg_c + '%,252525,1,5.9,11,,:999|t' + data.white_chg_c + '%,252525,1,4.9,11,,:999|t' + data.oth_chg_c + '%,252525,1,3.9,11,,:999|t' + data.hwi_chg_c + '%,252525,1,2.9,11,,:999|t' + data.black_chg_c + '%,252525,1,1.9,11,,:999|t' + data.asian_chg_c + '%,252525,1,0.9,11,,:999|t' + data.amind_chg_c + '%,252525,0,0.22,11,,:999\" width=\"280\" height=\"250\" alt=\"Loading...\" /></div><div class=\"int-highlight\"></div>';} var hisp_fm = censusint + '<style type=\"text/css\">.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px; line-height:15px; }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int { font-size:85%; }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int { padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img { margin:0 !important; padding:0 !important; }.wax-tooltip .chart-int { margin:2px 0 2px 0; } .wax-tooltip .int-highlight { position:relative; bottom:80px; left:0px; right:20px; height:19px; border:2px solid #ff0000; z-index:9999; opacity: 0.5; -moz-opacity: 0.5; filter:alpha(opacity=50); }</style>';} switch (options.format) { case 'full': return ''; break; case 'location': return ''; break; case 'teaser': default: return hisp_fm; break; }}";
-                    activeFormatter = totalFormatter;
 
     // Update tiles array
     function getTiles() {
@@ -89,9 +85,6 @@ $.domReady(function () {
             tilejson.minzoom = 4;
             tilejson.maxzoom = 14;
             tilejson.tiles = getTiles();
-            interaction.remove();
-            tilejson.formatter = activeFormatter;
-            interaction = wax.mm.interaction(m, tilejson);
             tilejson.grids = getGrids();
             m.setProvider(new wax.mm.connector(tilejson));
         });
@@ -168,7 +161,6 @@ $.domReady(function () {
       tilejson.grids = getGrids();
       tilejson.minzoom = 4;
       tilejson.maxzoom = 14;
-      tilejson.formatter = activeFormatter;
       tilejson.legend = activeLegend;
       tilejson.attribution = '<a href="http://npr.org" target="_blank">'
         + '<img class="npr-white" src="images/npr.png" /></a> '
@@ -194,7 +186,6 @@ $.domReady(function () {
       wax.mm.legend(m, tilejson).appendTo(m.parent);
       wax.mm.zoomer(m, tilejson).appendTo($('#controls')[0]);
       wax.mm.attribution(m, tilejson).appendTo(m.parent);
-      interaction = wax.mm.interaction(m, tilejson);
       wax.mm.hash(m, tilejson, {
         defaultCenter: new mm.Location(39, -84),
         defaultZoom: 4,
@@ -262,31 +253,21 @@ $.domReady(function () {
         $('ul.cities a').removeClass('active');
         if (this.id == 'total-pop'){
             activeLayers = [
-                'USA-blank-trans-z11',
-                'world-blank-bright-0-10',
                 'usa-census-totpop-state-2-5',
                 'usa-census-totpop-county-6-9',
                 'usa-census-totpop-tracts-conusa-10-14',
                 'usa-census-totpop-tracts-ak-10-14',
                 'usa-census-totpop-tracts-hi-10-14'
             ];
-            activeFormatter = totalFormatter;
+
         }
         if (this.id == 'hispanic-pop'){
             activeLayers = [
-                'usa-census-totpop-state-2-5',
-                'usa-census-totpop-county-6-9',
-                'usa-census-totpop-tracts-conusa-10-14',
-                'usa-census-totpop-tracts-ak-10-14',
-                'usa-census-totpop-tracts-hi-10-14',
-                'USA-blank-trans-z11',
-                'world-blank-bright-0-10',
                 'usa-census-hispanic-2-5',
                 'usa-census-hispanic-conusa-6-14',
                 'usa-census-hispanic-ak-6-14',
                 'usa-census-hispanic-hi-6-14'
             ];
-            activeFormatter = hispanicFormatter;
             if(m.coordinate.zoom === 4) {
                 easey.slow(m, {
                     location: new mm.Location(39, -95),
@@ -297,7 +278,25 @@ $.domReady(function () {
         }
         $('ul.macro li a').removeClass('active');
         $(this).addClass('active');
+        if($('ul.macro li a#hispanic-pop').hasClass('active')) {
+            $('#map').mousemove(function() {
+                $('.wax-tooltip').each(function() {
+                    $('.highlight').remove();
+                    if($('.wax-tooltip div').hasClass('chart-int')) {
+                        $('<span class="highlight"></div>').appendTo(this);
+                    }
+                });
+            });
+        } else {
+            $('#map').mousemove(function() {
+                $('.wax-tooltip').each(function() {
+                    $('.highlight').remove();
+                });
+            });
+        }
         layers = [
+            'USA-blank-trans-z11',
+            'world-blank-bright-0-10',
             activeLayers,
             'mapbox.world-borders-dark'
         ];
@@ -345,7 +344,14 @@ $.domReady(function () {
 
     // City level Toggling of Hispanic Layers
     $('ul.cities a').click(function (e) {
-
+        $('#map').mousemove(function() {
+            $('.wax-tooltip').each(function() {
+                $('.highlight').remove();
+                if($('.wax-tooltip div').hasClass('chart-int')) {
+                    $('<span class="highlight"></div>').appendTo(this);
+                }
+            });
+        });
         if ($(this).hasClass('active')) {
            // Do nothing.
         } else {

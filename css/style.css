@@ -412,7 +412,7 @@ a.zoomer {
     }
   .wax-tooltip .chart-int {
     margin: 10px -10px 0!important;
-    background: white;
+    background: transparent;
     padding: 10px;
     }
   .wax-tooltip .regavg-int,
@@ -790,6 +790,17 @@ a.close {
     font-weight: bold;
     text-transform: uppercase;
     }
+.highlight {
+  position: absolute;
+  background: #fff888;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  width: 288px;
+  height: 19px;
+  left: 0;
+  bottom: 76px;
+  z-index: -1;
+  }
 
 /*-----
   Targeted mobile style
