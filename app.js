@@ -175,7 +175,7 @@ $.domReady(function () {
       wax.mm.zoombox(m, tilejson);
       wax.mm.legend(m, tilejson).appendTo(m.parent);
       wax.mm.zoomer(m, tilejson).appendTo($('#controls')[0]);
-      wax.mm.attribution(m, tilejson).appendTo($('#controls')[0]);
+      wax.mm.attribution(m, tilejson).appendTo(m.parent);
       wax.mm.hash(m, tilejson, {
         defaultCenter: new mm.Location(39, -84),
         defaultZoom: 4,
