@@ -181,7 +181,6 @@ $.domReady(function () {
         defaultZoom: 4,
         manager: wax.mm.locationHash
       });
-  
       // Bandwidth detection control and switch element
       var detector = wax.mm.bwdetect(m, {
         auto: true,
@@ -198,7 +197,7 @@ $.domReady(function () {
           $(this).hasClass('active') ? $(this).removeClass('active') : $(this).addClass('active');
           detector.bw(!detector.bw());
       });
-  
+
       // Map Embed
       $('a.embed').click(function(e){
         e.preventDefault();
@@ -259,11 +258,13 @@ $.domReady(function () {
                 'usa-census-hispanic-ak-6-14',
                 'usa-census-hispanic-hi-6-14'
             ];
-            easey.slow(m, {
-                location: new mm.Location(39, -95),
-                zoom: 5,
-                time: 1500
-            });
+            if(m.coordinate.zoom === 4) {
+                easey.slow(m, {
+                    location: new mm.Location(39, -95),
+                    zoom: 5,
+                    time: 1500
+                });
+            }
         }
         $('ul.macro li a').removeClass('active');
         $(this).addClass('active');
