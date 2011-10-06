@@ -581,8 +581,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.5582879"
-     inkscape:cx="9.8012057"
-     inkscape:cy="102.53201"
+     inkscape:cx="30.024301"
+     inkscape:cy="121.1573"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -767,31 +767,8 @@
          style="fill:#ffffff;fill-opacity:1;stroke:none" />
     </g>
     <g
-       transform="translate(-601.6772,842.36216)"
-       id="g4065">
-      <path
-         style="opacity:0.1;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter68768)"
-         d="m 613.1772,59.50002 -1,0 -9,-20.00001 9,-19.99999 1,0 -9,19.99999 z"
-         id="path23133"
-         inkscape:connector-curvature="0" />
-      <g
-         id="g68744"
-         transform="translate(238.1772,-782.86216)">
-        <path
-           style="fill:#ffffff;fill-opacity:1;stroke:none"
-           d="m 375.02972,802.3919 0,40 -10,-20 z"
-           id="path68746"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:#cccccc;fill-opacity:1;stroke:none"
-           d="m 375,842.36218 -1,0 -9,-20.00001 9,-19.99999 1,0 -9,19.99999 z"
-           id="path68748"
-           inkscape:connector-curvature="0" />
-      </g>
-    </g>
-    <g
        id="g18417"
-       transform="matrix(0.63157922,0,0,0.63157922,0.73684034,369.60686)">
+       transform="matrix(0.63157922,0,0,0.63157922,0.73684034,344.60686)">
       <path
          inkscape:connector-curvature="0"
          id="path18391"
@@ -811,7 +788,7 @@
        id="rect18421"
        style="color:#000000;fill:#808080;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <g
-       transform="matrix(0.63157922,0,0,0.63157922,0.73684034,339.60686)"
+       transform="matrix(0.63157922,0,0,0.63157922,0.73684034,294.60686)"
        id="g18423"
        style="fill:#b3b3b3;fill-opacity:1">
       <path

@@ -37,7 +37,7 @@ a {
   text-decoration: none;
   }
 a.link-pop {
-  background: transparent url(../images/sprite.png) no-repeat 60px -108px;
+  background: #000 url(../images/sprite.png) no-repeat 63px -54px;
   font-family: 'AlternateGothicLTNo3Regular',Arial, sans-serif;
   font-weight: 100;
   text-transform: uppercase;
@@ -47,16 +47,18 @@ a.link-pop {
   display: block;
   height: 20px;
   line-height: 20px;
-  padding: 5px 20px 5px 5px;
+  padding: 5px 20px 5px 10px;
   font-size: 24px;
   -moz-transition: color 0.3s linear;
   -o-transition: color 0.3s linear;
   -webkit-transition: color 0.3s linear;
   transition: color 0.3s linear;
+  height: 40px;
+  line-height: 40px;
   }
   a.link-pop.active,
   a.link-pop:hover {
-    background-position: 60px -138px;
+    background-position: 63px -104px;
     color: #fff;
     border-color: #fff;
     }
@@ -591,7 +593,7 @@ a.close {
 -----*/
 #share {
   position: absolute;
-  top: 10px;
+  top: 0;
   right: 320px;
   }
   #share div {
@@ -600,7 +602,7 @@ a.close {
     font-weight: 900;
     font-size: 17px;
     position: absolute;
-    top: 37px;
+    top: 48px;
     right: -3px;
     width: 200px;
     padding: 12px 10px 5px;
@@ -805,19 +807,22 @@ a.close {
   #header a.title {
     left: 155px;
     }
-  #share {
-    right: 5px;
-    top: 60px;
-    }
+    #share {
+      right: 5px;
+      top: 40px;
+      }
+    #share div {
+      top: 35px;
+      }
     a.link-pop {
-      background: transparent url(../images/sprite.png) no-repeat 40px -108px;
+      background: transparent url(../images/sprite.png) no-repeat 44px -54px;
       font-size: 16px;
       color: #000;
       }
       a.link-pop.active,
       a.link-pop:hover {
         color: #000;
-        background-position: 40px -108px;
+        background-position: 44px -54px;
         }
   ul.macro {
     top: 55px;

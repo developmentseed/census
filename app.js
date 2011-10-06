@@ -3,6 +3,16 @@ $.domReady(function () {
     // Share links
     $('a.link-pop').click(function (e){
         e.preventDefault();
+        if($(this).hasClass('active')) {
+            $('#share div').css('display', 'none');
+            $(this).removeClass('active');
+        } else {
+            $(this).addClass('active');
+            $('#share div').css('display', 'block');
+        }
+    });
+    $('#share ul li a').click(function (e){
+        e.preventDefault();
         var tweetUrl = 'http://twitter.com/share?via=developmentseed&text=US%20Census%20Map&url=' + encodeURIComponent(window.location),
             faceUrl = 'http://facebook.com/sharer.php?t=US%20Census%20Map&u=' + encodeURIComponent(window.location);
             $('#share .twitter').attr('href', tweetUrl);
@@ -314,17 +324,6 @@ $.domReady(function () {
         e.preventDefault();
         $('#overlay').hide();
         $(this).closest('.modal').hide();
-    });
-    
-    $('a.link-pop').click(function (e){
-        e.preventDefault();
-        if($(this).hasClass('active')) {
-            $('#share div').css('display', 'none');
-            $(this).removeClass('active');
-        } else {
-            $(this).addClass('active');
-            $('#share div').css('display', 'block');
-        }
     });
 
     // City level Toggling of Hispanic Layers
