@@ -802,8 +802,12 @@ a.close {
     line-height: 16px;
     margin: 5px 0;
     }
+  #header a.title {
+    left: 155px;
+    }
   #share {
-    right: 140px;
+    right: 5px;
+    top: 60px;
     }
     a.link-pop {
       background: transparent url(../images/sprite.png) no-repeat 40px -108px;
@@ -811,7 +815,8 @@ a.close {
       }
       a.link-pop.active,
       a.link-pop:hover {
-        background-position: 40px -138px;
+        color: #000;
+        background-position: 40px -108px;
         }
   ul.macro {
     top: 55px;
@@ -833,13 +838,13 @@ a.close {
     display: none;
     }
   .location-search {
-    width: 140px;
+    width: 126px;
     }
     input[type="text"] {
       background: white;
-      width: 110px;
-      padding: 2px 5px;
-      font-size: 13px;
+      width: 98px;
+      padding: 1px 5px;
+      font-size: 8px;
       }
   .wax-attribution {
     font-size: 6px;
@@ -851,6 +856,8 @@ a.close {
   #map .wax-tooltip {
     width: 110px!important;
     padding: 5px;
+    right: 5px;
+    top: 55px;
     }
     .wax-tooltip .int-title {
       font-size: 12px;
@@ -858,7 +865,6 @@ a.close {
       }
       .wax-legend .census-title,
       .wax-legend .census-scale,
-      .wax-legend .census-source,
       .wax-tooltip .poppct-int,
       .wax-tooltip .regavg-int,
       .wax-tooltip .natavg-int,
@@ -878,10 +884,28 @@ a.close {
     .wax-legends {
       padding: 5px;
       width: 110px;
+      right: 5px;
+      bottom: 5px;
       }
       .wax-legend .census-scale ul li,
       .wax-legend ul.census-labels li span {
         width: 15px;
         font-size: 4px;
         }
+      .wax-legend .census-source {
+        font-size: 5px!important;
+        line-height: 7px;
+        }
+    .wax-attribution .npr-white { /* Sorry, this is just getting too crowded */
+      display: none;
+      }
+    .wax-attribution img {
+      width: 8%;
+      margin-top: 6px;
+      }
+    #share div {
+      font-size: 8px;
+      width: 135px;
+      padding: 5px 5px 0;
+      }
   }
