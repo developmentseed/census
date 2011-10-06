@@ -384,7 +384,7 @@ $.domReady(function () {
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            zoom: 11,
+                            zoom: 10,
                             time: 2000,
                             callback: function() {
                                 mapChange();
@@ -400,7 +400,7 @@ $.domReady(function () {
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            zoom: 10,
+                            zoom: 9,
                             time: 2000,
                             callback: function() {
                                 mapChange();
@@ -416,7 +416,7 @@ $.domReady(function () {
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            zoom: 13,
+                            zoom: 11,
                             time: 2000,
                             callback: function() {
                                 mapChange();
@@ -432,7 +432,7 @@ $.domReady(function () {
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            zoom: 12,
+                            zoom: 11,
                             time: 2000,
                             callback: function() {
                                 mapChange();
