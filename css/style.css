@@ -812,6 +812,7 @@ a.close {
     a.link-pop {
       background: transparent url(../images/sprite.png) no-repeat 40px -108px;
       font-size: 16px;
+      color: #000;
       }
       a.link-pop.active,
       a.link-pop:hover {
@@ -848,7 +849,7 @@ a.close {
       }
   .wax-attribution {
     font-size: 6px;
-    line-height: 17px;
+    line-height: 8px;
     }
   .point {
     right: -29px;
@@ -878,8 +879,8 @@ a.close {
         padding: 5px;
         }
         .wax-tooltip .chart-int img {
-          width: 90px!important;
-          height: 80px!important;
+          width: 115px!important;
+          height: 105px!important;
           }
     .wax-legends {
       padding: 5px;
@@ -900,8 +901,8 @@ a.close {
       display: none;
       }
     .wax-attribution img {
-      width: 8%;
-      margin-top: 6px;
+      width: 10%;
+      margin-top: 0px;
       }
     #share div {
       font-size: 8px;
