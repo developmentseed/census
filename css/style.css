@@ -37,7 +37,7 @@ a {
   text-decoration: none;
   }
 a.link-pop {
-  background: transparent url(../images/sprite.png) no-repeat 100px -108px;
+  background: transparent url(../images/sprite.png) no-repeat 60px -108px;
   font-family: 'AlternateGothicLTNo3Regular',Arial, sans-serif;
   font-weight: 100;
   text-transform: uppercase;
@@ -56,7 +56,7 @@ a.link-pop {
   }
   a.link-pop.active,
   a.link-pop:hover {
-    background-position: 100px -138px;
+    background-position: 60px -138px;
     color: #fff;
     border-color: #fff;
     }
@@ -156,27 +156,27 @@ html, body { height:100%; }
   }
 ul.macro {
   position: absolute;
-  top: 16px;
-  left: 380px;
+  top: 62px;
+  left: 10px;
   }
   ul.macro li {
-    float: left;
-    margin-right: 5px;
+    margin-bottom: -1px;
     }
     ul.macro li a {
       color: white;
       font-weight: bold;
       padding: 6px 12px;
-      color: #b3b3b3;
+      background: #fff;
+      color: #B3B3B3;
       -moz-transition: background-color 0.3s linear;
       -o-transition: background-color 0.3s linear;
       -webkit-transition: background-color 0.3s linear;
       transition: background-color 0.3s linear;
-      border: 1px solid #606060;
+      width: 124px;
+      display: block;
       }
       ul.macro li a.active {
         color: #fff;
-        border-color: #1F90FF;
         background-color: #1F90FF;
         }
 .map-type {
@@ -235,7 +235,7 @@ ul.macro {
   box-shadow: 0 1px 5px rgba(0, 0, 0, .3);
   position: absolute;
   left: 10px;
-  top: 60px;
+  top: 130px;
   width: 150px;
   z-index: 5;
   }
@@ -574,7 +574,7 @@ a.close {
     position: absolute;
     top: 37px;
     right: -3px;
-    width: 250px;
+    width: 200px;
     padding: 12px 10px 5px;
     border: 2px solid black;
     -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
@@ -642,14 +642,14 @@ a.close {
   box-shadow: 0px 0px 5px rgba(0,0,0,.5);
   -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.5);
   -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.5);
-  padding:40px;
+  padding: 20px;
   height: 280px;
-  z-index:99;
+  z-index: 99;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  width: 350px; 
-  clear: both; 
+  width: 400px;
+  clear: both;
   margin: auto;
   }
 
@@ -728,7 +728,8 @@ a.close {
   text-align: left;
   margin-bottom: 4px;
   font-weight: bold;
-  font-size: 85%;
+  font-size: 12px;
+  color: #101010;
   }
 .wax-legend .census-scale ul {
   margin: 0;
@@ -742,8 +743,9 @@ a.close {
   width: 38px;
   margin-bottom: 5px;
   text-align: center;
-  font-size: 70%;
+  font-size: 10px;
   list-style: none;
+  color: #101010;
   }
   .wax-legend ul.census-labels li span {
     height: 12px;
@@ -754,5 +756,7 @@ a.close {
     float: left;
     }
   .wax-legend .census-source {
-    font-size: 70%;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
     }

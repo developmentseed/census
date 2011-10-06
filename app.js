@@ -1,5 +1,15 @@
 $.domReady(function () {
 
+    // Share links
+    $('a.link-pop').click(function (e){
+        e.preventDefault();
+        var tweetUrl = 'http://twitter.com/share?via=developmentseed&text=US%20Census%20Map&url=' + encodeURIComponent(window.location),
+            faceUrl = 'http://facebook.com/sharer.php?t=US%20Census%20Map&u=' + encodeURIComponent(window.location);
+            $('#share .twitter').attr('href', tweetUrl);
+            $('#share .facebook').attr('href', faceUrl);
+            window.open($(this).attr('href'), 'share');
+    });
+
     // Define the layers and other map variables
     var layers = [
           'world-blank-bright-0-10',
@@ -14,7 +24,7 @@ $.domReady(function () {
           return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
         }),
         mm = com.modestmaps,
-        m, test, legend, cleanLayers;
+        m, test, cleanLayers;
     
        	activeLegend = '<div class="census-legend">'
                     + '<div class="census-title">'
@@ -66,9 +76,6 @@ $.domReady(function () {
             tilejson.tiles = getTiles();
             tilejson.grids = getGrids();
             m.setProvider(new wax.mm.connector(tilejson));
-            $('.wax-legends').remove();
-            tilejson.legend = activeLegend;
-            legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
         });
     }
 
@@ -164,14 +171,14 @@ $.domReady(function () {
       m.setCenterZoom(new mm.Location(39, -95), 4);
       wax.mm.interaction(m, tilejson);
       wax.mm.zoombox(m, tilejson);
-      legend = wax.mm.legend(m, tilejson).appendTo($('#controls')[0]);
+      wax.mm.legend(m, tilejson).appendTo(m.parent);
       wax.mm.zoomer(m, tilejson).appendTo($('#controls')[0]);
       wax.mm.attribution(m, tilejson).appendTo($('#controls')[0]);
-      // wax.mm.hash(m, tilejson, {
-      //   defaultCenter: new mm.Location(39, -84),
-      //   defaultZoom: 4,
-      //   manager: wax.mm.locationHash
-      // });
+      wax.mm.hash(m, tilejson, {
+        defaultCenter: new mm.Location(39, -84),
+        defaultZoom: 4,
+        manager: wax.mm.locationHash
+      });
   
       // Bandwidth detection control and switch element
       var detector = wax.mm.bwdetect(m, {
@@ -314,16 +321,6 @@ $.domReady(function () {
             $(this).addClass('active');
             $('#share div').css('display', 'block');
         }
-    })
-
-    // Refresh share links
-    $('#share a').click(function (e){
-        e.preventDefault();
-        var tweetUrl = 'http://twitter.com/share?via=developmentseed&text=US%20Census%20Map&url=' + encodeURIComponent(window.location), 
-            faceUrl = 'http://facebook.com/sharer.php?t=US%20Census%20Map&u=' + encodeURIComponent(window.location);
-            $('#share .twitter').attr('href', tweetUrl);
-            $('#share .facebook').attr('href', faceUrl);
-            window.open($(this).attr('href'), 'share');
     });
     
     // City level Toggling of Hispanic Layers
@@ -338,7 +335,7 @@ $.domReady(function () {
             easey.slow(m, {
                 location: new mm.Location(34.0502836, -118.2420861),
                 zoom: 10,
-                time: 4000,
+                time: 3000,
                 callback: function() {
                     mapChange();
                 }
@@ -348,7 +345,7 @@ $.domReady(function () {
             easey.slow(m, {
                 location: new mm.Location(40.6639794658547, -73.9382651457157),
                 zoom: 11,
-                time: 4000,
+                time: 3000,
                 callback: function() {
                     mapChange();
                 }
@@ -358,7 +355,7 @@ $.domReady(function () {
             easey.slow(m, {
                 location: new mm.Location(41.8756208, -87.6243706),
                 zoom: 10,
-                time: 4000,
+                time: 3000,
                 callback: function() {
                     mapChange();
                 }
@@ -368,7 +365,7 @@ $.domReady(function () {
             easey.slow(m, {
                 location: new mm.Location(37.7789601, -122.419199),
                 zoom: 13,
-                time: 4000,
+                time: 3000,
                 callback: function() {
                     mapChange();
                 }
@@ -378,7 +375,7 @@ $.domReady(function () {
             easey.slow(m, {
                 location: new mm.Location(38.8951148, -77.0363716),
                 zoom: 12,
-                time: 4000,
+                time: 3000,
                 callback: function() {
                     mapChange();
                 }

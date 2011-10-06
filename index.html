@@ -21,18 +21,14 @@
 
 <div id='header'>
   <a href='http://npr.org' class='icon npr'>National Public Radio</a>
-  <ul class='macro'>
-    <li class='population'><a id='total-pop' class='active' href='#'>Total Population</a></li>
-    <li class='population hispanic'><a id='hispanic-pop' href='#'>Hispanic Population</a></li>
-  </ul>
   <a href='/' class='title'><h1>U.S. Census <span>2010</span></h1></a>
   <div id='share'>
-    <a href='#' class='link-pop'>Share this</a>
+    <a href='#' class='link-pop'>Share</a>
     <div>
-      <p>Tweet or Facebook this</p>
+      <p>Facebook Share or Tweet this</p>
       <ul class='clearfix'>
-        <li><a class='twitter' href='http://twitter.com/share?via=developmentseed&amp;text=US%20Census%20Map&amp;url=http%3A%2F%2Fcensus.sites.devseed.com%2F'></a></li>
         <li><a class='facebook' href='http://facebook.com/sharer.php?t=US%20Census%20Map&amp;u=http%3A%2F%2Fcensus.sites.devseed.com%2F'>Share</a></li>
+        <li><a class='twitter' href='http://twitter.com/share?via=developmentseed&amp;text=US%20Census%20Map&amp;url=http%3A%2F%2Fcensus.sites.devseed.com%2F'></a></li>
       </ul>
     </div>
   </div>
@@ -43,11 +39,14 @@
 <div id='map'></div>
 <div id='controls'>
   <div id='embed'>
-    <a href='#' class='embed control'></a>
+    <a href='#' class='embed control' title='Embed a version of this map on a site.'></a>
   </div>
-  <a href='#' id='bwtoggle' class='hq control active'>HQ</a> 
+  <a href='#' id='bwtoggle' class='hq control active' title='For low bandwidth conditions, toggle on or off a higher qualiy version of the map.'>HQ</a>
 </div>
-
+<ul class='macro'>
+  <li class='population'><a id='total-pop' class='active' href='#'>Total Population</a></li>
+  <li class='population hispanic'><a id='hispanic-pop' href='#'>Hispanic Population</a></li>
+</ul>
 <div id='layerswitch'>
   <h4>Change in Hispanic population<br /> by city</h4>
   <ul class='cities'>
