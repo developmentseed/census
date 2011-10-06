@@ -793,12 +793,14 @@ a.close {
   Targeted mobile style
 -----*/
 @media screen and (max-device-width: 480px) {
+  /*Typography*/
   h1 {
-    font-size: 24px;
+    font-size: 22px;
     }
   h4 {
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 5px 0;
     }
   #share {
     right: 140px;
@@ -811,14 +813,18 @@ a.close {
       a.link-pop:hover {
         background-position: 40px -138px;
         }
-  ul.macro li a {
-    padding: 1px 5px;
-    width: 70px;
-    font-size: 7px;
+  ul.macro {
+    top: 55px;
     }
+    ul.macro li a {
+      padding: 1px 5px;
+      width: 80px;
+      font-size: 8px;
+      }
   #layerswitch {
-    width: 80px;
-    font-size: 11px;
+    width: 90px;
+    font-size: 8px;
+    top: 100px;
     }
     ul.cities li a {
       padding: 1px 5px;
@@ -842,4 +848,40 @@ a.close {
   .point {
     right: -29px;
     }
+  #map .wax-tooltip {
+    width: 110px!important;
+    padding: 5px;
+    }
+    .wax-tooltip .int-title {
+      font-size: 12px;
+      line-height: 14px;
+      }
+      .wax-legend .census-title,
+      .wax-legend .census-scale,
+      .wax-legend .census-source,
+      .wax-tooltip .poppct-int,
+      .wax-tooltip .regavg-int,
+      .wax-tooltip .natavg-int,
+      .wax-tooltip .pop-int,
+      .wax-tooltip .chg-int {
+        font-size: 8px!important;
+        line-height: 10px;
+        }
+      .wax-tooltip .chart-int {
+        margin: 5px -5px 0!important;
+        padding: 5px;
+        }
+        .wax-tooltip .chart-int img {
+          width: 90px!important;
+          height: 80px!important;
+          }
+    .wax-legends {
+      padding: 5px;
+      width: 110px;
+      }
+      .wax-legend .census-scale ul li,
+      .wax-legend ul.census-labels li span {
+        width: 15px;
+        font-size: 4px;
+        }
   }
