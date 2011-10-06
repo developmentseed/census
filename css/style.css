@@ -344,14 +344,26 @@ a.zoomer {
   right: 10px;
   bottom: 10px;
   z-index: 5;
+  background: #fff;
+  color: #b3b3b3;
+  padding: 10px;
+  -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
+  border: 1px solid #8C8C8C;
+  border: 1px solid rgba(0, 0, 0, .45);
+  border-bottom: 1px solid #666;
   }
-.wax-legends div.census-source {
-  clear: both;
-  }
-.wax-legends div.census-source a {
-  color: #282828;
-  text-decoration: underline;
-  }
+  .wax-legend .source {
+    clear: both;
+    }
+  .wax-legends div.census-source {
+    clear: both;
+    }
+  .wax-legends div.census-source a {
+    color: #282828;
+    text-decoration: underline;
+    }
 
 /*Tooltip*/
 .wax-tooltip {
@@ -363,32 +375,45 @@ a.zoomer {
   -webkit-transition:opacity .5s;
   -moz-transition:opacity .5s;
   }
-.wax-legends,
 #map .wax-tooltip {
   width: 270px!important;
-  padding: 15px 10px;
-  background: white;
+  padding: 15px 10px 10px;
+  background: #fff;
+  color: #b3b3b3;
   border: 1px solid #8C8C8C;
   border: 1px solid rgba(0, 0, 0, .45);
-  border-bottom: 1px solid #666;
   -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
   -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
   box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
   }
-  .wax-legends {
-    padding: 10px;
-    }
-.wax-legend .source {
-  clear: both;
-  }
   .wax-tooltip.hide { opacity:0; }
   .wax-tooltip .int-title {
-    font-weight: 500;
-    letter-spacing: 0;
-    font-size: 24px;
-    line-height: 26px;
+    font-size: 22px;
+    line-height: 24px;
     display: block;
     margin: 0 0 10px;
+    color: #000;
+    }
+  .wax-tooltip .chg-int {
+    font-size: 14px!important;
+    font-weight: bold;
+    display: block;
+    margin: 0 0 10px;
+    color: #000;
+    }
+  .wax-tooltip .pop-int {
+    font-size: 14px!important;
+    margin-bottom: 0;
+    }
+  .wax-tooltip .chart-int {
+    margin: 10px -10px 0!important;
+    background: white;
+    padding: 10px;
+    }
+  .wax-tooltip .regavg-int,
+  .wax-tooltip .natavg-int {
+    font-size: 13px!important;
+    margin: 0 0 1px;
     }
 
 /*Map attribution*/
