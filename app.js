@@ -235,7 +235,7 @@ $.domReady(function () {
         url += '&amp;options%5B%5D=attribution';
         url += '&amp;el=' + embedId;
 
-        $('#embed-code-field input').attr('value', '<div id="' + embedId + '-script"><script src="http://tiles.mapbox.com/npr/api/v1/embed.js?api=mm"' + url + '"></script></div>');
+        $('#embed-code-field input').attr('value', '<div id="' + embedId + '-script"><script src="http://tiles.mapbox.com/npr/api/v1/embed.js?api=mm' + url + '"></script></div>');
         openModal('#modal-embed');
         $('#embed-code')[0].tabindex = 0;
         $('#embed-code')[0].focus();
