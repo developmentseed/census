@@ -337,11 +337,11 @@ $.domReady(function () {
             $(this).addClass('active');
             if(this.id === 'los-angeles') {
                 easey.slow(m, {
-                    zoom: 7,
+                    location: new mm.Location(34.0502836, -118.2420861),
+                    zoom: 6,
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            location: new mm.Location(34.0502836, -118.2420861),
                             zoom: 10,
                             time: 2000,
                             callback: function() {
@@ -353,11 +353,11 @@ $.domReady(function () {
             }
             if(this.id === 'new-york') {
                 easey.slow(m, {
-                    zoom: 7,
+                    location: new mm.Location(40.6639794658547, -73.9382651457157),
+                    zoom: 6,
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            location: new mm.Location(40.6639794658547, -73.9382651457157),
                             zoom: 11,
                             time: 2000,
                             callback: function() {
@@ -369,11 +369,11 @@ $.domReady(function () {
             }
             if(this.id === 'chicago') {
                 easey.slow(m, {
-                    zoom: 7,
+                    location: new mm.Location(41.8756208, -87.6243706),
+                    zoom: 6,
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            location: new mm.Location(41.8756208, -87.6243706),
                             zoom: 10,
                             time: 2000,
                             callback: function() {
@@ -385,11 +385,11 @@ $.domReady(function () {
             }
             if(this.id === 'san-francisco') {
                 easey.slow(m, {
-                    zoom: 7,
+                    location: new mm.Location(37.7789601, -122.419199),
+                    zoom: 6,
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            location: new mm.Location(37.7789601, -122.419199),
                             zoom: 13,
                             time: 2000,
                             callback: function() {
@@ -401,11 +401,11 @@ $.domReady(function () {
             }
             if(this.id === 'washington-dc') {
                 easey.slow(m, {
-                    zoom: 7,
+                    location: new mm.Location(38.8951148, -77.0363716),
+                    zoom: 6,
                     time: 2000,
                     callback: function() {
                         easey.slow(m, {
-                            location: new mm.Location(38.8951148, -77.0363716),
                             zoom: 12,
                             time: 2000,
                             callback: function() {
