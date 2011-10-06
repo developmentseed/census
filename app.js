@@ -12,6 +12,7 @@ $.domReady(function () {
 
     // Define the layers and other map variables
     var layers = [
+          'USA-blank-trans-z11',
           'world-blank-bright-0-10',
           'usa-census-totpop-state-2-5',
           'usa-census-totpop-county-6-9',
@@ -87,6 +88,7 @@ $.domReady(function () {
             'usa-census-hispanic-hi-6-14'
         ].join(',');
         layers = [
+            'USA-blank-trans-z11',
             'world-blank-bright-0-10',
             activeLayers,
             'mapbox.world-borders-dark'
@@ -266,6 +268,7 @@ $.domReady(function () {
         $('ul.macro li a').removeClass('active');
         $(this).addClass('active');
         layers = [
+            'USA-blank-trans-z11',
             'world-blank-bright-0-10',
             activeLayers,
             'mapbox.world-borders-dark'
