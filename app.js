@@ -32,23 +32,24 @@ $.domReady(function () {
 
     // Define the layers and other map variables
     var layers = [
-        'USA-blank-trans-z11',
-        'world-blank-bright-0-10',
-        'usa-census-hispanic-PR-2-14',
-        'usa-census-hispanic-state-2-5-v2',
-        'usa-census-hispanic-county-6-9-v2',
-        'usa-census-hispanic-oct6-contusa-z10-12-v2',
-        'usa-census-hispanic-oct6-ak-z10-14',
-        'usa-census-hispanic-tracts-hi-10-14-v2',
+        'npr.USA-blank-trans-z11',
+        'npr.world-blank-bright-0-10',
+        'npr.usa-census-hispanic-PR-2-14',
+        'npr.usa-census-hispanic-state-2-5-v2',
+        'npr.usa-census-hispanic-county-6-9-v2',
+        'npr.usa-census-hispanic-oct6-contusa-z10-12-v2',
+        'npr.usa-census-hispanic-oct6-ak-z10-14',
+        'npr.usa-census-hispanic-tracts-hi-10-14-v2',
         'mapbox.world-borders-dark'
         ],
+        cleanLayers;
         cleanLayers = $.compact(layers);
-    var layers = cleanLayers.join(','),
-        urlBase = $.map(['a','b','c','d'],function(sub) {
+        layers = cleanLayers.join(',');
+        var urlBase = $.map(['a','b','c','d'],function(sub) {
           return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
         }),
         mm = com.modestmaps,
-        m, test, cleanLayers;
+        m, test;
 
        	totalLegend = '<div class="census-legend">'
                     + '<div class="census-title">'
@@ -128,7 +129,7 @@ $.domReady(function () {
     function refreshMap() {
         urlBase = $.map(['a','b','c','d'],function(sub) {
             return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
-        }),
+        });
             wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
             tilejson.minzoom = 4;
             tilejson.maxzoom = 14;
@@ -146,12 +147,12 @@ $.domReady(function () {
             $('#total-pop').removeClass('active');
             $('#hispanic-pop').addClass('active');
             activeLayers = [
-                'usa-census-hispanic-PR-2-14',
-                'usa-census-hispanic-state-2-5-v2',
-                'usa-census-hispanic-county-6-9-v2',
-                'usa-census-hispanic-oct6-contusa-z10-12-v2',
-                'usa-census-hispanic-oct6-ak-z10-14',
-                'usa-census-hispanic-tracts-hi-10-14-v2'
+                'npr.usa-census-hispanic-PR-2-14',
+                'npr.usa-census-hispanic-state-2-5-v2',
+                'npr.usa-census-hispanic-county-6-9-v2',
+                'npr.usa-census-hispanic-oct6-contusa-z10-12-v2',
+                'npr.usa-census-hispanic-oct6-ak-z10-14',
+                'npr.usa-census-hispanic-tracts-hi-10-14-v2'
             ];
             layers = [
                 'USA-blank-trans-z11',
@@ -269,30 +270,9 @@ $.domReady(function () {
       $('a.embed').click(function(e){
         e.preventDefault();
         var splitLayers = layers.split(',');
-        var embedlayers = '';
         var center = m.pointLocation(new mm.Point(m.dimensions.x/2,m.dimensions.y/2));
-        embedShown = true;
-
-        $.each(splitLayers, function(num, key) {
-            embedlayers += '&amp;layers%5B%5D=' + num;
-        });
-
-        var embedId = 'ts-embed-' + (+new Date());
-        var url = '&amp;size=650';
-        url += '&amp;size%5B%5D=500';
-        url += '&amp;center%5B%5D=' + center.lon;
-        url += '&amp;center%5B%5D=' + center.lat;
-        url += '&amp;center%5B%5D=' + m.coordinate.zoom;
-        url += embedlayers;
-        url += '&amp;options%5B%5D=zoompan';
-        url += '&amp;options%5B%5D=legend';
-        url += '&amp;options%5B%5D=streetlevel';
-        url += '&amp;options%5B%5D=tooltips';
-        url += '&amp;options%5B%5D=zoombox';
-        url += '&amp;options%5B%5D=attribution';
-        url += '&amp;el=' + embedId;
-
-        $('#embed-code-field input').attr('value', '<div id="' + embedId + '-script"><script src="http://tiles.mapbox.com/npr/api/v1/embed.js?api=mm' + url + '"></script></div>');
+        var embedUrl = 'http://api.tiles.mapbox.com/v2/' + splitLayers + '/mm/tooltips,legend,bwdetect.html#' + m.coordinate.zoom + '/' + center.lat + '/' + center.lon;
+        $('#embed-code-field input').attr('value', '<iframe src="' + embedUrl + '" frameborder="0" width="650" height="500"></iframe>');
         openModal('#modal-embed');
         $('#embed-code')[0].tabindex = 0;
         $('#embed-code')[0].focus();
@@ -310,22 +290,22 @@ $.domReady(function () {
         $('ul.cities a').removeClass('active');
         if (this.id == 'total-pop'){
             activeLayers = [
-                'usa-census-totpop-state-2-5',
-                'usa-census-totpop-county-6-9',
-                'usa-census-totpop-tracts-conusa-10-14',
-                'usa-census-totpop-tracts-ak-10-14',
-                'usa-census-totpop-tracts-hi-10-14'
+                'npr.usa-census-totpop-state-2-5',
+                'npr.usa-census-totpop-county-6-9',
+                'npr.usa-census-totpop-tracts-conusa-10-14',
+                'npr.usa-census-totpop-tracts-ak-10-14',
+                'npr.usa-census-totpop-tracts-hi-10-14'
             ];
             activeLegend = totalLegend;
         }
         if (this.id == 'hispanic-pop'){
             activeLayers = [
-                'usa-census-hispanic-PR-2-14',
-                'usa-census-hispanic-state-2-5-v2',
-                'usa-census-hispanic-county-6-9-v2',
-                'usa-census-hispanic-oct6-contusa-z10-12-v2',
-                'usa-census-hispanic-oct6-ak-z10-14',
-                'usa-census-hispanic-tracts-hi-10-14-v2'
+                'npr.usa-census-hispanic-PR-2-14',
+                'npr.usa-census-hispanic-state-2-5-v2',
+                'npr.usa-census-hispanic-county-6-9-v2',
+                'npr.usa-census-hispanic-oct6-contusa-z10-12-v2',
+                'npr.usa-census-hispanic-oct6-ak-z10-14',
+                'npr.usa-census-hispanic-tracts-hi-10-14-v2'
             ];
             activeLegend = hispanicLegend;
         }
