@@ -310,8 +310,8 @@ $.domReady(function () {
         $('ul.cities a').removeClass('active');
         if (this.id == 'total-pop'){
             activeLayers = [
-                'usa-census-totpop-state-2-5-copy',
-                'usa-census-totpop-county-6-9-copy',
+                'usa-census-totpop-state-2-5',
+                'usa-census-totpop-county-6-9',
                 'usa-census-totpop-tracts-conusa-10-14',
                 'usa-census-totpop-tracts-ak-10-14',
                 'usa-census-totpop-tracts-hi-10-14'
