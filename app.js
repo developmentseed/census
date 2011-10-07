@@ -88,12 +88,12 @@ $.domReady(function () {
                     + '</div>'
                     + '<style type="text/css">'
                     + '.wax-legends {'
-                    + 'width: 365px !important;'
-                    + 'max-width: 365px !important;}'
+                    + 'width: 365px!important;'
+                    + 'max-width: 365px!important;}'
                     + '.wax-legend .census-scale ul li {'
-                    + 'width: 33px; !important;}'
+                    + 'width: 33px;!important;}'
                     + '.wax-legend ul.census-labels li span {'
-                    + 'width: 33px; !important;}'
+                    + 'width: 33px;!important;}'
                     + '</style>';
 
     activeLegend = totalLegend;
