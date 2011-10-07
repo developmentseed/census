@@ -22,10 +22,12 @@ $.domReady(function () {
 
     // Define the layers and other map variables
     var layers = [
+    	  'usa-census-hispanic-state-2-5-v2',
+          'usa-census-hispanic-county-6-9-v2',
           'USA-blank-trans-z11',
           'world-blank-bright-0-10',
-          'usa-census-totpop-state-2-5',
-          'usa-census-totpop-county-6-9',
+          'usa-census-totpop-state-2-5-copy',
+          'usa-census-totpop-county-6-9-copy',
           'usa-census-totpop-tracts-conusa-10-14',
           'usa-census-totpop-tracts-ak-10-14',
           'usa-census-totpop-tracts-hi-10-14',
@@ -37,7 +39,7 @@ $.domReady(function () {
         mm = com.modestmaps,
         m, test, cleanLayers;
 
-       	activeLegend = '<div class="census-legend">'
+       	totalLegend = '<div class="census-legend">'
                     + '<div class="census-title">'
                     + 'Percent Population Change (2000-2010)'
                     + '</div>'
@@ -56,6 +58,41 @@ $.domReady(function () {
                     + 'U.S. Census Bureau</a>, '
                     + '<a href="http://www.ire.org/census/">IRE</a></div>'
                     + '</div>';
+                    
+		hispanicLegend = '<div class="census-legend">'
+ 					+ '<div class="census-title">'
+ 					+ 'Percent Hispanic Population Change (2000-2010)'
+ 					+ '</div>'
+ 					+ '<div class="census-scale">'
+ 					+ '<ul class="census-labels">'
+      				+ '<li><span style="background:#ca83d7;"></span><-20%</li>'
+ 					+ '<li><span style="background:#cfb1ab;"></span>-20%</li>'
+ 					+ '<li><span style="background:#eee1ee;"></span>-10%</li>'
+ 					+ '<li><span style="background:#fffce0;"></span>10%</li>'
+ 					+ '<li><span style="background:#fef3b7;"></span>20%</li>'
+ 					+ '<li><span style="background:#fee88a;"></span>50%</li>'
+ 					+ '<li><span style="background:#fdde60;"></span>100%</li>'
+ 					+ '<li><span style="background:#fcca4e;"></span>150%</li>'
+ 					+ '<li><span style="background:#faaf4e;"></span>200%</li>'
+ 					+ '<li><span style="background:#f9914d;"></span>250%</li>'
+ 					+ '<li><span style="background:#f7754d;"></span>>250%</li>'
+ 					+ '</ul>'
+ 					+ '</div>'
+ 					+ '<div class="census-source">Data Source: <a href="http://www.census.gov">'
+ 					+ 'U.S. Census Bureau</a>, '
+ 					+ '<a href="http://www.ire.org/census/">IRE</a></div>'
+ 					+ '</div>'
+ 					+ '<style type="text/css">'
+					+ '.wax-legends {'
+  					+ 'width: 365px !important;'
+  					+ 'max-width: 365px !important;}'
+  					+ '.wax-legend .census-scale ul li {'
+  					+ 'width: 33px; !important;}'
+  					+ '.wax-legend ul.census-labels li span {'
+  					+ 'width: 33px; !important;}'
+  					+ '</style>';
+  					
+  		activeLegend = totalLegend;
 
     // Update tiles array
     function getTiles() {
@@ -87,15 +124,18 @@ $.domReady(function () {
             tilejson.tiles = getTiles();
             tilejson.grids = getGrids();
             m.setProvider(new wax.mm.connector(tilejson));
+            $('.wax-legends').remove();
+            tilejson.legend = activeLegend;
+    		legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
         });
     }
 
     function mapChange() {
         activeLayers = [
-            'usa-census-hispanic-2-5',
-            'usa-census-hispanic-conusa-6-14',
+            'usa-census-hispanic-state-2-5-v2',
+            'usa-census-hispanic-county-6-9-v2',
             'usa-census-hispanic-ak-6-14',
-            'usa-census-hispanic-hi-6-14'
+            'usa-census-hispanic-tracts-hi-10-14-v2'
         ].join(',');
         layers = [
             'USA-blank-trans-z11',
@@ -253,20 +293,22 @@ $.domReady(function () {
         $('ul.cities a').removeClass('active');
         if (this.id == 'total-pop'){
             activeLayers = [
-                'usa-census-totpop-state-2-5',
-                'usa-census-totpop-county-6-9',
+                'usa-census-totpop-state-2-5-copy',
+                'usa-census-totpop-county-6-9-copy',
                 'usa-census-totpop-tracts-conusa-10-14',
                 'usa-census-totpop-tracts-ak-10-14',
                 'usa-census-totpop-tracts-hi-10-14'
             ];
+            
+            activeLegend = totalLegend;
 
         }
         if (this.id == 'hispanic-pop'){
             activeLayers = [
-                'usa-census-hispanic-2-5',
-                'usa-census-hispanic-conusa-6-14',
+                'usa-census-hispanic-state-2-5-v2',
+                'usa-census-hispanic-county-6-9-v2',
                 'usa-census-hispanic-ak-6-14',
-                'usa-census-hispanic-hi-6-14'
+                'usa-census-hispanic-tracts-hi-10-14-v2'
             ];
             if(m.coordinate.zoom === 4) {
                 easey.slow(m, {
@@ -275,6 +317,8 @@ $.domReady(function () {
                     time: 1500
                 });
             }
+            
+            activeLegend = hispanicLegend;
         }
         $('ul.macro li a').removeClass('active');
         $(this).addClass('active');
