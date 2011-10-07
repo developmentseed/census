@@ -22,7 +22,8 @@ $.domReady(function () {
 
     // Define the layers and other map variables
     var layers = [
-    	  'usa-census-hispanic-state-2-5-v2',
+          'usa-census-hispanic-PR-2-14',
+          'usa-census-hispanic-state-2-5-v2',
           'usa-census-hispanic-county-6-9-v2',
           'usa-census-hispanic-oct6-contusa-z10-12-v2',
           'usa-census-hispanic-oct6-ak-z10-14',
@@ -61,41 +62,41 @@ $.domReady(function () {
                     + 'U.S. Census Bureau</a>, '
                     + '<a href="http://www.ire.org/census/">IRE</a></div>'
                     + '</div>';
-                    
-		hispanicLegend = '<div class="census-legend">'
- 					+ '<div class="census-title">'
- 					+ 'Percent Hispanic Population Change (2000-2010)'
- 					+ '</div>'
- 					+ '<div class="census-scale">'
- 					+ '<ul class="census-labels">'
-      				+ '<li><span style="background:#ca83d7;"></span><-20%</li>'
- 					+ '<li><span style="background:#cfb1ab;"></span>-20%</li>'
- 					+ '<li><span style="background:#eee1ee;"></span>-10%</li>'
- 					+ '<li><span style="background:#fffce0;"></span>10%</li>'
- 					+ '<li><span style="background:#fef3b7;"></span>20%</li>'
- 					+ '<li><span style="background:#fee88a;"></span>50%</li>'
- 					+ '<li><span style="background:#fdde60;"></span>100%</li>'
- 					+ '<li><span style="background:#fcca4e;"></span>150%</li>'
- 					+ '<li><span style="background:#faaf4e;"></span>200%</li>'
- 					+ '<li><span style="background:#f9914d;"></span>250%</li>'
- 					+ '<li><span style="background:#f7754d;"></span>>250%</li>'
- 					+ '</ul>'
- 					+ '</div>'
- 					+ '<div class="census-source">Data Source: <a href="http://www.census.gov">'
- 					+ 'U.S. Census Bureau</a>, '
- 					+ '<a href="http://www.ire.org/census/">IRE</a></div>'
- 					+ '</div>'
- 					+ '<style type="text/css">'
-					+ '.wax-legends {'
-  					+ 'width: 365px !important;'
-  					+ 'max-width: 365px !important;}'
-  					+ '.wax-legend .census-scale ul li {'
-  					+ 'width: 33px; !important;}'
-  					+ '.wax-legend ul.census-labels li span {'
-  					+ 'width: 33px; !important;}'
-  					+ '</style>';
-  					
-  		activeLegend = totalLegend;
+
+        hispanicLegend = '<div class="census-legend">'
+                    + '<div class="census-title">'
+                    + 'Percent Hispanic Population Change (2000-2010)'
+                    + '</div>'
+                    + '<div class="census-scale">'
+                    + '<ul class="census-labels">'
+                    + '<li><span style="background:#ca83d7;"></span><-20%</li>'
+                    + '<li><span style="background:#cfb1ab;"></span>-20%</li>'
+                    + '<li><span style="background:#eee1ee;"></span>-10%</li>'
+                    + '<li><span style="background:#fffce0;"></span>10%</li>'
+                    + '<li><span style="background:#fef3b7;"></span>20%</li>'
+                    + '<li><span style="background:#fee88a;"></span>50%</li>'
+                    + '<li><span style="background:#fdde60;"></span>100%</li>'
+                    + '<li><span style="background:#fcca4e;"></span>150%</li>'
+                    + '<li><span style="background:#faaf4e;"></span>200%</li>'
+                    + '<li><span style="background:#f9914d;"></span>250%</li>'
+                    + '<li><span style="background:#f7754d;"></span>>250%</li>'
+                    + '</ul>'
+                    + '</div>'
+                    + '<div class="census-source">Data Source: <a href="http://www.census.gov">'
+                    + 'U.S. Census Bureau</a>, '
+                    + '<a href="http://www.ire.org/census/">IRE</a></div>'
+                    + '</div>'
+                    + '<style type="text/css">'
+                    + '.wax-legends {'
+                    + 'width: 365px !important;'
+                    + 'max-width: 365px !important;}'
+                    + '.wax-legend .census-scale ul li {'
+                    + 'width: 33px; !important;}'
+                    + '.wax-legend ul.census-labels li span {'
+                    + 'width: 33px; !important;}'
+                    + '</style>';
+
+    activeLegend = totalLegend;
 
     // Update tiles array
     function getTiles() {
@@ -139,6 +140,7 @@ $.domReady(function () {
             $('#hispanic-pop').addClass('active');
 
             activeLayers = [
+                'usa-census-hispanic-PR-2-14',
                 'usa-census-hispanic-state-2-5-v2',
                 'usa-census-hispanic-county-6-9-v2',
                 'usa-census-hispanic-oct6-contusa-z10-12-v2',
@@ -314,6 +316,7 @@ $.domReady(function () {
         }
         if (this.id == 'hispanic-pop'){
             activeLayers = [
+                'usa-census-hispanic-PR-2-14',
                 'usa-census-hispanic-state-2-5-v2',
                 'usa-census-hispanic-county-6-9-v2',
                 'usa-census-hispanic-oct6-contusa-z10-12-v2',
