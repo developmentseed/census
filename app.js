@@ -25,6 +25,8 @@ $.domReady(function () {
     	  'usa-census-hispanic-state-2-5-v2',
           'usa-census-hispanic-county-6-9-v2',
           'usa-census-hispanic-oct6-contusa-z10-12-v2',
+          'usa-census-hispanic-oct6-ak-z10-14',
+          'usa-census-hispanic-tracts-hi-10-14-v2',
           'USA-blank-trans-z11',
           'world-blank-bright-0-10',
           'usa-census-totpop-state-2-5-copy',
@@ -136,7 +138,7 @@ $.domReady(function () {
             'usa-census-hispanic-state-2-5-v2',
             'usa-census-hispanic-county-6-9-v2',
             'usa-census-hispanic-oct6-contusa-z10-12-v2',
-            'usa-census-hispanic-ak-6-14',
+            'usa-census-hispanic-oct6-ak-z10-14',
             'usa-census-hispanic-tracts-hi-10-14-v2'
         ].join(',');
         layers = [
@@ -310,7 +312,7 @@ $.domReady(function () {
                 'usa-census-hispanic-state-2-5-v2',
                 'usa-census-hispanic-county-6-9-v2',
                 'usa-census-hispanic-oct6-contusa-z10-12-v2',
-                'usa-census-hispanic-ak-6-14',
+                'usa-census-hispanic-oct6-ak-z10-14',
                 'usa-census-hispanic-tracts-hi-10-14-v2'
             ];
             if(m.coordinate.zoom === 4) {
