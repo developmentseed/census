@@ -134,22 +134,27 @@ $.domReady(function () {
     }
 
     function mapChange() {
-        activeLayers = [
-            'usa-census-hispanic-state-2-5-v2',
-            'usa-census-hispanic-county-6-9-v2',
-            'usa-census-hispanic-oct6-contusa-z10-12-v2',
-            'usa-census-hispanic-oct6-ak-z10-14',
-            'usa-census-hispanic-tracts-hi-10-14-v2'
-        ].join(',');
-        layers = [
-            'USA-blank-trans-z11',
-            'world-blank-bright-0-10',
-            activeLayers,
-            'mapbox.world-borders-dark'
-        ];
-        cleanLayers = $.compact(layers);
-        layers = cleanLayers.join(',');
-        refreshMap();
+        if (!$('#hispanic-pop').hasClass('active')) {
+            $('#total-pop').removeClass('active');
+            $('#hispanic-pop').addClass('active');
+
+            activeLayers = [
+                'usa-census-hispanic-state-2-5-v2',
+                'usa-census-hispanic-county-6-9-v2',
+                'usa-census-hispanic-oct6-contusa-z10-12-v2',
+                'usa-census-hispanic-oct6-ak-z10-14',
+                'usa-census-hispanic-tracts-hi-10-14-v2'
+            ].join(',');
+            layers = [
+                'USA-blank-trans-z11',
+                'world-blank-bright-0-10',
+                activeLayers,
+                'mapbox.world-borders-dark'
+            ];
+            cleanLayers = $.compact(layers);
+            layers = cleanLayers.join(',');
+            refreshMap();
+        }
     }
 
     // Send address to MapQuest's Nominatim search
@@ -405,10 +410,6 @@ $.domReady(function () {
            // Do nothing.
         } else {
             $('ul.cities a').removeClass('active');
-            if(!$('#hispanic-pop').hasClass('active')) {
-                $('#total-pop').removeClass('active');
-                $('#hispanic-pop').addClass('active');
-            }
             $(this).addClass('active');
             activeLegend = hispanicLegend;
             if(this.id === 'los-angeles') {
