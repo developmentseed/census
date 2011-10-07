@@ -103,7 +103,7 @@ $.domReady(function () {
                     + 'width: 33px;!important;}'
                     + '</style>';
 
-    activeLegend = totalLegend;
+    activeLegend = hispanicLegend;
 
     // Update tiles array
     function getTiles() {
@@ -137,7 +137,7 @@ $.domReady(function () {
             m.setProvider(new wax.mm.connector(tilejson));
             $('.wax-legends').remove();
             tilejson.legend = activeLegend;
-    		legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
+            legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
         });
     }
 
