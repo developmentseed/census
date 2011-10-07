@@ -20,23 +20,30 @@ $.domReady(function () {
             window.open($(this).attr('href'), 'share');
     });
 
+    //Initial Highlighting as we start with the Hispanic Layer.
+    $('#map').mousemove(function() {
+        $('.wax-tooltip').each(function() {
+            $('.highlight').remove();
+            if($('.wax-tooltip div').hasClass('chart-int')) {
+                $('<span class="highlight"></div>').appendTo(this);
+            }
+        });
+    });
+
     // Define the layers and other map variables
     var layers = [
-          'usa-census-hispanic-PR-2-14',
-          'usa-census-hispanic-state-2-5-v2',
-          'usa-census-hispanic-county-6-9-v2',
-          'usa-census-hispanic-oct6-contusa-z10-12-v2',
-          'usa-census-hispanic-oct6-ak-z10-14',
-          'usa-census-hispanic-tracts-hi-10-14-v2',
-          'USA-blank-trans-z11',
-          'world-blank-bright-0-10',
-          'usa-census-totpop-state-2-5-copy',
-          'usa-census-totpop-county-6-9-copy',
-          'usa-census-totpop-tracts-conusa-10-14',
-          'usa-census-totpop-tracts-ak-10-14',
-          'usa-census-totpop-tracts-hi-10-14',
-          'mapbox.world-borders-dark'
-        ].join(','),
+        'USA-blank-trans-z11',
+        'world-blank-bright-0-10',
+        'usa-census-hispanic-PR-2-14',
+        'usa-census-hispanic-state-2-5-v2',
+        'usa-census-hispanic-county-6-9-v2',
+        'usa-census-hispanic-oct6-contusa-z10-12-v2',
+        'usa-census-hispanic-oct6-ak-z10-14',
+        'usa-census-hispanic-tracts-hi-10-14-v2',
+        'mapbox.world-borders-dark'
+        ],
+        cleanLayers = $.compact(layers);
+    var layers = cleanLayers.join(','),
         urlBase = $.map(['a','b','c','d'],function(sub) {
           return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
         }),
@@ -138,7 +145,6 @@ $.domReady(function () {
         if (!$('#hispanic-pop').hasClass('active')) {
             $('#total-pop').removeClass('active');
             $('#hispanic-pop').addClass('active');
-
             activeLayers = [
                 'usa-census-hispanic-PR-2-14',
                 'usa-census-hispanic-state-2-5-v2',
@@ -146,7 +152,7 @@ $.domReady(function () {
                 'usa-census-hispanic-oct6-contusa-z10-12-v2',
                 'usa-census-hispanic-oct6-ak-z10-14',
                 'usa-census-hispanic-tracts-hi-10-14-v2'
-            ].join(',');
+            ];
             layers = [
                 'USA-blank-trans-z11',
                 'world-blank-bright-0-10',
@@ -310,9 +316,7 @@ $.domReady(function () {
                 'usa-census-totpop-tracts-ak-10-14',
                 'usa-census-totpop-tracts-hi-10-14'
             ];
-            
             activeLegend = totalLegend;
-
         }
         if (this.id == 'hispanic-pop'){
             activeLayers = [
@@ -323,14 +327,6 @@ $.domReady(function () {
                 'usa-census-hispanic-oct6-ak-z10-14',
                 'usa-census-hispanic-tracts-hi-10-14-v2'
             ];
-            if(m.coordinate.zoom === 4) {
-                easey.slow(m, {
-                    location: new mm.Location(39, -95),
-                    zoom: 5,
-                    time: 1500
-                });
-            }
-
             activeLegend = hispanicLegend;
         }
         $('ul.macro li a').removeClass('active');
