@@ -322,7 +322,7 @@ $.domReady(function () {
                     time: 1500
                 });
             }
-            
+
             activeLegend = hispanicLegend;
         }
         $('ul.macro li a').removeClass('active');
@@ -410,6 +410,7 @@ $.domReady(function () {
                 $('#hispanic-pop').addClass('active');
             }
             $(this).addClass('active');
+            activeLegend = hispanicLegend;
             if(this.id === 'los-angeles') {
                 easey.slow(m, {
                     location: new mm.Location(34.0502836, -118.2420861),
