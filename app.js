@@ -223,7 +223,7 @@ $.domReady(function () {
         + '<img class="npr-white" src="images/npr.png" /></a> '
         + '<a href="http://developmentseed.org" target="_blank">'
         + '<img src="images/ds.png" /></a> '
-        + 'Maps designed in <a href="http://www.tilemill.com">TileMill</a>. '
+        + 'Maps designed in <a href="http://www.tilemill.com" target="_blank">TileMill</a>. '
         + 'Search and street level map courtesy of '
         + '<a href="http://www.mapquest.com/" target="_blank">'
         + 'MapQuest</a>. Map data © <a href="http://www.openstreetmap.org/"'
