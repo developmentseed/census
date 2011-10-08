@@ -427,26 +427,26 @@ a.zoomer {
   bottom: 10px;
   left: 10px;
   font-size: 11px;
-  line-height: 26px;
-  color: #fff;
+  line-height: 28px;
+  color: #939393;
   }
+  .wax-attribution a {
+    color: #939393;
+    font-weight: bold;
+    }
+  .wax-attribution img {
+    float: left;
+    margin-right: 10px;
+    }
+  .wax-attribution .npr-white {
+    margin-top:2px;
+    margin-right:14px;
+    }
 @media screen and (max-device-width: 480px) {
   .wax-attribution {
     font-size: 6px;
     line-height: 17px;
     }
-  }
-.wax-attribution a {
-  color: white!important;
-  text-decoration: underline;
-  }
-.wax-attribution img {
-  float: left;
-  margin-right: 10px;
-  }
-.wax-attribution .npr-white {
-  margin-top:2px;
-  margin-right:14px;
   }
 /*data styling*/
 .wax-tooltip img {

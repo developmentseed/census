@@ -218,11 +218,13 @@ $.domReady(function () {
       tilejson.minzoom = 4;
       tilejson.maxzoom = 14;
       tilejson.legend = activeLegend;
+
       tilejson.attribution = '<a href="http://npr.org" target="_blank">'
         + '<img class="npr-white" src="images/npr.png" /></a> '
         + '<a href="http://developmentseed.org" target="_blank">'
         + '<img src="images/ds.png" /></a> '
-        + 'Nominatim search and street level tiles courtesy of '
+        + 'Maps designed in <a href="http://www.tilemill.com">TileMill</a>. '
+        + 'Search and street level map courtesy of '
         + '<a href="http://www.mapquest.com/" target="_blank">'
         + 'MapQuest</a>. Map data © <a href="http://www.openstreetmap.org/"'
         +' target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.';
