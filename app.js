@@ -37,9 +37,8 @@ $.domReady(function () {
         'npr.usa-census-hispanic-PR-2-14',
         'npr.usa-census-hispanic-state-2-5-v2',
         'npr.usa-census-hispanic-county-6-9-v2',
-        'npr.usa-census-hispanic-oct6-contusa-z10-12-v2',
-        'npr.usa-census-hispanic-oct6-ak-z10-14',
-        'npr.usa-census-hispanic-tracts-hi-10-14-v2',
+        'npr.usa-census-hispanic-tracts-contusa-z10-14',
+        'npr.usa-census-hispanic-tracts-ak-hi-z10-14',
         'mapbox.world-borders-dark'
         ],
         cleanLayers;
@@ -150,9 +149,8 @@ $.domReady(function () {
                 'npr.usa-census-hispanic-PR-2-14',
                 'npr.usa-census-hispanic-state-2-5-v2',
                 'npr.usa-census-hispanic-county-6-9-v2',
-                'npr.usa-census-hispanic-oct6-contusa-z10-12-v2',
-                'npr.usa-census-hispanic-oct6-ak-z10-14',
-                'npr.usa-census-hispanic-tracts-hi-10-14-v2'
+                'npr.usa-census-hispanic-tracts-contusa-z10-14',
+                'npr.usa-census-hispanic-tracts-ak-hi-z10-14'
             ];
             layers = [
                 'USA-blank-trans-z11',
@@ -290,11 +288,11 @@ $.domReady(function () {
         $('ul.cities a').removeClass('active');
         if (this.id == 'total-pop'){
             activeLayers = [
+                'npr.usa-census-totpop-PR-2-14',
                 'npr.usa-census-totpop-state-2-5',
                 'npr.usa-census-totpop-county-6-9',
                 'npr.usa-census-totpop-tracts-conusa-10-14',
-                'npr.usa-census-totpop-tracts-ak-10-14',
-                'npr.usa-census-totpop-tracts-hi-10-14'
+                'npr.usa-census-totpop-tracts-ak-hi-10-14'
             ];
             activeLegend = totalLegend;
         }
@@ -303,9 +301,8 @@ $.domReady(function () {
                 'npr.usa-census-hispanic-PR-2-14',
                 'npr.usa-census-hispanic-state-2-5-v2',
                 'npr.usa-census-hispanic-county-6-9-v2',
-                'npr.usa-census-hispanic-oct6-contusa-z10-12-v2',
-                'npr.usa-census-hispanic-oct6-ak-z10-14',
-                'npr.usa-census-hispanic-tracts-hi-10-14-v2'
+                'npr.usa-census-hispanic-tracts-contusa-z10-14',
+                'npr.usa-census-hispanic-tracts-ak-hi-z10-14'
             ];
             activeLegend = hispanicLegend;
         }
