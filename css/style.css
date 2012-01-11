@@ -49,10 +49,6 @@ a.link-pop {
   line-height: 20px;
   padding: 5px 20px 5px 10px;
   font-size: 24px;
-  -moz-transition: color 0.3s linear;
-  -o-transition: color 0.3s linear;
-  -webkit-transition: color 0.3s linear;
-  transition: color 0.3s linear;
   height: 40px;
   line-height: 40px;
   }
@@ -173,10 +169,6 @@ ul.macro {
       padding: 6px 5px;
       background: white;
       color: #B3B3B3;
-      -moz-transition: background-color 0.3s linear;
-      -o-transition: background-color 0.3s linear;
-      -webkit-transition: background-color 0.3s linear;
-      transition: background-color 0.3s linear;
       width: 140px;
       display: block;
       }
@@ -253,10 +245,6 @@ ul.macro {
     background: #000;
     color: #fff;
     font-weight: bold;
-    -moz-transition: background-color 0.2s linear;
-    -o-transition: background-color 0.2s linear;
-    -webkit-transition: background-color 0.2s linear;
-    transition: background-color 0.2s linear;
     }
     ul.cities li a.dc {
       padding-bottom: 7px;
@@ -284,10 +272,6 @@ a.zoomer {
   font-weight: bold;
   top: 60px;
   left: 10px;
-  -moz-transition: opacity 0.1s ease-out;
-  -o-transition: opacity 0.1s ease-out;
-  -webkit-transition: opacity 0.1s ease-out;
-  transition: opacity 0.1s ease-out;
   }
   a.zoomout {
     top: 85px;
@@ -387,8 +371,6 @@ a.zoomer {
   -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
   -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
   box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
-  -webkit-transition:opacity .5s;
-  -moz-transition:opacity .5s;
   }
   .wax-tooltip.hide { opacity:0; }
   .wax-tooltip .int-title {
@@ -537,20 +519,6 @@ a.close {
   right: 5px;
   }
 
-/*CSS Animations*/
-.map-tile-loaded {
-  -webkit-animation-name: 'fade-in';
-  -webkit-animation-timing-function: ease-in;
-  -webkit-animation-duration: .1s;
-  }
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-    }
-  to {
-    opacity: 1;
-    }
-  }
 /*Loading DIV*/
 .loading {
   background: #1A1A1A;
@@ -948,3 +916,4 @@ a.close {
     right: 5px;
     }
   }
+.wax-tooltip {margin:0;width:280px !important;}.wax-tooltip .census-int {font-size:15px;  line-height:15px;  }.wax-tooltip .int-title {font-weight:bold;}.wax-tooltip .chg-int {font-size:85%;font-weight:bold;}.wax-tooltip .pop-int {font-size:80%;margin-bottom:4px;}.wax-tooltip .regavg-int, .wax-tooltip .natavg-int {  font-size:85%;  }.wax-tooltip .poppct-int, .wax-tooltip .regnum-int, .wax-tooltip .natnum-int {  padding-left:4px; }.wax-tooltip .poppct-int {font-weight:bold;font-size:15px;} .wax-tooltip img {  margin:0 !important;  padding:0 !important;  }.wax-tooltip .chart-int {  margin:2px 0 2px 0;  }
