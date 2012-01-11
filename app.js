@@ -70,7 +70,7 @@ $.domReady(function () {
                     + '<a href="http://www.ire.org/census/">IRE</a></div>'
                     + '</div>';
 
-        hispanicLegend = '<div class="census-legend">'
+        hispanicLegend = '<div class="census-legend hispanic">'
                     + '<div class="census-title">'
                     + 'Percent Hispanic Population Change (2000-2010)'
                     + '</div>'
@@ -92,16 +92,7 @@ $.domReady(function () {
                     + '<div class="census-source">Data Source: <a href="http://www.census.gov">'
                     + 'U.S. Census Bureau</a>, '
                     + '<a href="http://www.ire.org/census/">IRE</a></div>'
-                    + '</div>'
-                    + '<style type="text/css">'
-                    + '.wax-legends {'
-                    + 'width: 365px!important;'
-                    + 'max-width: 365px!important;}'
-                    + '.wax-legend .census-scale ul li {'
-                    + 'width: 33px;!important;}'
-                    + '.wax-legend ul.census-labels li span {'
-                    + 'width: 33px;!important;}'
-                    + '</style>';
+                    + '</div>';
 
     activeLegend = hispanicLegend;
 
@@ -129,14 +120,18 @@ $.domReady(function () {
         urlBase = $.map(['a','b','c','d'],function(sub) {
             return 'http://' + sub + '.tiles.mapbox.com/npr/1.0.0/externals.streetlevel,'+layers+'/';
         });
-            wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
+        wax.tilejson(urlBase[0]+'layer.json', function(tilejson) {
             tilejson.minzoom = 4;
             tilejson.maxzoom = 14;
             tilejson.tiles = getTiles();
             tilejson.grids = getGrids();
+            tilejson.legend = activeLegend;
+            // remove embedded styles to prevent web font flickers
+            tilejson.formatter = tilejson.formatter.replace(/<style(.*?)style>/gi,'');
+            
             m.setProvider(new wax.mm.connector(tilejson));
             $('.wax-legends').remove();
-            tilejson.legend = activeLegend;
+
             legend = wax.mm.legend(m, tilejson).appendTo(m.parent);
         });
     }
@@ -218,6 +213,8 @@ $.domReady(function () {
       tilejson.minzoom = 4;
       tilejson.maxzoom = 14;
       tilejson.legend = activeLegend;
+      // remove embedded styles to prevent web font flickers
+      tilejson.formatter = tilejson.formatter.replace(/<style(.*?)style>/gi,'');
 
       tilejson.attribution = '<a href="http://npr.org" target="_blank">'
         + '<img class="npr-white" src="images/npr.png" /></a> '
