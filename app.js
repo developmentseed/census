@@ -127,7 +127,9 @@ $.domReady(function () {
             tilejson.grids = getGrids();
             tilejson.legend = activeLegend;
             // remove embedded styles to prevent web font flickers
-            tilejson.formatter = tilejson.formatter.replace(/<style(.*?)style>/gi,'');
+            if (tilejson.formatter) {
+                tilejson.formatter = tilejson.formatter.replace(/<style(.*?)style>/gi,'');
+            }
             
             m.setProvider(new wax.mm.connector(tilejson));
             $('.wax-legends').remove();
